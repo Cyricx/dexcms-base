@@ -1,0 +1,99 @@
+﻿@model TTCMS.Base.Mvc.Models.IndexViewModel
+
+<h2>@ViewBag.PageContent.Heading</h2>
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div class="form-box">
+
+    <div class="form-item">
+        <span class="form-lbl">Password</span>
+        <div>
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Change your password", "ChangePassword")
+            }
+            else
+            {
+                @Html.ActionLink("Pick a password", "SetPassword")
+            }
+        </div>
+    </div>
+
+    <div class="form-item">
+        <span class="form-lbl">Personal Info</span>
+        <div>
+            @Html.ActionLink("Change Info", "ChangeInfo")
+        </div>
+    </div>
+    <div class="form-item">
+        <span class="form-lbl">Orders</span>
+        <div>
+            <a href="~/secure/orders">View Your Orders</a>
+        </div>
+    </div>
+
+    @*<div class="form-item">
+        <span class="form-lbl">Phone</span>
+        <div>
+@(Model.PhoneNumber ?? "None") [
+            @if (Model.PhoneNumber != null)
+            {
+                @Html.ActionLink("Change", "AddPhoneNumber")
+                @: &nbsp;|&nbsp;
+                @Html.ActionLink("Remove", "RemovePhoneNumber")
+            }
+            else
+            {
+                @Html.ActionLink("Add", "AddPhoneNumber")
+            }
+            ]
+        </div>
+    </div>*@
+
+    @*<div class="form-item">
+        <span class="form-lbl">External Login</span>
+        <div>
+            @Model.Logins.Count
+            @Html.ActionLink("[Manage]", "ManageLogins")
+        </div>
+    </div>*@
+
+    @*<div class="form-item">
+        <span class="form-lbl">Two Factor Login</span>
+        <div>
+        @if (Model.TwoFactor)
+        {
+            <form method="post" action="/Manage/DisableTFA">
+                    Two factor is currently enabled:
+                    <input type="submit" value="Disable"/>
+            </form>
+        }
+        else
+        {
+            <form method="post" action="/Manage/EnableTFA">
+                    Two factor is currently disabled:
+                    <input type="submit" value="Enable"/>
+            </form>
+        }
+        </div>
+    </div>
+    <div class="form-item">
+        <span class="form-lbl">Remember Browser?</span>
+        <div>
+            @if (Model.BrowserRemembered)
+            {
+                <form method="post" action="/Manage/ForgetBrowser">
+                        Currently remembered for two factor:
+                        <input type="submit" value="Forget Browser" />
+                </form>
+            }
+            else
+            {
+                <form method="post" action="/Manage/RememberBrowser">
+                        Currently not remembered for two factor:
+                        <input type="submit" value="Remember Browser"/>
+                </form>
+            }
+        </div>
+    </div>*@
+    <div class="clear"></div>
+</div>

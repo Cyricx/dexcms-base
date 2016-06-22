@@ -1,0 +1,56 @@
+﻿@model TTCMS.Base.Mvc.Models.ManageLoginsViewModel
+@using Microsoft.Owin.Security
+
+<h2>@ViewBag.PageContent.Heading</h2>
+
+<div class="form-box">
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+@if (Model.CurrentLogins.Count > 0)
+{
+    <h3>Registered Logins</h3>
+    <div class="tbl">
+            @foreach (var account in Model.CurrentLogins)
+            {
+                <div>
+                    <div class="tbl70">@account.LoginProvider</div>
+                    <div class="tbl25">
+                        @if (ViewBag.ShowRemoveButton)
+                        {
+                            using (Html.BeginForm("RemoveLogin", "Manage"))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div>
+                                    @Html.Hidden("loginProvider", account.LoginProvider)
+                                    @Html.Hidden("providerKey", account.ProviderKey)
+                                    <input type="submit" value="Remove" title="Remove this @account.LoginProvider login from your account" />
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            @: &nbsp;
+                        }
+                    </div>
+                </div>
+            }
+    </div>
+}
+</div>
+
+@if (Model.OtherLogins.Count > 0)
+{
+    <h2>Add another service to log in.</h2>
+
+    using (Html.BeginForm("LinkLogin", "Manage", FormMethod.Post, new { @class = "form-box" }))
+    {
+        @Html.AntiForgeryToken()
+        <div>
+            @foreach (AuthenticationDescription p in Model.OtherLogins)
+            {
+                <button type="submit" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
+            }
+        </div>
+    }
+}
+

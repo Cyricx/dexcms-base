@@ -1,0 +1,39 @@
+﻿@model TTCMS.Base.Mvc.Models.ChangeInfoViewModel
+
+<h2>@ViewBag.PageContent.Heading</h2>
+
+@using (Html.BeginForm("ChangeInfo", "Manage", FormMethod.Post, 
+    new { @class = "form-box", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary("")
+    <div class="form-item">
+        @Html.LabelFor(m => m.FirstName, new { @class = "form-lbl" })
+        <div>
+            @Html.TextBoxFor(m => m.FirstName)
+        </div>
+    </div>
+    <div class="form-item">
+        @Html.LabelFor(m => m.LastName, new { @class = "form-lbl" })
+        <div>
+            @Html.TextBoxFor(m => m.LastName)
+        </div>
+    </div>
+    <div class="form-item">
+        @Html.LabelFor(m => m.PreferredName, new { @class = "form-lbl" })
+        <div>
+            @Html.TextBoxFor(m => m.PreferredName)
+        </div>
+    </div>
+    <div class="form-item">
+        @Html.LabelFor(m => m.PhoneNumber, new { @class = "form-lbl" })
+        <div>
+            @Html.TextBoxFor(m => m.PhoneNumber)
+        </div>
+    </div>
+    <div class="form-btn">
+            <input type="submit" value="Change Info" />
+        <a class="pseudo-btn" href="@Url.Content("~/manage")">Back to Manage Account</a>
+    </div>
+}

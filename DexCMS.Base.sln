@@ -5,6 +5,17 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DexCMS.Base", "DexCMS.Base\DexCMS.Base.csproj", "{165220A4-E4E2-4DE0-98A3-83770E073EE5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DexCMS.Base.Mvc", "DexCMS.Base.Mvc\DexCMS.Base.Mvc.csproj", "{20F88943-4907-46BF-B832-619A4E8E5C27}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D64C9359-4CD3-45FD-A5A4-09239D0CC444}"
+	ProjectSection(SolutionItems) = preProject
+		gruntfile.js = gruntfile.js
+		package.json = package.json
+		Readme.md = Readme.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DexCMS.Base.WebApi", "DexCMS.Base.WebApi\DexCMS.Base.WebApi.csproj", "{ABEA1E8C-8DFD-495F-948E-9F51252BC9D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +26,14 @@ Global
 		{165220A4-E4E2-4DE0-98A3-83770E073EE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{165220A4-E4E2-4DE0-98A3-83770E073EE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{165220A4-E4E2-4DE0-98A3-83770E073EE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20F88943-4907-46BF-B832-619A4E8E5C27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20F88943-4907-46BF-B832-619A4E8E5C27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20F88943-4907-46BF-B832-619A4E8E5C27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20F88943-4907-46BF-B832-619A4E8E5C27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABEA1E8C-8DFD-495F-948E-9F51252BC9D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABEA1E8C-8DFD-495F-948E-9F51252BC9D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABEA1E8C-8DFD-495F-948E-9F51252BC9D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABEA1E8C-8DFD-495F-948E-9F51252BC9D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

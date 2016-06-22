@@ -1,0 +1,26 @@
+﻿@model TTCMS.Base.Mvc.Models.ResendConfirmationViewModel
+
+<h2>@ViewBag.PageContent.Heading</h2>
+
+@using (Html.BeginForm("ResendConfirmation", "Account", FormMethod.Post, new { @class = "form-box", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "")
+    <p>
+        Use this page to resend the confirmation email for your account.
+        </p>
+    <p>If you enter an unrecognized email address, no email
+        will be sent.
+    </p>
+    <div class="form-item">
+        <span class="form-lbl">Enter your email</span>
+        <div>
+            @Html.TextBoxFor(m => m.Email)
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+    </div>
+    <div class="form-btn">
+            <input type="submit" value="Email Link" />
+    </div>
+}

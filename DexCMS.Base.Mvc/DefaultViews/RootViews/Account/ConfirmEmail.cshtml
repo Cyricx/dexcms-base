@@ -1,0 +1,8 @@
+﻿
+<h2>@ViewBag.PageContent.Heading</h2>
+<div>
+    @Html.Raw(ViewBag.PageContent.Body)
+    <p>
+@Html.ActionLink("Click here to Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+    </p>
+</div>

@@ -1,0 +1,4 @@
+﻿@{ 
+    var publicKey = System.Web.Configuration.WebConfigurationManager.AppSettings["ReCaptchaPublicKey"];
+}
+<div class="g-recaptcha" data-sitekey="@publicKey"></div>

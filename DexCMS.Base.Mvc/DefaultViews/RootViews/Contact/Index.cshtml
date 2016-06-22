@@ -1,0 +1,65 @@
+﻿@model TTCMS.Base.Models.Contact
+
+<h2>@ViewBag.PageContent.Heading</h2>
+
+@using (Html.BeginForm("Index", "Contact", FormMethod.Post, new { @class = "form-box", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.Raw(ViewBag.PageContent.Body)
+
+        @Html.ValidationSummary(true)
+
+        <div class="form-item">
+            @Html.LabelFor(model => model.Name, new { @class = "form-lbl" })
+            <div>
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="form-item">
+            @Html.LabelFor(model => model.Phone, new { @class = "form-lbl" })
+            <div>
+                @Html.EditorFor(model => model.Phone)
+                @Html.ValidationMessageFor(model => model.Phone)
+            </div>
+        </div>
+
+        <div class="form-item">
+            @Html.LabelFor(model => model.Email, new { @class = "form-lbl" })
+            <div>
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+
+        <div class="form-item">
+            @Html.LabelFor(model => model.ConfirmEmail, new { @class = "form-lbl" })
+            <div>
+                @Html.EditorFor(model => model.ConfirmEmail)
+                @Html.ValidationMessageFor(model => model.ConfirmEmail)
+            </div>
+        </div>
+
+        <div class="form-item large">
+            @Html.LabelFor(model => model.Message, new { @class = "form-lbl" })
+            <div>
+                @Html.TextAreaFor(model => model.Message)
+                @Html.ValidationMessageFor(model => model.Message)
+            </div>
+        </div>
+
+        <div class="form-item large">
+            <label class="form-lbl">Human Verification</label>
+            @Html.Partial("_ReCaptchaControl")
+        </div>
+
+        <div class="form-btn">
+            <input type="submit" value="Send Message" />
+        </div>
+}
+
+@section scripts {
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+}

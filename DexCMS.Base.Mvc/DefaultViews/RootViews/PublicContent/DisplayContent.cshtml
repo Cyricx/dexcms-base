@@ -1,0 +1,9 @@
+﻿@{
+    TTCMS.Base.Models.PageContent pageContent = ViewBag.PageContent;
+}
+
+<div class="@pageContent.Heading.ToLower().Replace(" ", "-")">
+
+    @Html.Raw(pageContent.Body)
+</div>
+

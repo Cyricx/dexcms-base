@@ -1,0 +1,51 @@
+﻿@model TTCMS.Base.Mvc.Models.LoginViewModel
+
+<h2>@ViewBag.PageContent.Heading</h2>
+
+@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, 
+    FormMethod.Post, 
+    new { @class = "form-box", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    
+    @Html.Raw(ViewBag.PageContent.Body)
+
+    @Html.ValidationSummary(true, "")
+    
+    <div class="form-item">
+        @Html.LabelFor(m => m.Email, new { @class = "form-lbl" })
+        <div>
+            @Html.TextBoxFor(m => m.Email)
+            @Html.ValidationMessageFor(m => m.Email, "")
+        </div>
+    </div>
+    <div class="form-item">
+        @Html.LabelFor(m => m.Password, new { @class = "form-lbl" })
+        <div>
+            @Html.PasswordFor(m => m.Password)
+            @Html.ValidationMessageFor(m => m.Password, "")
+        </div>
+    </div>
+    <div class="form-item">
+        @Html.LabelFor(m => m.RememberMe, new { @class = "form-lbl" })
+        <div>
+            @Html.CheckBoxFor(m => m.RememberMe)
+        </div>
+    </div>
+    <div class="form-btn">
+            <input type="submit" value="Log in" />
+    </div>
+    <p>
+        @Html.ActionLink("Register a new user?", "Register")
+    </p>
+    <p>
+        @Html.ActionLink("Forget your password?", "ForgotPassword")
+    </p>
+<p>
+    @Html.ActionLink("Resend account confirmation?", "ResendConfirmation")
+</p>
+}
+
+@*<div class="form-box">
+        @Html.Partial("_ExternalLoginsListPartial", new GaeaRetreatWebSite.Models.ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+</div>*@

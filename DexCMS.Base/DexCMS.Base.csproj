@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>165220a4-e4e2-4de0-98a3-83770e073ee5</ProjectGuid>
+    <ProjectGuid>{165220A4-E4E2-4DE0-98A3-83770E073EE5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DexCMS.Base</RootNamespace>
@@ -30,24 +30,82 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="DexCMS.Core.Infrastructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\node_modules\dexcms-core\dist\DexCMS.Core.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Contexts\IDexCMSBaseContext.cs" />
+    <Compile Include="Repositories\ContactRepository.cs" />
+    <Compile Include="Repositories\ContactTypeRepository.cs" />
+    <Compile Include="Repositories\ContentAreaRepository.cs" />
+    <Compile Include="Repositories\ContentBlockRepository.cs" />
+    <Compile Include="Repositories\ContentCategoryRepository.cs" />
+    <Compile Include="Repositories\ContentSubCategoryRepository.cs" />
+    <Compile Include="Repositories\LayoutTypeRepository.cs" />
+    <Compile Include="Repositories\PageContentImageRepository.cs" />
+    <Compile Include="Repositories\PageContentRepository.cs" />
+    <Compile Include="Repositories\PageTypeRepository.cs" />
+    <Compile Include="Enums\SEOChangeFrequency.cs" />
+    <Compile Include="Globals\BaseInitializer.cs" />
+    <Compile Include="Globals\DexBaseRegister.cs" />
+    <Compile Include="Globals\Initializers\ContactTypeInitializer.cs" />
+    <Compile Include="Globals\Initializers\ContentAreaInitializer.cs" />
+    <Compile Include="Globals\Initializers\ContentCategoryInitializer.cs" />
+    <Compile Include="Globals\Initializers\PageContentInitializer.cs" />
+    <Compile Include="Globals\Initializers\PageTypeInitializer.cs" />
+    <Compile Include="Interfaces\IContactRepository.cs" />
+    <Compile Include="Interfaces\IContactTypeRepository.cs" />
+    <Compile Include="Interfaces\IContentAreaRepository.cs" />
+    <Compile Include="Interfaces\IContentBlockRepository.cs" />
+    <Compile Include="Interfaces\IContentCategoryRepository.cs" />
+    <Compile Include="Interfaces\IContentScriptRepository.cs" />
+    <Compile Include="Interfaces\IContentStyleRepository.cs" />
+    <Compile Include="Interfaces\IContentSubCategoryRepository.cs" />
+    <Compile Include="Interfaces\ILayoutTypeRepository.cs" />
+    <Compile Include="Interfaces\IPageContentImageRepository.cs" />
+    <Compile Include="Interfaces\IPageContentRepository.cs" />
+    <Compile Include="Interfaces\IPageTypeRepository.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\ContactType.cs" />
+    <Compile Include="Models\ContentArea.cs" />
+    <Compile Include="Models\ContentBlock.cs" />
+    <Compile Include="Models\ContentCategory.cs" />
+    <Compile Include="Models\ContentScript.cs" />
+    <Compile Include="Models\ContentStyle.cs" />
+    <Compile Include="Models\ContentSubCategory.cs" />
+    <Compile Include="Models\LayoutType.cs" />
+    <Compile Include="Models\PageContent.cs" />
+    <Compile Include="Models\PageContentImage.cs" />
+    <Compile Include="Models\PageType.cs" />
+    <Compile Include="Models\VisitedPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -57,5 +115,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-
- </Project>
+</Project>
