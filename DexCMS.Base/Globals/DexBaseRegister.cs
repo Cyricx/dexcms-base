@@ -5,7 +5,7 @@ using Ninject;
 
 namespace DexCMS.Base.Globals
 {
-    public static class DexBaseRegister<T> where T : IDexCMSBaseContext
+    public static class BaseRegister<T> where T : IDexCMSBaseContext
     {
         public static void RegisterServices(IKernel kernel)
         {
