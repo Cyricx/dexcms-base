@@ -142,7 +142,6 @@
     <Compile Include="Filters\ResolvePageContent.cs" />
     <Compile Include="Filters\SavePageRequest.cs" />
     <Compile Include="Globals\MvcFiltersConfig.cs" />
-    <Compile Include="Globals\TTCMSViewEngine.cs" />
     <Compile Include="Infrastructure\ISitemapGenerator.cs" />
     <Compile Include="Infrastructure\ISitemapItem.cs" />
     <Compile Include="Infrastructure\SitemapGenerator.cs" />
