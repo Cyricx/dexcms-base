@@ -126,9 +126,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseMvcRoutes.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
-    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PublicContentController.cs" />
     <Compile Include="Controllers\SitemapController.cs" />
@@ -178,8 +178,6 @@
     <None Include="DefaultViews\RootViews\Account\_ExternalLoginsListPartial.cshtml" />
     <None Include="DefaultViews\RootViews\Contact\Index.cshtml" />
     <None Include="DefaultViews\RootViews\Contact\Success.cshtml" />
-    <None Include="DefaultViews\RootViews\Error\Index.cshtml" />
-    <None Include="DefaultViews\RootViews\Error\NotFound.cshtml" />
     <None Include="DefaultViews\RootViews\Manage\ChangeInfo.cshtml" />
     <None Include="DefaultViews\RootViews\Manage\ChangePassword.cshtml" />
     <None Include="DefaultViews\RootViews\Manage\Index.cshtml" />
@@ -187,7 +185,6 @@
     <None Include="DefaultViews\RootViews\Manage\SetPassword.cshtml" />
     <None Include="DefaultViews\RootViews\PublicContent\DisplayContent.cshtml" />
     <None Include="DefaultViews\RootViews\PublicContent\Index.cshtml" />
-    <None Include="DefaultViews\RootViews\Shared\_AnalyticsTracking.cshtml" />
     <None Include="DefaultViews\RootViews\Shared\_ReCaptchaControl.cshtml" />
     <None Include="DefaultViews\Web.config" />
     <None Include="packages.config" />
