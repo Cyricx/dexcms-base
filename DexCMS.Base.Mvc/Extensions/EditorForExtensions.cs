@@ -7,7 +7,7 @@ namespace DexCMS.Base.Mvc.Extensions
 {
     public static class EditorForExtensions
     {
-        public static MvcHtmlString TTCMSEditorFor<TModel, TValue>(
+        public static MvcHtmlString DexCMSEditorFor<TModel, TValue>(
     this HtmlHelper<TModel> htmlHelper,
     Expression<Func<TModel, TValue>> ex, string iconClass = "", string addClasses = "")
         {

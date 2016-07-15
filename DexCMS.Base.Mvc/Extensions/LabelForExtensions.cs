@@ -7,7 +7,7 @@ namespace DexCMS.Base.Mvc.Extensions
 {
     public static class LabelForExtensions
     {
-        public static MvcHtmlString TTCMSLabelFor<TModel, TProperty>(
+        public static MvcHtmlString DexCMSLabelFor<TModel, TProperty>(
             this HtmlHelper<TModel> htmlHelper,
             Expression<Func<TModel, TProperty>> ex, string addClasses = "")
         {

@@ -8,7 +8,7 @@ namespace DexCMS.Base.Mvc.Extensions
 {
     public static class DropDownListExtensions
     {
-        public static MvcHtmlString TTCMSDropDownListFor<TModel, TValue>(
+        public static MvcHtmlString DexCMSDropDownListFor<TModel, TValue>(
     this HtmlHelper<TModel> htmlHelper,
     Expression<Func<TModel, TValue>> ex, IEnumerable<SelectListItem> selectList, string iconClass = "", string addClasses = "")
         {
