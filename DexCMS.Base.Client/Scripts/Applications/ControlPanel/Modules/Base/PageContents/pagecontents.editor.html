@@ -1,0 +1,206 @@
+﻿<div class="col-xs-12">
+    <h2>{{title}}</h2>
+    <form name="managePageContents" novalidate angular-validator angular-validator-submit="save(currentItem)">
+        <div class="panel-body">
+            <div class="form-group">
+                <label for="pageTitle">Page Title:</label>
+                <input class="form-control" name="pageTitle" id="pageTitle" required
+                       validate-on="dirty"
+                       ng-model="currentItem.pageTitle" />
+            </div>
+            <div class="form-group">
+                <label for="title">Heading Title:</label>
+                <input class="form-control" name="heading" id="heading" required
+                       validate-on="dirty"
+                       ng-model="currentItem.heading" />
+            </div>
+            <div class="form-group">
+                <label for="layoutTypeID">Layout Type:</label>
+                <select class="form-control" name="layoutTypeID" id="layoutTypeID" ng-model="currentItem.layoutTypeID" 
+                        ng-options="item.layoutTypeID as item.name for item in layoutTypes">
+                    <option value="">[- None -]</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="body">Body:</label>
+                <ttcms-html-editor
+                          ng-model="currentItem.body"></ttcms-html-editor>
+            </div>
+            <accordion>
+                <accordion-group is-open="showSeo">
+                    <accordion-heading>
+                        <i class="fa" ng-class="{'fa-chevron-down':showSeo, 'fa-chevron-right':!showSeo}"></i>
+                        Seach Engine Optimization
+                    </accordion-heading>
+                    <div class="form-group">
+                        <label for="metaKeywords">Meta Keywords:</label>
+                        <textarea class="form-control" name="metaKeywords" id="metaKeywords"
+                                  ng-model="currentItem.metaKeywords"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="metaDescription">Meta Description:</label>
+                        <textarea class="form-control" name="metaDescription" 
+                                  id="metaDescription"
+                                  ng-model="currentItem.metaDescription"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="changeFrequency">Change Frequency:</label>
+                        <select name="changeFrequency" id="changeFrequency" 
+                                ng-model="currentItem.changeFrequency"
+                                ng-options="item.id as item.name for item in seoChangeFrequencies"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="priority">Priority:</label>
+                        <input class="form-control" type="number" name="priority" 
+                               id="priority" min="0" max="1" step=".1"
+                               validate-on="dirty"
+                               invalid-message="'Acceptable values are 0 to 1.0'"
+                               ng-model="currentItem.priority" />
+                    </div>
+                    <div class="form-group checkbox-inline">
+                        <label>
+
+                            <input type="checkbox" id="addToSitemap" name="addToSitemap"
+                                   ng-model="currentItem.addToSitemap">
+                            Add to Sitemap?
+                        </label>
+                    </div>
+
+                </accordion-group>
+            </accordion>
+            <accordion>
+                <accordion-group is-open="showPageContentImages">
+                    <accordion-heading>
+                        <i class="fa" ng-class="{'fa-chevron-down':showPageContentImages, 'fa-chevron-right':!showPageContentImages}"></i>
+                        Show Images
+                    </accordion-heading>
+                    <div ng-if="!currentItem.pageContentID">
+                        <p>You must save the current page first, before you can manage images.</p>
+                        <button class="btn btn-primary" ng-disabled="managePageContents.$invalid || processing" ng-click="saveAndStay(currentItem)">Save and Stay</button>
+                    </div>
+                    <div ng-if="currentItem.pageContentID">
+                        <label>Drag to reorder:</label>
+                        <button ng-disabled="processing" class="btn btn-warning pull-right buffer-bottom" ng-if="hasDraggedImage" ng-click="savePageContentImageOrder(currentItem)">
+                            Save Order
+                        </button>
+                        <div class="clearfix"></div>
+                        <ul class="list-inline reorder-box" dnd-list="currentItem.pageContentImages">
+                            <li ng-repeat="item in currentItem.pageContentImages"
+                                dnd-draggable="item"
+                                dnd-dragstart="dragTimeImage(event)"
+                                dnd-moved="currentItem.pageContentImages.splice($index, 1)"
+                                dnd-effect-allowed="move">
+                                <div class="well">
+                                    <strong>
+                                        {{item.alt}}
+                                    </strong>
+
+                                    <figure class="text-center">
+                                        <img ng-src="../{{item.thumbnail}}" />
+                                    </figure>
+                                    <a class="reorder-action pull-right" href="#" ng-click="deletePageContentImage($event, item)">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <a ui-sref="pagecontentimages/:id({id:currentItem.pageContentID})">
+                        Manage Images
+                    </a>           
+                </accordion-group>
+            </accordion>
+            <accordion>
+                <accordion-group is-open="showContentBlocks">
+                    <accordion-heading>
+                        <i class="fa" ng-class="{'fa-chevron-down':showContentBlocks, 'fa-chevron-right':!showContentBlocks}"></i>
+                        Show Content Blocks
+                    </accordion-heading>
+                    <div ng-if="!currentItem.pageContentID">
+                         <p>You must save the current page first, before you can add content blocks.</p>
+                        <button class="btn btn-primary" ng-disabled="managePageContents.$invalid || processing" ng-click="saveAndStay(currentItem)">Save and Stay</button>
+                    </div>
+                    <div ng-if="currentItem.pageContentID">
+                        <label>Drag to reorder:</label>
+                        <button ng-disabled="processing" class="btn btn-warning pull-right buffer-bottom" ng-if="hasDragged" ng-click="saveContentBlockOrder(currentItem)">
+                            Save Order
+                        </button>
+                        <div class="clearfix"></div>
+                        <ul class="list-inline reorder-box" dnd-list="currentItem.contentBlocks">
+                            <li ng-repeat="item in currentItem.contentBlocks"
+                                dnd-draggable="item"
+                                dnd-dragstart="dragTime(event)"
+                                dnd-moved="currentItem.contentBlocks.splice($index, 1)"
+                                dnd-effect-allowed="move">
+                                <div class="well">
+                                    <strong>
+                                        {{item.blockTitle}}
+                                    </strong>
+                                    <a class="reorder-action pull-right" href="#" ng-click="deleteContentBlock($event, item)">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
+                                    <a class="reorder-action pull-right" ui-sref="contentblocks/:id({id:item.contentBlockID})">
+                                        <i class="fa fa-pencil-square-o"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <a ng-if="currentItem.pageContentID" ng-hide="currentItem.contentBlocks.length >= 3" ui-sref="contentblocks/new/:parentId({parentId:currentItem.pageContentID})">Add New Block</a>
+                </accordion-group>
+            </accordion>
+            <accordion>
+                <accordion-group is-open="showAdvanced">
+                    <accordion-heading>
+                        <i class="fa" ng-class="{'fa-chevron-down':showAdvanced, 'fa-chevron-right':!showAdvanced}"></i>
+                        Show Advanced
+                    </accordion-heading>
+                    <div class="form-group">
+                        <label for="contentAreaID">Area:</label>
+                        <select class="form-control" name="contentAreaID" id="contentAreaID" 
+                                ng-model="currentItem.contentAreaID" required
+                                ng-options="item.contentAreaID as item.name for item in contentAreas"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="contentCategoryID">Category:</label>
+                        <select class="form-control" name="contentCategoryID" id="contentCategoryID"
+                                ng-model="currentItem.contentCategoryID" 
+                                ng-options="item.contentCategoryID as item.name for item in contentCategories">
+                            <option value="">[- None -]</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="contentSubCategoryID">SubCategory:</label>
+                        <select class="form-control" name="contentSubCategoryID" id="contentSubCategoryID"
+                                ng-model="currentItem.contentSubCategoryID"
+                                ng-options="item.contentSubCategoryID as item.name for item in contentSubCategories">
+                            <option value="">[- None -]</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="urlSegment">Url Segment:</label>
+                        <span class="input-group-addon" ng-bind="{{buildSubUrl(currentItem)}}"></span>
+                        <input class="form-control" name="urlSegment" id="urlSegment" 
+                               validate-on="dirty" required
+                               ng-pattern="/^([a-zA-Z\-])+$/"
+                               uib-tooltip="This is the url for the page. Should not contain spaces or _. Only letters and - are allowed."
+                               tooltip-trigger="focus" tooltip-placement="bottom"
+                               ng-model="currentItem.urlSegment" />
+                    </div>
+                </accordion-group>
+            </accordion>
+
+            <div class="well text-danger" ng-if="modelError">
+                <h3>{{modelError.message}}</h3>
+                <ul>
+                    <li ng-repeat="err in modelError.errors">{{err}}</li>
+                </ul>
+            </div>
+
+            <button class="btn btn-primary" type="submit" 
+                    ng-disabled="managePageContents.$invalid || processing">Save</button>
+            <a class="btn btn-primary" ui-sref="pagecontents">Cancel</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,41 @@
+﻿<div class="col-xs-12">
+    <h2>{{title}}</h2>
+    <form name="manageContentBlocks" novalidate angular-validator angular-validator-submit="save(currentItem)">
+        <div class="panel-body">
+            <div class="form-group">
+                <label for="blockTitle">Block Title:</label>
+                <input class="form-control" name="blockTitle" id="blockTitle" required
+                       validate-on="dirty"
+                       ng-model="currentItem.blockTitle" />
+            </div>
+            <div class="form-group checkbox">
+                <label>
+                    <input type="checkbox" id="showTitle" name="showTitle"
+                           ng-model="currentItem.showTitle">
+                    Show Title?
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="blockBody">Block Body:</label>
+                <ttcms-html-editor required
+                                   ng-model="currentItem.blockBody"></ttcms-html-editor>
+                <span class="control-label text-danger"
+                      ng-show="!currentItem.blockBody">
+                    <strong>
+                        <i class="fa fa-times"></i> Required
+                    </strong>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="cssClass">CSS Class:</label>
+                <input class="form-control" name="cssClass"
+                       id="cssClass"
+                       ng-model="currentItem.cssClass" />
+            </div>
+            <button class="btn btn-primary" type="submit" ng-disabled="manageContentBlocks.$invalid">
+                Save
+            </button>
+            <a class="btn btn-primary" ui-sref="pagecontents/:id({id:currentItem.pageContentID})">Cancel</a>
+        </div>
+    </form>
+</div>

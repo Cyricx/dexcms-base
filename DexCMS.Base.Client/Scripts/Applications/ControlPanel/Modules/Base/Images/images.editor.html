@@ -1,0 +1,67 @@
+﻿<div class="col-xs-12">
+    <h2>{{title}}</h2>
+    <form name="manageImages" novalidate angular-validator angular-validator-submit="save(currentItem)">
+        <div class="panel-body">
+            <div class="form-group">
+                <label for="name">Alternate Text:</label>
+                <input class="form-control" name="alt" id="alt" required
+                       validate-on="dirty"
+                       ng-model="currentItem.alt" />
+            </div>
+            <div class="form-group">
+                <label for="credit">Credit:</label>
+                <input class="form-control" name="credit" id="credit" 
+                       ng-model="currentItem.credit" />
+            </div>
+            <div class="form-group">
+                <label for="caption">Caption:</label>
+                <input class="form-control" name="caption" id="caption" 
+                       ng-model="currentItem.caption" />
+            </div>
+            <div class="form-group">
+                <label>Preview Image</label>
+                <div>
+                    <img class="img-responsive img-rounded" 
+                         ng-src="../{{currentItem.slider}}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="replacementFileName">New File</label>
+                <strong ng-show="currentItem.imageID" class="text-warning">(If loading a new image please be sure to refresh your browser afterwords.)</strong>
+                <img ng-if="currentItem.replacementFileName" width="100" 
+                     ng-src="../tmp/fileUploads/{{currentItem.temporaryFileName }}"/>
+                <button ng-show="currentItem.replacementFileName" type="button" 
+                        class="btn btn-danger" ng-click="removeNewFile()">
+                <i class="fa fa-trash-o"></i></button>
+
+                <div ng-hide="currentItem.replacementFileName" ngf-drop ng-model="files" 
+                     class="drop-box"
+                     ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
+                     ngf-accept="'.jpg,.png,.pdf'">Drop Images here</div>
+                <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+
+            </div>
+            <div class="form-group">
+                <div class="checkbox-inline">
+                    <label>
+                        <input type="checkbox" id="showOnGallery" name="showOnGallery"
+                               ng-model="currentItem.showOnGallery">
+                        Show on Gallery?
+                    </label>
+                </div>
+                </div>
+            <div class="form-group">
+                <div class="checkbox-inline">
+                    <label>
+                        <input type="checkbox" id="canBePageContentImage" name="canBePageContentImage"
+                               ng-model="currentItem.canBePageContentImage">
+                        Can be used for a page content?
+                    </label>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit" ng-disabled="manageImages.$invalid" 
+                    >Save</button>
+            <a class="btn btn-primary" ui-sref="images">Cancel</a>
+        </div>
+    </form>
+</div>

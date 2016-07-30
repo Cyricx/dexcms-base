@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>DexCMS.Base.Client</Name>
+    <RootNamespace>DexCMS.Base.Client</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>5c3d1cdf-fe83-4527-95ae-eaa3ff01f01f</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>app.js</StartupFile>
+    <StartWebBrowser>False</StartWebBrowser>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <ProjectView>ShowAllFiles</ProjectView>
+    <StartWebBrowser>false</StartWebBrowser>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="app.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\Contacts\contacts.details.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\Contacts\contacts.list.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\Contacts\contacts.service.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\Contacts\index.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\ContactTypes\contacttypes.editor.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\ContactTypes\contacttypes.list.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\ContactTypes\contacttypes.service.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\ContactTypes\index.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\ContentAreas\contentareas.editor.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\ContentAreas\contentareas.list.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\ContentAreas\contentareas.service.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\ContentAreas\index.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\ContentBlockOrder\contentblockorder.service.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\ContentBlockOrder\index.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\ContentBlocks\contentblocks.editor.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\ContentBlocks\contentblocks.service.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\ContentBlocks\index.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\ContentCategories\contentcategories.editor.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\ContentCategories\contentcategories.list.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\ContentCategories\contentcategories.service.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\ContentCategories\index.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\ContentSubCategories\contentsubcategories.editor.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\ContentSubCategories\contentsubcategories.list.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\ContentSubCategories\contentsubcategories.service.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\ContentSubCategories\index.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\Countries\countries.editor.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\Countries\countries.list.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\Countries\countries.service.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\Countries\index.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\Images\images.editor.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\Images\images.list.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\Images\images.service.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\Images\index.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\LayoutTypes\index.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\LayoutTypes\layouttypes.editor.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\LayoutTypes\layouttypes.list.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\LayoutTypes\layouttypes.service.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\PageContentImages\index.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\PageContentImages\pageContentImages.list.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\PageContentImages\pageContentImages.service.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\PageContents\index.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\PageContents\pagecontents.editor.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\PageContents\pagecontents.list.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\PageContents\pagecontents.service.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\PageTypes\index.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\PageTypes\pagetypes.editor.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\PageTypes\pagetypes.list.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\PageTypes\pagetypes.service.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\SEOChangeFrequency\index.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\SEOChangeFrequency\seochangefrequency.service.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\SettingDataTypes\index.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\SettingDataTypes\settingdatatypes.editor.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\SettingDataTypes\settingdatatypes.list.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\SettingDataTypes\settingdatatypes.service.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\SettingGroups\index.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\SettingGroups\settinggroups.editor.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\SettingGroups\settinggroups.list.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\SettingGroups\settinggroups.service.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\Settings\index.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\Settings\settings.editor.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\Settings\settings.list.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\Settings\settings.service.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\States\index.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\States\states.editor.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\States\states.list.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\States\states.service.js" />
+    <Compile Include="Scripts\Applications\Secure\Modules\Base\base.js" />
+    <Compile Include="Scripts\Applications\Secure\Modules\Base\base.settings.js" />
+    <Compile Include="Scripts\Applications\Secure\Modules\Base\index.js" />
+    <Compile Include="Scripts\Applications\Secure\Modules\Base\Services\index.js" />
+    <Compile Include="Scripts\Applications\Secure\Modules\Base\Services\retrievecontents.service.js" />
+    <Content Include="package.json" />
+    <Content Include="README.md" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\Contacts\contacts.details.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\Contacts\contacts.list.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\ContactTypes\contacttypes.editor.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\ContactTypes\contacttypes.list.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\ContentAreas\contentareas.editor.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\ContentAreas\contentareas.list.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\ContentBlocks\contentblocks.editor.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\ContentCategories\contentcategories.editor.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\ContentCategories\contentcategories.list.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\ContentSubCategories\contentsubcategories.editor.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\ContentSubCategories\contentsubcategories.list.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\Countries\countries.editor.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\Countries\countries.list.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\Images\images.editor.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\Images\images.list.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\LayoutTypes\layouttypes.editor.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\LayoutTypes\layouttypes.list.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\PageContentImages\pageContentImages.list.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\PageContents\pagecontents.editor.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\PageContents\pagecontents.list.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\PageTypes\pagetypes.editor.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\PageTypes\pagetypes.list.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\SettingDataTypes\settingdatatypes.editor.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\SettingDataTypes\settingdatatypes.list.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\SettingGroups\settinggroups.editor.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\SettingGroups\settinggroups.list.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\Settings\settings.editor.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\Settings\settings.list.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\States\states.editor.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\States\states.list.html" />
+    <Content Include="Scripts\Applications\Secure\Modules\Base\Config\dexcms.globals.base.settings.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Configurations\" />
+    <Folder Include="Scripts\" />
+    <Folder Include="Scripts\Applications\" />
+    <Folder Include="Scripts\Applications\ControlPanel\" />
+    <Folder Include="Scripts\Applications\ControlPanel\Modules\" />
+    <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\" />
+    <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\Contacts\" />
+    <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\ContactTypes\" />
+    <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\ContentAreas\" />
+    <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\ContentBlockOrder\" />
+    <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\ContentBlocks\" />
+    <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\ContentCategories\" />
+    <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\ContentSubCategories\" />
+    <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\Countries\" />
+    <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\Images\" />
+    <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\LayoutTypes\" />
+    <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\PageContentImages\" />
+    <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\PageContents\" />
+    <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\PageTypes\" />
+    <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\SEOChangeFrequency\" />
+    <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\SettingDataTypes\" />
+    <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\SettingGroups\" />
+    <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\Settings\" />
+    <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\States\" />
+    <Folder Include="Scripts\Applications\Secure\" />
+    <Folder Include="Scripts\Applications\Secure\Modules\" />
+    <Folder Include="Scripts\Applications\Secure\Modules\Base\" />
+    <Folder Include="Scripts\Applications\Secure\Modules\Base\Config\" />
+    <Folder Include="Scripts\Applications\Secure\Modules\Base\Services\" />
+    <Folder Include="Scripts\Globals\" />
+  </ItemGroup>
+  <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+</Project>

@@ -1,0 +1,36 @@
+﻿<div class="jumbotron">
+    <h1>{{title}}</h1>
+
+    <div class="well panel">
+            <time class="pull-right">{{currentItem.submitDate | date:"MM/dd/yyyy"}}</time>
+            <h2 class="">From: {{currentItem.name}}</h2>
+            <h3>Email: {{currentItem.email}}</h3>
+            <h4>Phone: {{currentItem.phone}}</h4>
+        <div class="panel-heading">
+            <h3 class="panel-title">Subject: {{currentItem.contactTypeName || currentItem.otherSubject}}</h3>
+        </div>
+        <div class="panel-body">
+            <p>
+                {{currentItem.message}}
+            </p>
+        </div>
+        <div class="panel-footer">
+            <p>Referral page: {{currentItem.referrer}}</p>
+            <h3>Visited Pages</h3>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="item in currentItem.visitedPages">
+                    {{item.url}}
+                </li>
+            </ul>
+            <h3>Visited Urls</h3>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="item in currentItem.visitedUrls">
+                    {{item}}
+                </li>
+            </ul>
+        </div>
+        <div class="btn-group">
+            <a class="btn btn-default" ui-sref="contacts">Return to List</a>
+        </div>
+    </div>
+</div>

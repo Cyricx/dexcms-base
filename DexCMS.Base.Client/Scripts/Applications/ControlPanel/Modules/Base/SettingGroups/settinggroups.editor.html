@@ -1,0 +1,18 @@
+﻿<div class="col-xs-12">
+    <h2>{{title}}</h2>
+    <form name="manageSettingGroup" novalidate angular-validator 
+          angular-validator-submit="save(currentItem)">
+        <div class="panel-body">
+            <div class="form-group">
+                <label for="settingGroupName">Name:</label>
+                <input class="form-control" name="settingGroupName" 
+                       validate-on="dirty"
+                       id="settingGroupName" required
+                       ng-model="currentItem.settingGroupName" />
+            </div>
+            <button class="btn btn-primary" type="submit" ng-disabled="manageSettingGroup.$invalid" 
+                    ng-click="">Save</button>
+            <a class="btn btn-primary" ui-sref="settinggroups">Cancel</a>
+        </div>
+    </form>
+</div>

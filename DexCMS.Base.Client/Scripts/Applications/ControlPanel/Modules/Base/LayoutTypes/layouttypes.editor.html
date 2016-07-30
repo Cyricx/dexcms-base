@@ -1,0 +1,46 @@
+﻿<div class="col-xs-12">
+    <h2>{{title}}</h2>
+    <form name="manageLayoutTypes" novalidate angular-validator angular-validator-submit="save(currentItem)">
+        <div class="panel-body">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input class="form-control" name="name" id="name" required
+                       validate-on="dirty"
+                       ng-model="currentItem.name" />
+            </div>
+            <div class="form-group">
+                <label for="cssClass">Css:</label>
+                <input class="form-control" name="cssClass" id="cssClass" required
+                       validate-on="dirty"
+                       ng-model="currentItem.cssClass" />
+            </div>
+            <div class="form-group" ng-if="currentItem.exampleImage">
+                <label>Preview Image</label>
+                <div>
+                    <img class="img-responsive img-rounded img-small"
+                         ng-src="../{{currentItem.exampleImage}}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="replacementFileName">New File</label>
+                <strong ng-show="currentItem.exampleImage" class="text-warning">(If loading a new image please be sure to refresh your browser afterwords.)</strong>
+                <img ng-if="currentItem.replacementFileName" width="100"
+                     ng-src="../tmp/fileUploads/{{currentItem.temporaryFileName }}" />
+                <button ng-show="currentItem.replacementFileName" type="button"
+                        class="btn btn-danger" ng-click="removeNewFile()">
+                    <i class="fa fa-trash-o"></i>
+                </button>
+
+                <div ng-hide="currentItem.replacementFileName" ngf-drop ng-model="files"
+                     class="drop-box"
+                     ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
+                     ngf-accept="'.jpg,.png,.pdf'">Drop Images here</div>
+                <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+
+            </div>
+            <button class="btn btn-primary" type="submit" ng-disabled="manageLayoutTypes.$invalid" 
+                    >Save</button>
+            <a class="btn btn-primary" ui-sref="layouttypes">Cancel</a>
+        </div>
+    </form>
+</div>

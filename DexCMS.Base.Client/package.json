@@ -1,0 +1,10 @@
+{
+  "name": "dexcms-base-client",
+  "version": "0.0.0",
+  "description": "DexCMS.Base.Client",
+  "main": "app.js",
+  "author": {
+    "name": "Cyricx",
+    "email": "contact@chrisbyram.com"
+  }
+}
