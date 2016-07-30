@@ -1,3 +1,0 @@
-﻿define([
-    './retrievecontents.service'
-]);
