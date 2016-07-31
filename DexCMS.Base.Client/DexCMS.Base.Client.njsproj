@@ -31,6 +31,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="Configurations\controlpanel.base.navigation.js" />
+    <Compile Include="Configurations\globals.base.settings.js" />
+    <Compile Include="Configurations\controlpanel.base.routes.js" />
+    <Compile Include="Configurations\index.js" />
     <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\Contacts\contacts.details.controller.js" />
     <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\Contacts\contacts.list.controller.js" />
     <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\Contacts\contacts.service.js" />
@@ -97,11 +101,11 @@
     <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\States\states.editor.controller.js" />
     <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\States\states.list.controller.js" />
     <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\States\states.service.js" />
-    <Compile Include="Scripts\Applications\Secure\Modules\Base\base.js" />
-    <Compile Include="Scripts\Applications\Secure\Modules\Base\base.settings.js" />
-    <Compile Include="Scripts\Applications\Secure\Modules\Base\index.js" />
-    <Compile Include="Scripts\Applications\Secure\Modules\Base\Services\index.js" />
-    <Compile Include="Scripts\Applications\Secure\Modules\Base\Services\retrievecontents.service.js" />
+    <Compile Include="Scripts\Globals\Base\base.js" />
+    <Compile Include="Scripts\Globals\Base\base.settings.js" />
+    <Compile Include="Scripts\Globals\Base\index.js" />
+    <Compile Include="Scripts\Globals\Base\Services\index.js" />
+    <Compile Include="Scripts\Globals\Base\Services\retrievecontents.service.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="Scripts\Applications\ControlPanel\Modules\Base\Contacts\contacts.details.html" />
@@ -134,7 +138,6 @@
     <Content Include="Scripts\Applications\ControlPanel\Modules\Base\Settings\settings.list.html" />
     <Content Include="Scripts\Applications\ControlPanel\Modules\Base\States\states.editor.html" />
     <Content Include="Scripts\Applications\ControlPanel\Modules\Base\States\states.list.html" />
-    <Content Include="Scripts\Applications\Secure\Modules\Base\Config\dexcms.globals.base.settings.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Configurations\" />
@@ -161,12 +164,9 @@
     <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\SettingGroups\" />
     <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\Settings\" />
     <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\States\" />
-    <Folder Include="Scripts\Applications\Secure\" />
-    <Folder Include="Scripts\Applications\Secure\Modules\" />
-    <Folder Include="Scripts\Applications\Secure\Modules\Base\" />
-    <Folder Include="Scripts\Applications\Secure\Modules\Base\Config\" />
-    <Folder Include="Scripts\Applications\Secure\Modules\Base\Services\" />
     <Folder Include="Scripts\Globals\" />
+    <Folder Include="Scripts\Globals\Base\" />
+    <Folder Include="Scripts\Globals\Base\Services\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
