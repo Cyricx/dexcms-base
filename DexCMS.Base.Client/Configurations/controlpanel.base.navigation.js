@@ -1,77 +1,83 @@
-﻿module.exports = [
-    {
-        "title": "Contact",
-        "icon": "fa-envelope",
-        "subLinks": [
+﻿module.exports = function (appPath, overrides) {
+    return {
+        name: 'ApplicationsControlPanelNavigation',
+        dest: appPath + '/applications/controlpanel/config/dexcms.controlpanel.navigation.json',
+        options: [
             {
-                "title": "Messages",
-                "href": "contacts"
+                "title": "Contact",
+                "icon": "fa-envelope",
+                "subLinks": [
+                    {
+                        "title": "Messages",
+                        href: overrides.contacts || "contacts"
+                    },
+                    {
+                        "title": "Contact Types",
+                        href: overrides.contacttypes || "contacttypes"
+                    }
+                ]
             },
             {
-                "title": "Contact Types",
-                "href": "contacttypes"
-            }
-        ]
-    },
-    {
-        "title": "Pages",
-        "icon": "fa-newspaper-o",
-        "subLinks": [
-            {
-                "title": "Page Contents",
-                "href": "pagecontents"
+                "title": "Pages",
+                "icon": "fa-newspaper-o",
+                "subLinks": [
+                    {
+                        "title": "Page Contents",
+                        href: overrides.pagecontents || "pagecontents"
+                    },
+                    {
+                        "title": "Layout Types",
+                        href: overrides.layouttypes || "layouttypes"
+                    },
+                    {
+                        "title": "Page Types",
+                        href: overrides.pagetypes || "pagetypes"
+                    },
+                    {
+                        "title": "Areas",
+                        href: overrides.contentareas || "contentareas"
+                    },
+                    {
+                        "title": "Categories",
+                        href: overrides.contentcategories || "contentcategories"
+                    },
+                    {
+                        "title": "Sub Categories",
+                        href: overrides.contentsubcategories || "contentsubcategories"
+                    }
+                ]
             },
-            {
-                "title": "Layout Types",
-                "href": "layouttypes"
-            },
-            {
-                "title": "Page Types",
-                "href": "pagetypes"
-            },
-            {
-                "title": "Areas",
-                "href": "contentareas"
-            },
-            {
-                "title": "Categories",
-                "href": "contentcategories"
-            },
-            {
-                "title": "Sub Categories",
-                "href": "contentsubcategories"
-            }
-        ]
-    },
 
-    {
-        "title": "Settings",
-        "icon": "fa-cogs",
-        "subLinks": [
-            {
-                "title": "Countries",
-                "href": "countries"
-            },
-            {
-                "title": "Images",
-                "href": "images"
-            },
-            {
-                "title": "States",
-                "href": "states"
-            },
             {
                 "title": "Settings",
-                "href": "settings"
-            },
-            {
-                "title": "Setting DataTypes",
-                "href": "settingdatatypes"
-            },
-            {
-                "title": "Setting Groups",
-                "href": "settinggroups"
+                "icon": "fa-cogs",
+                "subLinks": [
+                    {
+                        "title": "Countries",
+                        href: overrides.countries || "countries"
+                    },
+                    {
+                        "title": "Images",
+                        href: overrides.images || "images"
+                    },
+                    {
+                        "title": "States",
+                        href: overrides.states || "states"
+                    },
+                    {
+                        "title": "Settings",
+                        href: overrides.settings || "settings"
+                    },
+                    {
+                        "title": "Setting DataTypes",
+                        href: overrides.settingdatatypes || "settingdatatypes"
+                    },
+                    {
+                        "title": "Setting Groups",
+                        href: overrides.settinggroups || "settinggroups"
+                    }
+                ]
             }
         ]
-    }
-];
+    };
+};
