@@ -12,7 +12,7 @@
         'dexCMSControlPanelSettings',
         'ngToast',
         function ($scope, Images, DTOptionsBuilder, DTColumnBuilder, $compile, $window,
-            $document, ttcmsSettings, ngToast) {
+            $document, dexcmsSettings, ngToast) {
             $scope.title = "View Images";
 
             $scope.dtOptions = DTOptionsBuilder.fromFnPromise(function () {
@@ -39,7 +39,7 @@
 
             function renderCopyLink(data, type, full, meta) {
                 return '<a class="btn btn-default btn-lg"><i class="fa fa-clipboard" ng-click="copyToClipboard(\'' + 
-                    ttcmsSettings.baseUrl + full.original + '\')"></i></a>';
+                    dexcmsSettings.baseUrl + full.original + '\')"></i></a>';
             }
 
             function renderBackground(data, type, full, meta) {

@@ -13,11 +13,11 @@
         'SettingGroups',
         'dexCMSControlPanelSettings',
         'Upload',
-        function ($scope, Settings, $stateParams, $state, SettingDataTypes, SettingGroups, ttcmsSettings, Upload) {
+        function ($scope, Settings, $stateParams, $state, SettingDataTypes, SettingGroups, dexcmsSettings, Upload) {
 
             var id = $stateParams.id || null;
 
-            $scope.baseUrl = ttcmsSettings.baseUrl;
+            $scope.baseUrl = dexcmsSettings.baseUrl;
 
             $scope.title = (id == null ? "Add " : "Edit ") + "Setting";
 
