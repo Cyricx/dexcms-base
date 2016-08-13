@@ -4,29 +4,38 @@
     app.controller('contentCategoriesListCtrl', [
         '$scope',
         'ContentCategories',
-        'DTOptionsBuilder',
-        'DTColumnBuilder',
-        '$compile',
         '$window',
-        function ($scope, ContentCategories, DTOptionsBuilder, DTColumnBuilder, $compile, $window) {
+        'dexCMSControlPanelSettings',
+        function ($scope, ContentCategories, $window, dexcmsSettings) {
             $scope.title = "View Content Categories";
 
-            $scope.dtOptions = DTOptionsBuilder.fromFnPromise(function () {
-                return ContentCategories.getList();
-            }).withBootstrap().withOption('createdRow', createdRow);
+            $scope.table = {
+                columns: [
+                    { property: 'contentCategoryID', title: 'ID' },
+                    { property: 'name', title: 'Name' },
+                    { property: 'urlSegment', title: 'Url' },
+                    { property: 'isActive', title: 'Active?' },
+                    {
+                        property: '', title: '', disableSorting: true,
+                        dataTemplate: dexcmsSettings.startingRoute + 'modules/base/contentcategories/_contentcategories.list.buttons.html'
+                    },
+                ],
+                defaultSort: 'contentCategoryID',
+                functions: {
+                    remove: function (id) {
+                        if (confirm('Are you sure?')) {
+                            ContentCategories.deleteItem(id).then(function (response) {
+                                $window.location.reload();
+                            });
+                        }
+                    }
+                },
+                filePrefix: 'Content-Categories'
+            };
 
-            $scope.dtColumns = [
-                DTColumnBuilder.newColumn('contentCategoryID').withTitle('ID'),
-                DTColumnBuilder.newColumn('name').withTitle('Name'),
-                DTColumnBuilder.newColumn('urlSegment').withTitle('Url'),
-                DTColumnBuilder.newColumn('isActive').withTitle('Active?'),
-                DTColumnBuilder.newColumn(null).withTitle('').notSortable().renderWith(actionsHtml)
-            ];
-
-            function createdRow(row, data, dataIndex) {
-                // Recompiling so we can bind Angular directive to the DT
-                $compile(angular.element(row).contents())($scope);
-            }
+            ContentCategories.getList().then(function (data) {
+                $scope.table.promiseData = data;
+            });
 
             function actionsHtml(data, type, full, meta) {
                 var buttons = '<a class="btn btn-warning" ui-sref="contentcategories/:id({id:' + data.contentCategoryID + '})">' +

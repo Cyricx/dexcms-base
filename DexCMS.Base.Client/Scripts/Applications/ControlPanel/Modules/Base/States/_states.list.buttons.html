@@ -1,0 +1,11 @@
+﻿<a class="btn btn-warning" ui-sref="states/:id({id:item.stateID})">
+    <i class="fa fa-edit"></i>
+</a>
+
+<button ng-if="!item.inUse" class="btn btn-danger" 
+        ng-click="table.functions.remove(item.stateID)">
+    <i class="fa fa-trash-o"></i>
+</button>
+<button ng-if="item.inUse" class="btn btn-danger" ng-disabled="true">
+    Currently in use
+</button>

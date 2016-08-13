@@ -4,52 +4,46 @@
     app.controller('contactsListCtrl', [
         '$scope',
         'Contacts',
-        'DTOptionsBuilder',
-        'DTColumnBuilder',
-        '$compile',
         '$window',
-        function ($scope, Contacts, DTOptionsBuilder, DTColumnBuilder, $compile, $window) {
+        '$filter',
+        'dexCMSControlPanelSettings',
+        function ($scope, Contacts, $window, $filter, dexcmsSettings) {
             $scope.title = "View Contacts";
 
-            $scope.dtOptions = DTOptionsBuilder.fromFnPromise(function () {
-                return Contacts.getList();
-            }).withBootstrap().withOption('createdRow', createdRow).withOption('order', [4, 'desc']);
-
-            $scope.dtColumns = [
-                DTColumnBuilder.newColumn('contactID').withTitle('ID'),
-                DTColumnBuilder.newColumn('name').withTitle('Name'),
-                DTColumnBuilder.newColumn('phone').withTitle('Phone'),
-                DTColumnBuilder.newColumn('email').withTitle('Email'),
-                DTColumnBuilder.newColumn('submitDate').withTitle('Date').renderWith(dateHtml),
-                DTColumnBuilder.newColumn(null).withTitle('').notSortable().renderWith(actionsHtml)
-            ];
-
-            function createdRow(row, data, dataIndex) {
-                // Recompiling so we can bind Angular directive to the DT
-                $compile(angular.element(row).contents())($scope);
-            }
-
-            function dateHtml(data, type, full, meta) {
-                return new Date(data).toLocaleString();
-            }
-
-            function actionsHtml(data, type, full, meta) {
-                var buttons = '<a class="btn btn-success" ui-sref="contacts/details/:id({id: +' + data.contactID + '})">' +
-                   '   <i class="fa fa-search"></i>' +
-                   '</a>';
-                buttons += ' <button class="btn btn-danger" ng-click="delete(' + data.contactID + ')">' +
-                '   <i class="fa fa-trash-o"></i>' +
-                '</button>';
-                return buttons;
-            }
-
-            $scope.delete = function (id) {
-                if (confirm('Are you sure?')) {
-                    Contacts.deleteItem(id).then(function (response) {
-                        $window.location.reload();
-                    });
-                }
+            var _getDateValue = function (value, item) {
+                return $filter('date')(value, "MM/dd/yyyy h:mm a");
             };
+
+            $scope.table = {
+                columns: [
+                    { property: 'contactID', title: 'ID' },
+                    { property: 'name', title: 'Name' },
+                    { property: 'phone', title: 'Phone' },
+                    { property: 'email', title: 'Email' },
+                    { property: 'submitDate', title: 'Date', dataFunction: _getDateValue },
+                    {
+                        property: '', title: '', disableSorting: true,
+                        dataTemplate: dexcmsSettings.startingRoute + 'modules/base/contacts/_contacts.list.buttons.html'
+                    },
+                ],
+                defaultSort: 'submitDate',
+                defaultSortDescending: true,
+                functions: {
+                    remove: function (id) {
+                        if (confirm('Are you sure?')) {
+                            Contacts.deleteItem(id).then(function (response) {
+                                $window.location.reload();
+                            });
+                        }
+                    }
+                },
+                filePrefix:'Contacts'
+            };
+
+            Contacts.getList().then(function (data) {
+                $scope.table.promiseData = data;
+            });
+
         }
     ]);
 });
