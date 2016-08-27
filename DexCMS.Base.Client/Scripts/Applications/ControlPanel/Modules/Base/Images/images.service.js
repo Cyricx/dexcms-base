@@ -25,7 +25,7 @@
                 getList: function () {
                     return $resource(baseUrl).query().$promise;
                 },
-                getListForPageContents(id) {
+                getListForPageContents: function (id) {
                     return $resource(baseUrl + '/forpagecontents/' + id).query().$promise;
                 },
                 //Update the Record
