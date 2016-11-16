@@ -20,6 +20,7 @@ namespace DexCMS.Base.Globals.Initializers
             {
                 context.ContactTypes.AddOrUpdate(x => x.Name,
                     new ContactType { Name = "General", DisplayOrder = 0, IsActive = true });
+                context.SaveChanges();
             }
         }
     }

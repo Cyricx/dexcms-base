@@ -21,6 +21,8 @@ namespace DexCMS.Base.Globals.Initializers
                 context.PageTypes.AddOrUpdate(x => x.Name,
                     new PageType { Name = "Site Content", IsActive = true }
                 );
+                context.SaveChanges();
+
             }
         }
     }

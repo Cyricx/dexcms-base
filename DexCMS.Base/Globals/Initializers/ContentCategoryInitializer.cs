@@ -23,6 +23,8 @@ namespace DexCMS.Base.Globals.Initializers
                     new ContentCategory { Name = "Contact", UrlSegment = "contact", IsActive = true },
                     new ContentCategory { Name = "Manage Account", UrlSegment = "manage", IsActive = true }
                 );
+                context.SaveChanges();
+
             }
         }
     }

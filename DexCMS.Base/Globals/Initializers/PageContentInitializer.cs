@@ -160,6 +160,8 @@ namespace DexCMS.Base.Globals.Initializers
                         PageTypeID = SiteContent
                     }
                 );
+                context.SaveChanges();
+
             }
         }
     }

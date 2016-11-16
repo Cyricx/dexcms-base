@@ -22,6 +22,8 @@ namespace DexCMS.Base.Globals.Initializers
                     new ContentArea { Name = "Public", UrlSegment = "", IsActive = true },
                     new ContentArea { Name = "Control Panel", UrlSegment = "controlpanel", IsActive = true }
                 );
+                context.SaveChanges();
+
             }
         }
     }
