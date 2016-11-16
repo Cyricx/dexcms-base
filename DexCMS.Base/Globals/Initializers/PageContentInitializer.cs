@@ -19,12 +19,12 @@ namespace DexCMS.Base.Globals.Initializers
         public void Run()
         {
             //areas
-            int Public = context.ContentAreas.Where(x => x.Name == "Public").Select(x => x.ContentAreaID).Single();
-            int ControlPanel = context.ContentAreas.Where(x => x.Name == "Control Panel").Select(x => x.ContentAreaID).Single();
-            int Account = context.ContentCategories.Where(x => x.Name == "Account").Select(x => x.ContentCategoryID).Single();
-            int Contact = context.ContentCategories.Where(x => x.Name == "Contact").Select(x => x.ContentCategoryID).Single();
-            int ManageAccount = context.ContentCategories.Where(x => x.Name == "Manage Account").Select(x => x.ContentCategoryID).Single();
-            int SiteContent = context.PageTypes.Where(x => x.Name == "Site Content").Select(x => x.PageTypeID).Single();
+            int Public = 1;
+            int ControlPanel = 2;
+            int Account = 1;
+            int Contact = 2;
+            int ManageAccount = 3;
+            int SiteContent = 1;
             DateTime today = DateTime.Now;
 
             if (context.PageContents.Count() == 0)
