@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
-using DexCMS.Base.Contexts;
+﻿using DexCMS.Base.Contexts;
 using DexCMS.Base.Models;
+using System.Linq;
+using System.Data.Entity.Migrations;
 
 namespace DexCMS.Base.Globals.Initializers
 {
@@ -8,12 +9,12 @@ namespace DexCMS.Base.Globals.Initializers
     {
         public static void Run(IDexCMSBaseContext context)
         {
-            var pageTypes = new List<PageType>
+            if(context.PageTypes.Count() == 0)
             {
-                new PageType { Name = "Site Content", IsActive = true }
-            };
-            pageTypes.ForEach(x => context.PageTypes.Add(x));
-            context.SaveChanges();
+                context.PageTypes.AddOrUpdate(x => x.Name,
+                    new PageType { Name = "Site Content", IsActive = true }
+                );
+            }
         }
     }
 }

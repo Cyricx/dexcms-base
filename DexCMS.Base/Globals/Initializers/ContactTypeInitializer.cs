@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
-using DexCMS.Base.Contexts;
+﻿using DexCMS.Base.Contexts;
 using DexCMS.Base.Models;
+using System.Linq;
+using System.Data.Entity.Migrations;
 
 namespace DexCMS.Base.Globals.Initializers
 {
@@ -8,12 +9,11 @@ namespace DexCMS.Base.Globals.Initializers
     {
         public static void Run(IDexCMSBaseContext context)
         {
-            var contactTypes = new List<ContactType>
+            if (context.ContactTypes.Count() == 0)
             {
-                new ContactType { Name = "General", IsActive = true, DisplayOrder = 0 },
-            };
-            contactTypes.ForEach(t => context.ContactTypes.Add(t));
-            context.SaveChanges();
+                context.ContactTypes.AddOrUpdate(x => x.Name,
+                    new ContactType { Name = "General", DisplayOrder = 0, IsActive = true });
+            }
         }
     }
 }

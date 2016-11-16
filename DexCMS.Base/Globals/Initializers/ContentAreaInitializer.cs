@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
-using DexCMS.Base.Contexts;
+﻿using DexCMS.Base.Contexts;
 using DexCMS.Base.Models;
+using System.Linq;
+using System.Data.Entity.Migrations;
 
 namespace DexCMS.Base.Globals.Initializers
 {
@@ -8,13 +9,13 @@ namespace DexCMS.Base.Globals.Initializers
     {
         public static void Run(IDexCMSBaseContext context)
         {
-            var contentAreas = new List<ContentArea>
+            if (context.ContentAreas.Count() == 0)
             {
-                new ContentArea { Name = "Public", UrlSegment = "", IsActive = true },
-                new ContentArea { Name = "Control Panel", UrlSegment = "controlpanel", IsActive = true }
-            };
-            contentAreas.ForEach(t => context.ContentAreas.Add(t));
-            context.SaveChanges();
+                context.ContentAreas.AddOrUpdate(x => x.Name,
+                    new ContentArea { Name = "Public", UrlSegment = "", IsActive = true },
+                    new ContentArea { Name = "Control Panel", UrlSegment = "controlpanel", IsActive = true }
+                );
+            }
         }
     }
 }
