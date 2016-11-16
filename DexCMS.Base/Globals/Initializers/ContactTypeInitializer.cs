@@ -7,7 +7,14 @@ namespace DexCMS.Base.Globals.Initializers
 {
     class ContactTypeInitializer
     {
-        public static void Run(IDexCMSBaseContext context)
+        private IDexCMSBaseContext context;
+
+        public ContactTypeInitializer(IDexCMSBaseContext ctx)
+        {
+            context = ctx;
+        }
+
+        public void Run()
         {
             if (context.ContactTypes.Count() == 0)
             {

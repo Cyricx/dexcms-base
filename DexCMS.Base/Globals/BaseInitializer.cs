@@ -3,24 +3,25 @@ using DexCMS.Base.Globals.Initializers;
 
 namespace DexCMS.Base.Globals
 {
-    public static class BaseInitializer
+    public class BaseInitializer
     {
-        public static void Initialize(IDexCMSBaseContext context)
+        public void Initialize(IDexCMSBaseContext context)
         {
             //! Contact Types
-            ContactTypeInitializer.Run(context);
+            (new ContactTypeInitializer(context)).Run();
 
             //! Content Areas
-            ContentAreaInitializer.Run(context);
+            (new ContentAreaInitializer(context)).Run();
 
             //! Content Categories
-            ContentCategoryInitializer.Run(context);
+            (new ContentCategoryInitializer(context)).Run();
 
             //! PageTypes
-            PageTypeInitializer.Run(context);
+            (new PageTypeInitializer(context)).Run();
 
             //! Page Contents!!
-            PageContentInitializer.Run(context);
+            (new PageContentInitializer(context)).Run();
+
         }
     }
 }

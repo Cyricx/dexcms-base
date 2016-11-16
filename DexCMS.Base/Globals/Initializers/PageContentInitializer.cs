@@ -9,7 +9,14 @@ namespace DexCMS.Base.Globals.Initializers
 {
     class PageContentInitializer
     {
-        public static void Run(IDexCMSBaseContext context)
+        private IDexCMSBaseContext context;
+
+        public PageContentInitializer(IDexCMSBaseContext ctx)
+        {
+            context = ctx;
+        }
+
+        public void Run()
         {
             //areas
             int Public = context.ContentAreas.Where(x => x.Name == "Public").Select(x => x.ContentAreaID).Single();

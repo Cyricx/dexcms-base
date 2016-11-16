@@ -7,7 +7,14 @@ namespace DexCMS.Base.Globals.Initializers
 {
     class ContentAreaInitializer
     {
-        public static void Run(IDexCMSBaseContext context)
+        private IDexCMSBaseContext context;
+
+        public ContentAreaInitializer(IDexCMSBaseContext ctx)
+        {
+            context = ctx;
+        }
+
+        public void Run()
         {
             if (context.ContentAreas.Count() == 0)
             {

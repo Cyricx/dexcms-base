@@ -7,9 +7,16 @@ namespace DexCMS.Base.Globals.Initializers
 {
     class PageTypeInitializer
     {
-        public static void Run(IDexCMSBaseContext context)
+        private IDexCMSBaseContext context;
+
+        public PageTypeInitializer(IDexCMSBaseContext ctx)
         {
-            if(context.PageTypes.Count() == 0)
+            context = ctx;
+        }
+
+        public void Run()
+        {
+            if (context.PageTypes.Count() == 0)
             {
                 context.PageTypes.AddOrUpdate(x => x.Name,
                     new PageType { Name = "Site Content", IsActive = true }

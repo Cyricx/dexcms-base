@@ -7,7 +7,14 @@ namespace DexCMS.Base.Globals.Initializers
 {
     class ContentCategoryInitializer
     {
-        public static void Run(IDexCMSBaseContext context)
+        private IDexCMSBaseContext context;
+
+        public ContentCategoryInitializer(IDexCMSBaseContext ctx)
+        {
+            context = ctx;
+        }
+
+        public void Run()
         {
             if (context.ContentCategories.Count() == 0)
             {
