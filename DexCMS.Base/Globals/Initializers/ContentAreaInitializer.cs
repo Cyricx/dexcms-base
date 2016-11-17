@@ -1,30 +1,23 @@
 ﻿using DexCMS.Base.Contexts;
 using DexCMS.Base.Models;
-using System.Linq;
 using System.Data.Entity.Migrations;
+using DexCMS.Core.Infrastructure.Globals;
 
 namespace DexCMS.Base.Globals.Initializers
 {
-    class ContentAreaInitializer
+    class ContentAreaInitializer: DexCMSInitializer<IDexCMSBaseContext>
     {
-        private IDexCMSBaseContext context;
-
-        public ContentAreaInitializer(IDexCMSBaseContext ctx)
+        public ContentAreaInitializer(IDexCMSBaseContext context) : base(context)
         {
-            context = ctx;
         }
 
-        public void Run()
+        public override void Run()
         {
-            if (context.ContentAreas.Count() == 0)
-            {
-                context.ContentAreas.AddOrUpdate(x => x.Name,
-                    new ContentArea { Name = "Public", UrlSegment = "", IsActive = true },
-                    new ContentArea { Name = "Control Panel", UrlSegment = "controlpanel", IsActive = true }
-                );
-                context.SaveChanges();
-
-            }
+            Context.ContentAreas.AddOrUpdate(x => x.Name,
+                new ContentArea { Name = "Public", UrlSegment = "", IsActive = true },
+                new ContentArea { Name = "Control Panel", UrlSegment = "controlpanel", IsActive = true }
+            );
+            Context.SaveChanges();
         }
     }
 }

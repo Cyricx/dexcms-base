@@ -2,28 +2,22 @@
 using DexCMS.Base.Models;
 using System.Linq;
 using System.Data.Entity.Migrations;
+using DexCMS.Core.Infrastructure.Globals;
 
 namespace DexCMS.Base.Globals.Initializers
 {
-    class PageTypeInitializer
+    class PageTypeInitializer: DexCMSInitializer<IDexCMSBaseContext>
     {
-        private IDexCMSBaseContext context;
-
-        public PageTypeInitializer(IDexCMSBaseContext ctx)
+        public PageTypeInitializer(IDexCMSBaseContext context) : base(context)
         {
-            context = ctx;
         }
 
-        public void Run()
+        public override void Run()
         {
-            if (context.PageTypes.Count() == 0)
-            {
-                context.PageTypes.AddOrUpdate(x => x.Name,
-                    new PageType { Name = "Site Content", IsActive = true }
-                );
-                context.SaveChanges();
-
-            }
+            Context.PageTypes.AddOrUpdate(x => x.Name,
+                new PageType { Name = "Site Content", IsActive = true }
+            );
+            Context.SaveChanges();
         }
     }
 }

@@ -1,27 +1,21 @@
 ﻿using DexCMS.Base.Contexts;
 using DexCMS.Base.Models;
-using System.Linq;
 using System.Data.Entity.Migrations;
+using DexCMS.Core.Infrastructure.Globals;
 
 namespace DexCMS.Base.Globals.Initializers
 {
-    class ContactTypeInitializer
+    class ContactTypeInitializer: DexCMSInitializer<IDexCMSBaseContext>
     {
-        private IDexCMSBaseContext context;
-
-        public ContactTypeInitializer(IDexCMSBaseContext ctx)
+        public ContactTypeInitializer(IDexCMSBaseContext context) : base(context)
         {
-            context = ctx;
         }
 
-        public void Run()
+        public override void Run()
         {
-            if (context.ContactTypes.Count() == 0)
-            {
-                context.ContactTypes.AddOrUpdate(x => x.Name,
-                    new ContactType { Name = "General", DisplayOrder = 0, IsActive = true });
-                context.SaveChanges();
-            }
+            Context.ContactTypes.AddOrUpdate(x => x.Name,
+                new ContactType { Name = "General", DisplayOrder = 0, IsActive = true });
+            Context.SaveChanges();
         }
     }
 }

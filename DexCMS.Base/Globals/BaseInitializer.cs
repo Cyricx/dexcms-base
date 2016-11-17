@@ -1,27 +1,22 @@
 ﻿using DexCMS.Base.Contexts;
 using DexCMS.Base.Globals.Initializers;
+using DexCMS.Core.Infrastructure.Globals;
 
 namespace DexCMS.Base.Globals
 {
-    public class BaseInitializer
+    public class BaseInitializer: DexCMSInitializer<IDexCMSBaseContext>
     {
-        public void Initialize(IDexCMSBaseContext context)
+        public BaseInitializer(IDexCMSBaseContext context) : base(context)
         {
-            //! Contact Types
-            (new ContactTypeInitializer(context)).Run();
+        }
 
-            //! Content Areas
-            (new ContentAreaInitializer(context)).Run();
-
-            //! Content Categories
-            (new ContentCategoryInitializer(context)).Run();
-
-            //! PageTypes
-            (new PageTypeInitializer(context)).Run();
-
-            //! Page Contents!!
-            (new PageContentInitializer(context)).Run();
-
+        public override void Run()
+        {
+            (new ContactTypeInitializer(Context)).Run();
+            (new ContentAreaInitializer(Context)).Run();
+            (new ContentCategoryInitializer(Context)).Run();
+            (new PageTypeInitializer(Context)).Run();
+            (new PageContentInitializer(Context)).Run();
         }
     }
 }
