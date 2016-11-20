@@ -1,7 +1,7 @@
 ﻿using DexCMS.Base.Contexts;
 using DexCMS.Base.Models;
-using System.Data.Entity.Migrations;
 using DexCMS.Core.Infrastructure.Globals;
+using DexCMS.Core.Infrastructure.Extensions;
 
 namespace DexCMS.Base.Globals.Initializers
 {
@@ -13,7 +13,7 @@ namespace DexCMS.Base.Globals.Initializers
 
         public override void Run()
         {
-            Context.ContactTypes.AddOrUpdate(x => x.Name,
+            Context.ContactTypes.AddIfNotExists(x => x.Name,
                 new ContactType { Name = "General", DisplayOrder = 0, IsActive = true });
             Context.SaveChanges();
         }

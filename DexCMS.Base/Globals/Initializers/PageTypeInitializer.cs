@@ -1,8 +1,7 @@
 ﻿using DexCMS.Base.Contexts;
 using DexCMS.Base.Models;
-using System.Linq;
-using System.Data.Entity.Migrations;
 using DexCMS.Core.Infrastructure.Globals;
+using DexCMS.Core.Infrastructure.Extensions;
 
 namespace DexCMS.Base.Globals.Initializers
 {
@@ -14,7 +13,7 @@ namespace DexCMS.Base.Globals.Initializers
 
         public override void Run()
         {
-            Context.PageTypes.AddOrUpdate(x => x.Name,
+            Context.PageTypes.AddIfNotExists(x => x.Name,
                 new PageType { Name = "Site Content", IsActive = true }
             );
             Context.SaveChanges();
