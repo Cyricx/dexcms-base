@@ -6,7 +6,7 @@ using System;
 using DexCMS.Core.Infrastructure.Globals;
 using DexCMS.Core.Infrastructure.Extensions;
 
-namespace DexCMS.Base.Globals.Initializers
+namespace DexCMS.Base.Initializers
 {
     class PageContentInitializer : DexCMSInitializer<IDexCMSBaseContext>
     {

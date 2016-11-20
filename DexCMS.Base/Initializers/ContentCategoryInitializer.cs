@@ -3,7 +3,7 @@ using DexCMS.Base.Models;
 using DexCMS.Core.Infrastructure.Globals;
 using DexCMS.Core.Infrastructure.Extensions;
 
-namespace DexCMS.Base.Globals.Initializers
+namespace DexCMS.Base.Initializers
 {
     class ContentCategoryInitializer: DexCMSInitializer<IDexCMSBaseContext>
     {
