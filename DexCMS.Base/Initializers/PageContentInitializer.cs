@@ -166,6 +166,9 @@ namespace DexCMS.Base.Initializers
                 case "Calendars":
                     CreateCalendarsContent();
                     break;
+                case "Faqs":
+                    CreateFaqsContent();
+                    break;
             }
         }
 
@@ -183,6 +186,26 @@ namespace DexCMS.Base.Initializers
                     ContentAreaID = Areas.Public,
                     ContentCategoryID = null,
                     UrlSegment = "calendar",
+                    PageTypeID = Types.SiteContent
+                }
+            );
+            Context.SaveChanges();
+        }
+
+        void CreateFaqsContent()
+        {
+            Context.PageContents.AddIfNotExists(x => x.PageTitle,
+                new PageContent
+                {
+                    Body = "",
+                    PageTitle = "Faqs",
+                    ChangeFrequency = 0,
+                    LastModified = Today,
+                    AddToSitemap = false,
+                    Heading = "Faqs",
+                    ContentAreaID = Areas.Public,
+                    ContentCategoryID = null,
+                    UrlSegment = "faqs",
                     PageTypeID = Types.SiteContent
                 }
             );
