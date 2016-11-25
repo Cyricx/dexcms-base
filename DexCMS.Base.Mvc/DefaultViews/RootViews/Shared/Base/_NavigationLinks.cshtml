@@ -1,0 +1,51 @@
+﻿@using DexCMS.Core.Infrastructure;
+@using DexCMS.Base.Mvc.Models;
+@using DexCMS.Base.Mvc.Extensions;
+@{
+    DexCMS.Base.Models.PageContent pageContent = ViewBag.PageContent;
+}
+
+<li class="submenu">
+    <a href="#">Links <span class="fa fa-angle-down"></span></a>
+    <ul>
+        <li>
+            <a href="#">Content Link</a>
+            @*@Html.BuildContentLink("Directions", new ContentRequest { UrlSegment = "directions" })*@
+        </li>
+    </ul>
+</li>
+@if (User.IsInRole("Admin"))
+{
+    <li class="submenu">
+        <a href="#">Admin <span class="fa fa-angle-down"></span></a>
+        <ul>
+            <li><a href="@Url.Content("~/controlpanel")">Admin</a></li>
+            <li>
+                @if (pageContent.PageContentID > 0)
+                {
+                    <a href="@Url.Content("~/controlpanel/pagecontents/" + pageContent.PageContentID +
+                        "?frompage=true")">Edit This Page</a>
+                }
+                else
+                {
+                    <a href="@Url.Content("~/controlpanel/pagecontents/new" +
+                        "?frompage=true" +
+                        "&fromcontroller=" + HttpContext.Current.Request.RequestContext.RouteData.Values["controller"] +
+                        "&fromaction=" + HttpContext.Current.Request.RequestContext.RouteData.Values["action"] +
+                        "&fromarea=" + HttpContext.Current.Request.RequestContext.RouteData.Values["area"])">
+                        Create This Page
+                    </a>
+                }
+            </li>
+            @if (pageContent.ContentBlocks != null && pageContent.ContentBlocks.Count > 0)
+                {
+                    foreach (DexCMS.Base.Models.ContentBlock item in pageContent.ContentBlocks)
+                    {
+                    <li>
+                        <a href="@Url.Content("~/controlpanel/contentblocks/" + item.ContentBlockID + "?frompage=true")">Edit @item.BlockTitle</a>
+                    </li>
+                }
+            }
+        </ul>
+    </li>
+}

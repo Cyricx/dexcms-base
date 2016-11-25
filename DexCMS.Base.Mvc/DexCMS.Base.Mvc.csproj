@@ -185,7 +185,9 @@
     <None Include="DefaultViews\RootViews\Manage\SetPassword.cshtml" />
     <None Include="DefaultViews\RootViews\PublicContent\DisplayContent.cshtml" />
     <None Include="DefaultViews\RootViews\PublicContent\Index.cshtml" />
-    <None Include="DefaultViews\RootViews\Shared\_ReCaptchaControl.cshtml" />
+    <None Include="DefaultViews\RootViews\Shared\Base\_ReCaptchaControl.cshtml" />
+    <None Include="DefaultViews\RootViews\Shared\Base\_NavigationLinks.cshtml" />
+    <None Include="DefaultViews\RootViews\Shared\_Layout.cshtml" />
     <None Include="DefaultViews\Web.config" />
     <None Include="packages.config" />
   </ItemGroup>
