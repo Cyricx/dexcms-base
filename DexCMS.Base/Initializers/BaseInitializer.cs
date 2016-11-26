@@ -17,15 +17,5 @@ namespace DexCMS.Base.Initializers
             (new PageTypeInitializer(Context)).Run();
             (new PageContentInitializer(Context)).Run();
         }
-
-        public void Run(BaseInitializerConfig config)
-        {
-            this.Run();
-            PageContentInitializer contentInitializer = new PageContentInitializer(Context);
-
-            config.Modules.ForEach(x => contentInitializer.RunSubModules(x));
-        }
-
-
     }
 }

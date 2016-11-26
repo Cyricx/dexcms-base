@@ -1,7 +1,6 @@
 ﻿using DexCMS.Base.Contexts;
 using DexCMS.Base.Models;
 using System.Linq;
-using System.Data.Entity.Migrations;
 using System;
 using DexCMS.Core.Infrastructure.Globals;
 using DexCMS.Core.Infrastructure.Extensions;
@@ -153,59 +152,6 @@ namespace DexCMS.Base.Initializers
                     Heading = "Home",
                     ContentAreaID = Areas.Public,
                     UrlSegment = "index",
-                    PageTypeID = Types.SiteContent
-                }
-            );
-            Context.SaveChanges();
-        }
-
-        public void RunSubModules(string module)
-        {
-            switch (module)
-            {
-                case "Calendars":
-                    CreateCalendarsContent();
-                    break;
-                case "Faqs":
-                    CreateFaqsContent();
-                    break;
-            }
-        }
-
-        void CreateCalendarsContent()
-        {
-            Context.PageContents.AddIfNotExists(x => x.PageTitle,
-                new PageContent
-                {
-                    Body = "",
-                    PageTitle = "Calendar",
-                    ChangeFrequency = 0,
-                    LastModified = Today,
-                    AddToSitemap = false,
-                    Heading = "Calendar",
-                    ContentAreaID = Areas.Public,
-                    ContentCategoryID = null,
-                    UrlSegment = "calendar",
-                    PageTypeID = Types.SiteContent
-                }
-            );
-            Context.SaveChanges();
-        }
-
-        void CreateFaqsContent()
-        {
-            Context.PageContents.AddIfNotExists(x => x.PageTitle,
-                new PageContent
-                {
-                    Body = "",
-                    PageTitle = "Faqs",
-                    ChangeFrequency = 0,
-                    LastModified = Today,
-                    AddToSitemap = false,
-                    Heading = "Faqs",
-                    ContentAreaID = Areas.Public,
-                    ContentCategoryID = null,
-                    UrlSegment = "faqs",
                     PageTypeID = Types.SiteContent
                 }
             );
