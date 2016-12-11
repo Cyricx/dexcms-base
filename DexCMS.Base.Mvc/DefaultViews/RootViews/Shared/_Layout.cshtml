@@ -2,6 +2,11 @@
 @using DexCMS.Core.Mvc.HtmlHelpers;
 @{
     DexCMS.Base.Models.PageContent pageContent = ViewBag.PageContent;
+    string mainClass = "";
+    if (pageContent.LayoutTypeID.HasValue)
+    {
+        mainClass = pageContent.LayoutType.CssClass;
+    }
 }
 <!DOCTYPE html>
 <html class="no-js">
@@ -14,10 +19,13 @@
     <link rel="shortcut icon" href="~/favicon.ico" />
     <link href='//fonts.googleapis.com/css?family=Almendra+SC|Handlee' rel='stylesheet' type='text/css'>
 
+    <script>
+        var DEXCMS_GLOBALS = { ROOT_PATH: "@(new Uri(Request.Url, Url.Content("~/")))" };
+    </script>
+
     @DexCMSRender.StylesWithVersion("~/libs/datetimepicker/jquery.datetimepicker.css")
     @DexCMSRender.StylesWithVersion("~/libs/datetimepicker/jquery.datetimepicker.css")
     @DexCMSRender.StylesWithVersion("~/libs/flexslider/flexslider.css")
-    @DexCMSRender.StylesWithVersion("~/libs/font-awesome/css/font-awesome.min.css")
     @DexCMSRender.StylesWithVersion("~/content/site.css")
     @DexCMSRender.ScriptsWithVersion("~/libs/modernizr/modernizr.js")
 
@@ -31,11 +39,12 @@
 
     @RenderSection("head", required: false)
     @Html.Partial("Core/_AnalyticsTracking")
+
 </head>
 <body>
     <div id="topbar">
-        <div id="nav_toggle">
-            <a id="sidemenu_toggle" href="#" alt="Menu Icon">
+        <div id="nav-toggle">
+            <a id="sidemenu-toggle" href="#" alt="Menu Icon">
                 <span class="fa fa-bars"></span>
             </a>
         </div>
@@ -44,55 +53,44 @@
         @Html.Partial("Core/_LoginTop")
     </div>
     <nav id="sidemenu">
-        <ul>
-            @Html.Partial("Core/_NavigationLinks")
-        </ul>
+        @Html.Partial("_NavigationLinks")
     </nav>
-    <main id="overlay">
+    <div id="overlay">
         <header id="header">
             <a href="@Url.Action("Index", "PublicContent", new { area = "" })" title="Home">
                 <h1>@SiteSettings.Resolve.GetSetting("SiteTitle")</h1>
                 <span>@SiteSettings.Resolve.GetSetting("TagLine")</span>
             </a>
             <nav id="top">
-                <ul>
-                    @Html.Partial("Core/_NavigationLinks")
-                </ul>
+                @Html.Partial("_NavigationLinks")
             </nav>
         </header>
 
-        <section id="main">
+        @Html.Partial("Alerts/_AlertsToast")
+
+        <main class="@mainClass">
+            @RenderSection("beforeContent", required: false)
+
             @RenderBody()
-        </section>
 
-        @if (pageContent.ContentBlocks != null && pageContent.ContentBlocks.Count > 0)
-            {
-                foreach (DexCMS.Base.Models.ContentBlock item in pageContent.ContentBlocks.OrderBy(x => x.DisplayOrder))
-                {
-                <section id="blocks" class="@item.CssClass">
-                    @if (item.ShowTitle)
-                    {
-                        <h3>@item.BlockTitle</h3>
-                    }
-                    @Html.Raw(item.BlockBody)
-                </section>
-            }
-        }
-
+            @RenderSection("afterContent", required: false)
+        </main>
         <footer>
             <span>Copyright &copy; @DateTime.Now.Year Content by Example Site, Design & Code by <a href="http://www.chrisbyram.com" target="_blank" title="Chris Byram Solutions">Chris Byram</a></span>
         </footer>
 
-    </main>
+    </div>
 
     @DexCMSRender.ScriptsWithVersion("~/libs/jquery/jquery.min.js")
     @DexCMSRender.ScriptsWithVersion("~/libs/jquery-ui/jquery-ui.min.js")
     @DexCMSRender.ScriptsWithVersion("~/libs/flexslider/jquery.flexslider-min.js")
-    @DexCMSRender.ScriptsWithVersion("~/scripts/dexcms/core/highlightnav.min.js")
+    @DexCMSRender.ScriptsWithVersion("~/scripts/dexcms/core/highlightnav/highlightnav.min.js")
+    @DexCMSRender.ScriptsWithVersion("~/scripts/dexcms/core/sidemenu/sidemenu.min.js")
     @DexCMSRender.ScriptsWithVersion("~/libs/jquery-validation/jquery.validate.min.js")
     @DexCMSRender.ScriptsWithVersion("~/libs/datetimepicker/jquery.datetimepicker.js")
     @DexCMSRender.ScriptsWithVersion("~/libs/respond/respond.min.js")
     @DexCMSRender.ScriptsWithVersion("~/scripts/site.js")
+
 
     @if (pageContent.ContentScripts != null && pageContent.ContentScripts.Count > 0)
     {
@@ -101,6 +99,8 @@
             @DexCMSRender.ScriptsWithVersion("~/" + script.Path)
         }
     }
+
+    @DexCMSRender.ScriptsWithVersion("~/scripts/dexcms/alerts/alertstoast.js")
 
     @RenderSection("scripts", required: false)
 </body>

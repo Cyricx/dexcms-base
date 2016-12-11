@@ -1,6 +1,6 @@
 ﻿@{
     DexCMS.Base.Models.PageContent pageContent = ViewBag.PageContent;
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = System.Web.Configuration.WebConfigurationManager.AppSettings["PublicLayoutPath"];
 }
 
 @section head {
