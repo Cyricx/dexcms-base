@@ -6,11 +6,11 @@ using DexCMS.Base.Initializers.Helpers;
 
 namespace DexCMS.Base.Initializers
 {
-    class ContactBlockInitializer: DexCMSInitializer<IDexCMSBaseContext>
+    class ContentBlockInitializer: DexCMSInitializer<IDexCMSBaseContext>
     {
         private ContentsReference Contents { get; set; }
 
-        public ContactBlockInitializer(IDexCMSBaseContext context) : base(context)
+        public ContentBlockInitializer(IDexCMSBaseContext context) : base(context)
         {
             Contents = new ContentsReference(context);
         }

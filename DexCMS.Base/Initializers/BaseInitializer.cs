@@ -17,6 +17,8 @@ namespace DexCMS.Base.Initializers
             (new LayoutTypeInitializer(Context)).Run();
             (new PageTypeInitializer(Context)).Run();
             (new PageContentInitializer(Context)).Run();
+            (new ContentBlockInitializer(Context)).Run();
+            (new PageContentImageInitializer(Context)).Run();
         }
     }
 }
