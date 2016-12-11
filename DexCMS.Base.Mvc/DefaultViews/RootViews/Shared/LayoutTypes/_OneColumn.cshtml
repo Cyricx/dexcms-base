@@ -7,23 +7,23 @@
     @RenderSection("head", required: false)
 }
 
+<h2 class="content-title">@pageContent.Heading</h2>
+
 <div class="before-content">
-    @Html.Partial("Base/_ImagesAll", new ViewDataDictionary { { "PageContent", pageContent }, { "ImageType", "Gallery" } })
+    @Html.Partial("Base/_ImagesAll", new ViewDataDictionary { { "PageContent", pageContent }, { "ImageType", "Gallery" }, { "CssClass", "flexslider" }, { "SubCssClass", "slides" } })
     @RenderSection("beforeContent", required: false)
 </div>
-<section class="content">
-    <h2 class="content-title">@pageContent.Heading</h2>
-
+<div class="content">
     @Html.Raw(pageContent.Body)
 
-
     @RenderBody()
-</section>
+</div>
 <div class="after-content">
     @Html.Partial("Base/_ContentBlocksAll", pageContent)
 
     @RenderSection("afterContent", required: false)
 </div>
+
 @section scripts {
     @RenderSection("scripts", required: false)
 }

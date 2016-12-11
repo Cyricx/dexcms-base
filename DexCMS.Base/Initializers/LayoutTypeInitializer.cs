@@ -14,13 +14,13 @@ namespace DexCMS.Base.Initializers
         public override void Run()
         {
             Context.LayoutTypes.AddIfNotExists(x => x.Name,
-                new LayoutType { Name = "One Column", CssClass="one-column" },
-                new LayoutType { Name = "Two Column", CssClass = "two-column" },
-                new LayoutType { Name = "Three Column", CssClass = "three-column" },
-                new LayoutType { Name = "Right Sidebar with Content", CssClass = "right-sidebar" },
-                new LayoutType { Name = "Left Sidebar with Content", CssClass = "left-sidebar" },
-                new LayoutType { Name = "Right Sidebar Only", CssClass = "right-sidebar-only" },
-                new LayoutType { Name = "Left Sidebar Only", CssClass = "left-sidebar-only" }
+                new LayoutType { Name = "One Column", CssClass="one-column-layout" },
+                new LayoutType { Name = "Two Column", CssClass = "two-column-layout" },
+                new LayoutType { Name = "Three Column", CssClass = "three-column-layout" },
+                new LayoutType { Name = "Right Sidebar with Content", CssClass = "right-sidebar-layout" },
+                new LayoutType { Name = "Left Sidebar with Content", CssClass = "left-sidebar-layout" },
+                new LayoutType { Name = "Right Sidebar Only", CssClass = "right-sidebar-only-layout" },
+                new LayoutType { Name = "Left Sidebar Only", CssClass = "left-sidebar-only-layout" }
             );
             Context.SaveChanges();
         }

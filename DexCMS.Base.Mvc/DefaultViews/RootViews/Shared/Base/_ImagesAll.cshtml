@@ -1,13 +1,18 @@
-﻿@{ 
+﻿@{
     var pageContent = (DexCMS.Base.Models.PageContent)ViewData["PageContent"];
+    var cssClass = "content-images";
+    cssClass += ViewData["CssClass"] != null ? " " + ViewData["CssClass"] : "";
+    var subCssClass = ViewData["SubCssClass"];
 }
 
 @if (pageContent.PageContentImages != null && pageContent.PageContentImages.Count > 0)
 {
-    <div class="content-images">
-        @foreach (DexCMS.Base.Models.PageContentImage item in pageContent.PageContentImages.OrderBy(x => x.DisplayOrder))
-        {
-            Html.RenderPartial("Base/_ImageSingle", new ViewDataDictionary { { "Image", item }, { "ImageType", ViewData["ImageType"] } });
-        }
+    <div class="@cssClass">
+        <ul class="@subCssClass">
+            @foreach (DexCMS.Base.Models.PageContentImage item in pageContent.PageContentImages.OrderBy(x => x.DisplayOrder))
+            {
+                Html.RenderPartial("Base/_ImageSingle", new ViewDataDictionary { { "Image", item }, { "ImageType", ViewData["ImageType"] } });
+            }
+        </ul>
     </div>
 }
