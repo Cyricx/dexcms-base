@@ -22,8 +22,8 @@ namespace DexCMS.Base.Initializers.Helpers
             OneColumn = Context.PageContents.Where(x => x.PageTitle == "One Column").Select(x => x.PageContentID).Single();
             TwoColumn = Context.PageContents.Where(x => x.PageTitle == "Two Column").Select(x => x.PageContentID).Single();
             ThreeColumn = Context.PageContents.Where(x => x.PageTitle == "Three Column").Select(x => x.PageContentID).Single();
-            RightSidebar = Context.PageContents.Where(x => x.PageTitle == "Right Sidebar with Content").Select(x => x.PageContentID).Single();
-            LeftSidebar = Context.PageContents.Where(x => x.PageTitle == "Left Sidebar with Content").Select(x => x.PageContentID).Single();
+            RightSidebar = Context.PageContents.Where(x => x.PageTitle == "Right Sidebar").Select(x => x.PageContentID).Single();
+            LeftSidebar = Context.PageContents.Where(x => x.PageTitle == "Left Sidebar").Select(x => x.PageContentID).Single();
             RightSidebarOnly = Context.PageContents.Where(x => x.PageTitle == "Right Sidebar Only").Select(x => x.PageContentID).Single();
             LeftSidebarOnly = Context.PageContents.Where(x => x.PageTitle == "Left Sidebar Only").Select(x => x.PageContentID).Single();
         }
