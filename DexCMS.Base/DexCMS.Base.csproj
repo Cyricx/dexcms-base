@@ -58,6 +58,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contexts\IDexCMSBaseContext.cs" />
+    <Compile Include="Initializers\Helpers\AreasReference.cs" />
+    <Compile Include="Initializers\Helpers\CategoriesReference.cs" />
+    <Compile Include="Initializers\Helpers\ContentsReference.cs" />
+    <Compile Include="Initializers\Helpers\ImagesReference.cs" />
+    <Compile Include="Initializers\Helpers\LayoutTypesReference.cs" />
+    <Compile Include="Initializers\Helpers\PageTypesReference.cs" />
+    <Compile Include="Initializers\PageContentImageInitializer.cs" />
+    <Compile Include="Initializers\ContentBlockInitializer.cs" />
+    <Compile Include="Initializers\LayoutTypeInitializer.cs" />
     <Compile Include="Repositories\ContactRepository.cs" />
     <Compile Include="Repositories\ContactTypeRepository.cs" />
     <Compile Include="Repositories\ContentAreaRepository.cs" />

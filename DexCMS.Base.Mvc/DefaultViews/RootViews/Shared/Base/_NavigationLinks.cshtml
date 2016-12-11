@@ -9,8 +9,25 @@
     <a href="#">Links <span class="fa fa-angle-down"></span></a>
     <ul>
         <li>
-            <a href="#">Content Link</a>
-            @*@Html.BuildContentLink("Directions", new ContentRequest { UrlSegment = "directions" })*@
+            @Html.BuildContentLink("One Column", new ContentRequest { UrlSegment = "onecolumn" })
+        </li>
+        <li>
+            @Html.BuildContentLink("Two Column", new ContentRequest { UrlSegment = "twocolumn" })
+        </li>
+        <li>
+            @Html.BuildContentLink("Three Column", new ContentRequest { UrlSegment = "threecolumn" })
+        </li>
+        <li>
+            @Html.BuildContentLink("Right Sidebar", new ContentRequest { UrlSegment = "rightsidebar" })
+        </li>
+        <li>
+            @Html.BuildContentLink("Right Sidebar Only", new ContentRequest { UrlSegment = "rightsidebaronly" })
+        </li>
+        <li>
+            @Html.BuildContentLink("Left Sidebar", new ContentRequest { UrlSegment = "leftsidebar" })
+        </li>
+        <li>
+            @Html.BuildContentLink("Left Sidebar Only", new ContentRequest { UrlSegment = "leftsidebaronly" })
         </li>
     </ul>
 </li>

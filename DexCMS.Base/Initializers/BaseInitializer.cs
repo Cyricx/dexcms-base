@@ -14,6 +14,7 @@ namespace DexCMS.Base.Initializers
             (new ContactTypeInitializer(Context)).Run();
             (new ContentAreaInitializer(Context)).Run();
             (new ContentCategoryInitializer(Context)).Run();
+            (new LayoutTypeInitializer(Context)).Run();
             (new PageTypeInitializer(Context)).Run();
             (new PageContentInitializer(Context)).Run();
         }
