@@ -1,0 +1,11 @@
+﻿@model DexCMS.Base.Models.PageContent
+
+@if (Model.ContentBlocks != null && Model.ContentBlocks.Count > 0)
+{
+    <div class="content-blocks">
+        @foreach (DexCMS.Base.Models.ContentBlock item in Model.ContentBlocks.OrderBy(x => x.DisplayOrder))
+        {
+            Html.RenderPartial("Base/_ContentBlockSingle", item);
+        }
+    </div>
+}

@@ -1,0 +1,31 @@
+﻿@{
+    DexCMS.Base.Models.PageContent pageContent = ViewBag.PageContent;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section head {
+    @RenderSection("head", required: false)
+}
+
+<div class="before-content">
+    @Html.Partial("Base/_ContentBlocksAll", pageContent)
+
+    @RenderSection("beforeContent", required: false)
+</div>
+<section class="content">
+    <strong>Three Column</strong>
+    <h2 class="content-title">@pageContent.Heading</h2>
+
+    @Html.Raw(pageContent.Body)
+
+
+    @RenderBody()
+</section>
+<div class="after-content">
+    @Html.Partial("Base/_ImagesAll", new ViewDataDictionary { { "PageContent", pageContent }, { "ImageType", "Thumbnail" } })
+
+    @RenderSection("afterContent", required: false)
+</div>
+@section scripts {
+    @RenderSection("scripts", required: false)
+}

@@ -1,0 +1,26 @@
+﻿@{
+    var pageImage = (DexCMS.Base.Models.PageContentImage)ViewData["Image"];
+    var imageType = ViewData["ImageType"] != null ? (string)ViewData["ImageType"] : "Gallery";
+    var imagePath = "";
+    switch (imageType)
+    {
+        case "Slider":
+            imagePath = "~/" + pageImage.Image.Slider;
+            break;
+        case "Gallery":
+            imagePath = "~/" + pageImage.Image.Gallery;
+            break;
+        case "Original":
+            imagePath = "~/" + pageImage.Image.Original;
+            break;
+        case "Thumbnail":
+            imagePath = "~/" + pageImage.Image.Thumbnail;
+            break;
+    }
+}
+
+<figure>
+    <img src="@Url.Content(imagePath)" />
+    <figcaption>@pageImage.Image.Caption</figcaption>
+    <em>@pageImage.Image.Credit</em>
+</figure>

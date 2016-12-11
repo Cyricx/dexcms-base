@@ -1,0 +1,11 @@
+﻿@model DexCMS.Base.Models.ContentBlock
+@{ 
+    string css = string.IsNullOrEmpty(Model.CssClass) ? "blocks" : "blocks " + Model.CssClass;
+}
+<div class="@css">
+    @if (Model.ShowTitle)
+    {
+        <h3>@Model.BlockTitle</h3>
+    }
+    @Html.Raw(Model.BlockBody)
+</div>

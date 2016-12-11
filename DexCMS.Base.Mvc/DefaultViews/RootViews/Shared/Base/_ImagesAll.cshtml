@@ -1,0 +1,13 @@
+﻿@{ 
+    var pageContent = (DexCMS.Base.Models.PageContent)ViewData["PageContent"];
+}
+
+@if (pageContent.PageContentImages != null && pageContent.PageContentImages.Count > 0)
+{
+    <div class="content-images">
+        @foreach (DexCMS.Base.Models.PageContentImage item in pageContent.PageContentImages.OrderBy(x => x.DisplayOrder))
+        {
+            Html.RenderPartial("Base/_ImageSingle", new ViewDataDictionary { { "Image", item }, { "ImageType", ViewData["ImageType"] } });
+        }
+    </div>
+}

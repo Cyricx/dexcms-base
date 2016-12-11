@@ -20,6 +20,7 @@ namespace DexCMS.Base.Models
         public string CssClass { get; set; }
 
 
+
         [StringLength(250)]
         public string ExampleImage { get; set; }
 

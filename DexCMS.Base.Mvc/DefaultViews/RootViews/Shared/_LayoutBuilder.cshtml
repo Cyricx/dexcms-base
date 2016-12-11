@@ -1,0 +1,23 @@
+﻿@{
+    DexCMS.Base.Models.PageContent pageContent = ViewBag.PageContent;
+    string layoutName = pageContent.LayoutTypeID.HasValue ? pageContent.LayoutType.Name.Replace(" ", "") : "OneColumn";
+
+    Layout = "~/Views/Shared/LayoutTypes/_" + layoutName + ".cshtml";
+}
+@section head {
+    @RenderSection("head", required: false)
+}
+
+@section beforeContent {
+    @RenderSection("beforeContent", required: false)
+}
+
+@RenderBody()
+
+@section afterContent {
+    @RenderSection("afterContent", required: false)
+}
+
+@section scripts {
+    @RenderSection("scripts", required: false)
+}
