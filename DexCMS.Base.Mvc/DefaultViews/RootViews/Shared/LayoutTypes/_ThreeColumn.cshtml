@@ -1,28 +1,29 @@
 ﻿@{
     DexCMS.Base.Models.PageContent pageContent = ViewBag.PageContent;
     Layout = System.Web.Configuration.WebConfigurationManager.AppSettings["PublicLayoutPath"];
+    var contentCssClass = "content column " + pageContent.Heading.ToLower().Replace(" ", "-");
+
 }
 
 @section head {
     @RenderSection("head", required: false)
 }
 
-<div class="before-content">
+<div class="before-content column">
     @Html.Partial("Base/_ContentBlocksAll", pageContent)
 
     @RenderSection("beforeContent", required: false)
 </div>
-<section class="content">
-    <strong>Three Column</strong>
+<div class="@contentCssClass">
     <h2 class="content-title">@pageContent.Heading</h2>
 
     @Html.Raw(pageContent.Body)
 
 
     @RenderBody()
-</section>
-<div class="after-content">
-    @Html.Partial("Base/_ImagesAll", new ViewDataDictionary { { "PageContent", pageContent }, { "ImageType", "Thumbnail" } })
+</div>
+<div class="after-content column">
+    @Html.Partial("Base/_ImagesAll", new ViewDataDictionary { { "PageContent", pageContent }, { "ImageType", "Thumbnail" }, { "CssClass", "thumblist" } })
 
     @RenderSection("afterContent", required: false)
 </div>

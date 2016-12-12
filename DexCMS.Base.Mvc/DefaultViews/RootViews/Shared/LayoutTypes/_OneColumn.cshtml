@@ -1,6 +1,8 @@
 ﻿@{
     DexCMS.Base.Models.PageContent pageContent = ViewBag.PageContent;
     Layout = System.Web.Configuration.WebConfigurationManager.AppSettings["PublicLayoutPath"];
+    var contentCssClass = "content " + pageContent.Heading.ToLower().Replace(" ", "-");
+
 }
 
 @section head {
@@ -13,7 +15,8 @@
     @Html.Partial("Base/_ImagesAll", new ViewDataDictionary { { "PageContent", pageContent }, { "ImageType", "Gallery" }, { "CssClass", "flexslider" }, { "SubCssClass", "slides" } })
     @RenderSection("beforeContent", required: false)
 </div>
-<div class="content">
+
+<div class="@contentCssClass">
     @Html.Raw(pageContent.Body)
 
     @RenderBody()

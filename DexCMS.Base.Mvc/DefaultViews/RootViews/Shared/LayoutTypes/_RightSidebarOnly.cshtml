@@ -1,31 +1,30 @@
 ﻿@{
     DexCMS.Base.Models.PageContent pageContent = ViewBag.PageContent;
     Layout = System.Web.Configuration.WebConfigurationManager.AppSettings["PublicLayoutPath"];
+    var contentCssClass = "content " + pageContent.Heading.ToLower().Replace(" ", "-");
+
 }
 
 @section head {
     @RenderSection("head", required: false)
 }
+<div class="column">
+    <div class="before-content">
+        @Html.Partial("Base/_ImagesAll", new ViewDataDictionary { { "PageContent", pageContent }, { "ImageType", "Thumbnail" }, { "CssClass", "thumblist" } })
+        @RenderSection("beforeContent", required: false)
+    </div>
+    <div class="@contentCssClass">
+        <h2 class="content-title">@pageContent.Heading</h2>
 
-<div class="before-content">
-    @Html.Partial("Base/_ImagesAll", new ViewDataDictionary { { "PageContent", pageContent }, { "ImageType", "Gallery" } })
-
-    @Html.Partial("Base/_ContentBlocksAll", pageContent)
-
-
-    @RenderSection("beforeContent", required: false)
-</div>
-<section class="content">
-    <strong>Right Sidebar Only</strong>
-    <h2 class="content-title">@pageContent.Heading</h2>
-
-    @Html.Raw(pageContent.Body)
+        @Html.Raw(pageContent.Body)
 
 
-    @RenderBody()
-</section>
-<div class="after-content">
-    @RenderSection("afterContent", required: false)
+        @RenderBody()
+    </div>
+    <div class="after-content">
+        @Html.Partial("Base/_ContentBlocksAll", pageContent)
+        @RenderSection("afterContent", required: false)
+    </div>
 </div>
 @section scripts {
     @RenderSection("scripts", required: false)
