@@ -171,6 +171,20 @@ namespace DexCMS.Base.Initializers
                 },
                 new PageContent
                 {
+                    Body = @"<p>Please confirm your email address and enter a new password.</ p > ",
+                    PageTitle = "Reset Password",
+                    ChangeFrequency = 0,
+                    LastModified = Today,
+                    AddToSitemap = false,
+                    Heading = "Reset Password",
+                    ContentAreaID = Areas.Public,
+                    ContentCategoryID = Categories.Account,
+                    UrlSegment = "resetpassword",
+                    PageTypeID = Types.SiteContent,
+                    LayoutTypeID = LayoutTypes.OneColumn
+                },
+                new PageContent
+                {
                     PageTitle = "Resend Confirmation",
                     ChangeFrequency = 0,
                     LastModified = Today,
