@@ -1,13 +1,9 @@
 ﻿using DexCMS.Base.Contexts;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DexCMS.Base.Initializers.Helpers
 {
-    class CategoriesReference
+    public class CategoriesReference
     {
         public int Account { get; set; }
         public int Contact { get; set; }

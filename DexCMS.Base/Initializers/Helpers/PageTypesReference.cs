@@ -1,13 +1,9 @@
 ﻿using DexCMS.Base.Contexts;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DexCMS.Base.Initializers.Helpers
 {
-    class PageTypesReference
+    public class PageTypesReference
     {
         public int SiteContent { get; set; }
 

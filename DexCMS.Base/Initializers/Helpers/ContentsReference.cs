@@ -1,13 +1,9 @@
 ﻿using DexCMS.Base.Contexts;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DexCMS.Base.Initializers.Helpers
 {
-    class ContentsReference
+    public class ContentsReference
     {
         public int OneColumn { get; set; }
         public int TwoColumn { get; set; }
