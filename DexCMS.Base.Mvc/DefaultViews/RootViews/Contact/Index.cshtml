@@ -1,7 +1,5 @@
 ﻿@model DexCMS.Base.Models.Contact
 
-<h2>@ViewBag.PageContent.Heading</h2>
-
 @using (Html.BeginForm("Index", "Contact", FormMethod.Post, new { @class = "form-box", role = "form" }))
 {
     @Html.AntiForgeryToken()
