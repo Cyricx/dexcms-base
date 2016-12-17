@@ -198,6 +198,7 @@
     <None Include="DefaultViews\RootViews\Shared\LayoutTypes\_RightSidebarwithContent.cshtml" />
     <None Include="DefaultViews\RootViews\Shared\LayoutTypes\_ThreeColumn.cshtml" />
     <None Include="DefaultViews\RootViews\Shared\LayoutTypes\_TwoColumn.cshtml" />
+    <None Include="DefaultViews\RootViews\Shared\ManageLinks\_Links.cshtml" />
     <None Include="DefaultViews\RootViews\Shared\_LayoutBuilder.cshtml" />
     <None Include="DefaultViews\RootViews\Shared\_Layout.cshtml" />
     <None Include="DefaultViews\Web.config" />
