@@ -84,6 +84,20 @@ namespace DexCMS.Base.Initializers
                 },
                 new PageContent
                 {
+                    Body = "<p>Please use the form below to contact us.</p>",
+                    PageTitle = "Contact Us",
+                    ChangeFrequency = 0,
+                    LastModified = Today,
+                    AddToSitemap = false,
+                    Heading = "Contact Us",
+                    ContentAreaID = Areas.Public,
+                    ContentCategoryID = Categories.Contact,
+                    UrlSegment = "contact",
+                    PageTypeID = Types.SiteContent,
+                    LayoutTypeID = LayoutTypes.OneColumn
+                },
+                new PageContent
+                {
                     Body = "<p>We will follow up with you in the next 48 hours.</p>",
                     PageTitle = "Thank you",
                     ChangeFrequency = 0,

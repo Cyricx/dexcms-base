@@ -157,6 +157,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Configurations\" />
+    <Folder Include="Sass\" />
+    <Folder Include="Sass\Applications\" />
+    <Folder Include="Sass\Applications\PublicSite\" />
     <Folder Include="Scripts\" />
     <Folder Include="Scripts\Applications\" />
     <Folder Include="Scripts\Applications\ControlPanel\" />
