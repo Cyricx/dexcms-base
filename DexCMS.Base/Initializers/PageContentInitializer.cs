@@ -58,6 +58,19 @@ namespace DexCMS.Base.Initializers
                 },
                 new PageContent
                 {
+                    PageTitle = "Manage Account",
+                    ChangeFrequency = 0,
+                    LastModified = Today,
+                    AddToSitemap = false,
+                    Heading = "Manage Account",
+                    ContentAreaID = Areas.Public,
+                    ContentCategoryID = Categories.ManageAccount,
+                    UrlSegment = "manage",
+                    PageTypeID = Types.SiteContent,
+                    LayoutTypeID = LayoutTypes.OneColumn
+                },
+                new PageContent
+                {
                     PageTitle = "Change Information",
                     ChangeFrequency = 0,
                     LastModified = Today,
