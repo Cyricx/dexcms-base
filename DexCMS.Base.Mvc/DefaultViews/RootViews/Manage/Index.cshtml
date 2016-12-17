@@ -23,12 +23,8 @@
             @Html.ActionLink("Change Info", "ChangeInfo")
         </div>
     </div>
-    <div class="form-item">
-        <span class="form-lbl">Orders</span>
-        <div>
-            <a href="~/secure/orders">View Your Orders</a>
-        </div>
-    </div>
+
+    @Html.Partial("Shared/ManageLinks/_Links")
 
     @*<div class="form-item">
         <span class="form-lbl">Phone</span>
