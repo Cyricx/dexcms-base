@@ -156,8 +156,7 @@ namespace DexCMS.Base.Initializers
                 },
                 new PageContent
                 {
-                    Body = @"<p>&nbsp;</p>
-                <p>Please feel free to create a new account.</ p > ",
+                    Body = @"<p>Please feel free to create a new account.</p> ",
                     PageTitle = "Register Account",
                     ChangeFrequency = 0,
                     LastModified = Today,
@@ -171,7 +170,7 @@ namespace DexCMS.Base.Initializers
                 },
                 new PageContent
                 {
-                    Body = @"<p>Please confirm your email address and enter a new password.</ p > ",
+                    Body = @"<p>Please confirm your email address and enter a new password.</p> ",
                     PageTitle = "Reset Password",
                     ChangeFrequency = 0,
                     LastModified = Today,
@@ -180,6 +179,20 @@ namespace DexCMS.Base.Initializers
                     ContentAreaID = Areas.Public,
                     ContentCategoryID = Categories.Account,
                     UrlSegment = "resetpassword",
+                    PageTypeID = Types.SiteContent,
+                    LayoutTypeID = LayoutTypes.OneColumn
+                },
+                new PageContent
+                {
+                    Body = @"<p>Your password has been reset, please click below to login.</p>",
+                    PageTitle = "Reset Password Confirmation",
+                    ChangeFrequency = 0,
+                    LastModified = Today,
+                    AddToSitemap = false,
+                    Heading = "Reset Password Confirmation",
+                    ContentAreaID = Areas.Public,
+                    ContentCategoryID = Categories.Account,
+                    UrlSegment = "resetpasswordconfirmation",
                     PageTypeID = Types.SiteContent,
                     LayoutTypeID = LayoutTypes.OneColumn
                 },
