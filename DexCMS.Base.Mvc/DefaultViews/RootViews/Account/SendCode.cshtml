@@ -1,7 +1,5 @@
 ﻿@model DexCMS.Base.Mvc.Models.SendCodeViewModel
 
-<h2>@ViewBag.PageContent.Heading</h2>
-
 @using (Html.BeginForm("SendCode", "Account", new { ReturnUrl = Model.ReturnUrl },
                 FormMethod.Post, new { @class = "form-box", role = "form" }))
 {
