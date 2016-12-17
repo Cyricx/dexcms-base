@@ -157,7 +157,7 @@ namespace DexCMS.Base.Initializers
                 new PageContent
                 {
                     Body = @"<p>&nbsp;</p>
-                <p>Please feel free to create a new account so you will be ready when the new ticket system is&nbsp; released.</ p > ",
+                <p>Please feel free to create a new account.</ p > ",
                     PageTitle = "Register Account",
                     ChangeFrequency = 0,
                     LastModified = Today,

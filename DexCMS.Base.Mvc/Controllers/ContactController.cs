@@ -5,6 +5,7 @@ using DexCMS.Base.Interfaces;
 using DexCMS.Base.Models;
 using DexCMS.Base.Mvc.Models;
 using DexCMS.Core.Infrastructure;
+using System.Web.Configuration;
 
 namespace DexCMS.Base.Mvc.Controllers
 {
@@ -53,17 +54,19 @@ namespace DexCMS.Base.Mvc.Controllers
                 contact.Name, contact.Email, contact.Phone, contact.Message, contact.Referrer,
                 string.Join(", ", contact.VisitedUrlsToAdd)
                 );
-                EmailResult emailResult = EmailProcessor.SendEmail(
-                    message, contact.Email, 
+                if (WebConfigurationManager.AppSettings["DisableEmails"] != "true")
+                {
+                    EmailResult emailResult = EmailProcessor.SendEmail(
+                    message, contact.Email,
                     "Contact submitted from " + contact.Name,
                     true
                     );
 
-                if (!emailResult.IsSuccess)
-                {
-                    ModelState.AddModelError("emailfailed", emailResult.Message);
+                    if (!emailResult.IsSuccess)
+                    {
+                        ModelState.AddModelError("emailfailed", emailResult.Message);
+                    }
                 }
-
                 return RedirectToAction("Success");
             }
             return View(contact);

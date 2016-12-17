@@ -1,37 +1,41 @@
 ﻿@model DexCMS.Base.Mvc.Models.ChangeInfoViewModel
 
-@using (Html.BeginForm("ChangeInfo", "Manage", FormMethod.Post, 
-    new { @class = "form-box", role = "form" }))
+@using (Html.BeginForm("ChangeInfo", "Manage", FormMethod.Post,
+                new { @class = "form-box", role = "form" }))
 {
     @Html.AntiForgeryToken()
 
-    @Html.ValidationSummary("")
+    @Html.ValidationSummary(true, "")
     <div class="form-item">
         @Html.LabelFor(m => m.FirstName, new { @class = "form-lbl" })
         <div>
             @Html.TextBoxFor(m => m.FirstName)
+            @Html.ValidationMessageFor(m => m.FirstName)
         </div>
     </div>
     <div class="form-item">
         @Html.LabelFor(m => m.LastName, new { @class = "form-lbl" })
         <div>
             @Html.TextBoxFor(m => m.LastName)
+            @Html.ValidationMessageFor(m => m.LastName)
         </div>
     </div>
     <div class="form-item">
         @Html.LabelFor(m => m.PreferredName, new { @class = "form-lbl" })
         <div>
             @Html.TextBoxFor(m => m.PreferredName)
+            @Html.ValidationMessageFor(m => m.PreferredName)
         </div>
     </div>
     <div class="form-item">
         @Html.LabelFor(m => m.PhoneNumber, new { @class = "form-lbl" })
         <div>
             @Html.TextBoxFor(m => m.PhoneNumber)
+            @Html.ValidationMessageFor(m => m.PhoneNumber)
         </div>
     </div>
     <div class="form-btn">
-            <input type="submit" value="Change Info" />
+        <input type="submit" value="Change Info" />
         <a class="pseudo-btn" href="@Url.Content("~/manage")">Back to Manage Account</a>
     </div>
 }
