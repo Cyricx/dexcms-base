@@ -241,6 +241,18 @@ namespace DexCMS.Base.Initializers
                 },
                 new PageContent
                 {
+                    PageTitle = "Control Panel",
+                    ChangeFrequency = 0,
+                    LastModified = Today,
+                    AddToSitemap = false,
+                    Heading = "Control Panel",
+                    ContentAreaID = Areas.ControlPanel,
+                    UrlSegment = "index",
+                    PageTypeID = Types.SiteContent,
+                    IsDisabled = false
+                },
+                new PageContent
+                {
                     PageTitle = "One Column",
                     ChangeFrequency = 0,
                     LastModified = Today,
