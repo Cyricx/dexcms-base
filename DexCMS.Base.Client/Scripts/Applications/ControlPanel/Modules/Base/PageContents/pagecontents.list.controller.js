@@ -18,7 +18,7 @@
                     { property: 'contentCategoryName', title: 'Category' },
                     { property: 'contentSubCategoryName', title: 'SubCategory' },
                     { property: 'urlSegment', title: 'Url' },
-                    { property: 'disabled', title: 'Disabled'},
+                    { property: 'isDisabled', title: 'Disabled?'},
                     {
                         property: '', title: '', disableSorting: true,
                         dataTemplate: dexcmsSettings.startingRoute + 'modules/base/pagecontents/_pagecontents.list.buttons.html'

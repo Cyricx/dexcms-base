@@ -30,7 +30,7 @@ namespace DexCMS.Base.Repositories
                 return _ctx.PageContents.Where(
                 x => x.UrlSegment == urlSegment
                 && x.ContentArea.UrlSegment == contentArea
-                && x.Disabled != true).SingleOrDefaultAsync();
+                && x.IsDisabled != true).SingleOrDefaultAsync();
             }
             else
             {
@@ -40,7 +40,7 @@ namespace DexCMS.Base.Repositories
                         x => x.UrlSegment == urlSegment
                         && x.ContentArea.UrlSegment == contentArea
                         && x.ContentCategory.UrlSegment == contentCategory
-                        && x.Disabled != true).SingleOrDefaultAsync();
+                        && x.IsDisabled != true).SingleOrDefaultAsync();
                 }
                 else
                 {
@@ -49,7 +49,7 @@ namespace DexCMS.Base.Repositories
                         && x.ContentArea.UrlSegment == contentArea
                         && x.ContentCategory.UrlSegment == contentCategory
                         && x.ContentSubCategory.UrlSegment == contentSubCategory
-                        && x.Disabled != true).SingleOrDefaultAsync();
+                        && x.IsDisabled != true).SingleOrDefaultAsync();
                 }
             }
         }
@@ -60,7 +60,7 @@ namespace DexCMS.Base.Repositories
                 return _ctx.PageContents.Where(
                     x => x.UrlSegment == urlSegment
                     && x.ContentAreaID == contentAreaID
-                    && x.Disabled != true).SingleOrDefaultAsync();
+                    && x.IsDisabled != true).SingleOrDefaultAsync();
             }
             else
             {
@@ -70,7 +70,7 @@ namespace DexCMS.Base.Repositories
                         x => x.UrlSegment == urlSegment
                         && x.ContentAreaID == contentAreaID
                         && x.ContentCategoryID == contentCategoryID
-                        && x.Disabled != true).SingleOrDefaultAsync();
+                        && x.IsDisabled != true).SingleOrDefaultAsync();
                 }
                 else
                 {
@@ -79,7 +79,7 @@ namespace DexCMS.Base.Repositories
                         && x.ContentAreaID == contentAreaID
                         && x.ContentCategoryID == contentCategoryID
                         && x.ContentSubCategoryID == contentSubCategoryID
-                        && x.Disabled != true).SingleOrDefaultAsync();
+                        && x.IsDisabled != true).SingleOrDefaultAsync();
                 }
             }
         }

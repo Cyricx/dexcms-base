@@ -52,7 +52,7 @@ namespace DexCMS.Base.WebApi.Controllers
                 MaximumImages = x.MaximumImages,
                 LayoutTypeID = x.LayoutTypeID,
                 LayoutTypeName = x.LayoutType.Name,
-                Disabled = x.Disabled
+                IsDisabled = x.IsDisabled
             }).ToList();
 
 			return items;
@@ -107,7 +107,7 @@ namespace DexCMS.Base.WebApi.Controllers
                 PageTypeID  = pageContent.PageTypeID,
                 UrlSegment = pageContent.UrlSegment,
                 LayoutTypeName = pageContent.LayoutTypeID.HasValue ? pageContent.LayoutType.Name : "",
-                Disabled = pageContent.Disabled
+                IsDisabled = pageContent.IsDisabled
             };
 
             return Ok(model);

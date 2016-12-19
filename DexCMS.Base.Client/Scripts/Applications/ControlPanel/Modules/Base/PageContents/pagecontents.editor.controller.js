@@ -106,7 +106,7 @@
                 $scope.currentItem.urlSegment = $location.search().fromurlsegment;
                 $scope.currentItem.pageTypeID = 1;
                 $scope.showAdvanced = true;
-                $scope.disabled = false;
+                $scope.isDisabled = false;
             }
 
             $scope.saveAndStay = function (item) {

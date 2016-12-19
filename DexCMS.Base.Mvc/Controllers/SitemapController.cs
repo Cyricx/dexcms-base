@@ -23,7 +23,7 @@ namespace DexCMS.Base.Mvc.Controllers
         {
             var sItems = new List<SitemapItem>();
 
-            foreach (var x in repository.Items.Where(x => x.AddToSitemap && x.Disabled != true).OrderBy(x => x.PageContentID).ToList())
+            foreach (var x in repository.Items.Where(x => x.AddToSitemap && x.IsDisabled != true).OrderBy(x => x.PageContentID).ToList())
             {
                 sItems.Add(new SitemapItem(
                    new Uri(HttpContext.Request.Url, UrlBuilder.BuildUrl(x).Substring(1)).ToString()
