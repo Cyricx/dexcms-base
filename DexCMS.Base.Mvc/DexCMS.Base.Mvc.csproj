@@ -162,8 +162,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Views\AreaViews\ControlPanel\ControlPanel\Index.cshtml" />
-    <None Include="Views\AreaViews\ControlPanel\Shared\_Layout.cshtml" />
+    <None Include="Views\ControlPanelViews\ControlPanel\Index.cshtml" />
+    <None Include="Views\ControlPanelViews\Shared\_Layout.cshtml" />
     <None Include="Views\RootViews\Account\ConfirmEmail.cshtml" />
     <None Include="Views\RootViews\Account\DisplayEmail.cshtml" />
     <None Include="Views\RootViews\Account\ExternalLoginConfirmation.cshtml" />
