@@ -1,0 +1,153 @@
+﻿@using DexCMS.Core.Infrastructure;
+@using DexCMS.Core.Mvc.HtmlHelpers;
+@using DexCMS.Base.Mvc.Extensions;
+@{
+    DexCMS.Base.Models.PageContent pageContent = ViewBag.PageContent;
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.PageContent.PageTitle - @SiteSettings.Resolve.GetSetting("SiteTitle")</title>
+    <link rel="shortcut icon" href="~/favicon.ico" />
+    <link href='//fonts.googleapis.com/css?family=Almendra+SC|Handlee' rel='stylesheet' type='text/css'>
+
+    <script>
+        var DEXCMS_GLOBALS = { ROOT_PATH: "@(new Uri(Request.Url, Url.Content("~/")))" };
+    </script>
+    
+    @DexCMSRender.ScriptsWithVersion("~/libs/modernizr/modernizr.js")
+    @DexCMSRender.StylesWithVersion("~/libs/ngtoast/ngtoast.min.css")
+    @DexCMSRender.StylesWithVersion("~/libs/ngtoast/ngtoast-animations.min.css")
+    @DexCMSRender.StylesWithVersion("~/libs/angular-ui-bootstrap-datetimepicker/datetimepicker.css")
+    @DexCMSRender.StylesWithVersion("~/content/controlpanel.css")
+    <base href="@(new Uri(Request.Url, Url.Content("~/controlpanel/")))" />
+
+</head>
+<body ng-controller="layoutCtrl" ng-cloak>
+    <header id="header" class="navbar navbar-inverse navbar-fixed-top">
+        <button class="navbar-toggle pull-left" ng-click="nonDefaultMenu = !nonDefaultMenu" id="menu-toggle">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <div class="container">
+            <a class="navbar-brand" href="@Url.Action("Index", new { controller="PublicContent", area = ""})" title="Home">
+                @SiteSettings.Resolve.GetSetting("SiteTitle")
+            </a>
+            <div id="header-right" class="pull-right">
+                <div id="user-info" class="pull-right" uib-dropdown>
+                    <div uib-dropdown-toggle>
+                        <i class="fa fa-angle-down pull-right"></i>
+                        <div>
+                            <span ng-bind="(cpUser.firstName + ' ' + cpUser.lastName)">
+                            </span>
+                            <em ng-bind="cpUser.role">
+                            </em>
+                        </div>
+                    </div>
+                    <div class="uib-dropdown-menu">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="@Url.Action("Index",new { controller="manage", area = ""})">
+                                    <i class="fa fa-user"></i>
+                                    My Profile
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm" }))
+                            {
+                                    @Html.AntiForgeryToken()
+                                    <a href="javascript:document.getElementById('logoutForm').submit()">
+                                        <i class="fa fa-power-off"></i>Log off
+                                    </a>
+                            }
+
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header-seperator"></div>
+                <div class="shortcuts pull-right">
+                    <a href="./" title="Control Panel">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <div id="wrapper" ng-class="getMenuState()">
+        <toast></toast>
+        <nav id="sidebar-wrapper">
+            <uib-accordion close-others="true">
+                <uib-accordion-group ng-repeat="screen in screens" is-open="screen.open">
+                    <uib-accordion-heading>
+                        <div ng-click="changeAccordion(screen)">
+                            <i ng-class="('fa ' + screen.icon)"></i>
+                            <span class="sidebar-title">
+                                {{screen.title}}
+                            </span>
+                        </div>
+                    </uib-accordion-heading>
+                    <ul class="list-unstyled">
+                        <li ng-repeat="sub in screen.subLinks">
+                            <a ui-sref="{{sub.href}}" title="{{sub.title}}">
+                                {{sub.title}}
+                            </a>
+                        </li>
+                    </ul>
+
+                </uib-accordion-group>
+
+
+            </uib-accordion>
+
+        </nav>
+
+        <div id="page-content-wrapper">
+            <main>
+                <div class="container-fluid">
+                    <div class="row" ui-view>
+                            @RenderBody()
+                    </div>
+                </div>
+
+            </main>
+
+            <footer class="well text-center">
+                <span>Copyright &copy; @DateTime.Now.Year Content by Earth Rising, Inc., Design & Code by <a href="http://www.chrisbyram.com" target="_blank" title="Chris Byram Solutions">Chris Byram</a></span>
+            </footer>
+        </div>
+    </div>
+
+    <script src="@DexCMSRender.ContentWithVersion("~/libs/requirejs/require.js")" data-main="@DexCMSRender.ContentWithVersion("~/scripts/dexcmsapps/applications/controlpanel/controlpanel.require.js")"></script>
+
+
+    @{
+        var role = "";
+        if (User.IsInRole("Admin")) {
+            role = "Admin";
+        }
+        var appUser = User.Identity.GetAdditionalInfo();
+    }
+    <script>
+        var cpUser = {
+            username: '@appUser.UserName',
+            firstName: '@appUser.FirstName',
+            lastName: '@appUser.LastName',
+            role: '@role',
+            isInstaller: @User.IsInRole("Installer").ToString().ToLower()
+        };
+    </script>
+
+
+</body>
+
+</html>
