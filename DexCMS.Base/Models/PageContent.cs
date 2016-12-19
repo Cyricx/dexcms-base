@@ -52,6 +52,7 @@ namespace DexCMS.Base.Models
 
         public int? LayoutTypeID { get; set; }
 
+        public bool Disabled { get; set; }
 
         //Relationships
         public virtual ICollection<PageContentImage> PageContentImages { get; set; }

@@ -50,6 +50,7 @@ namespace DexCMS.Base.WebApi.ApiModels
 
         public List<ContentBlockInfo> ContentBlocks { get; set; }
         public List<PageContentImageInfo> PageContentImages { get; set; }
+        public bool Disabled { get; set; }
 
     }
     public class ContentBlockInfo
