@@ -34,12 +34,12 @@
                     Disabled?
                 </label>
             </div>
-            <accordion>
-                <accordion-group is-open="showSeo">
-                    <accordion-heading>
+            <uib-accordion>
+                <uib-accordion-group is-open="showSeo">
+                    <uib-accordion-heading>
                         <i class="fa" ng-class="{'fa-chevron-down':showSeo, 'fa-chevron-right':!showSeo}"></i>
                         Seach Engine Optimization
-                    </accordion-heading>
+                    </uib-accordion-heading>
                     <div class="form-group">
                         <label for="metaKeywords">Meta Keywords:</label>
                         <textarea class="form-control" name="metaKeywords" id="metaKeywords"
@@ -74,14 +74,14 @@
                         </label>
                     </div>
 
-                </accordion-group>
-            </accordion>
-            <accordion>
-                <accordion-group is-open="showPageContentImages">
-                    <accordion-heading>
+                </uib-accordion-group>
+            </uib-accordion>
+            <uib-accordion>
+                <uib-accordion-group is-open="showPageContentImages">
+                    <uib-accordion-heading>
                         <i class="fa" ng-class="{'fa-chevron-down':showPageContentImages, 'fa-chevron-right':!showPageContentImages}"></i>
                         Show Images
-                    </accordion-heading>
+                    </uib-accordion-heading>
                     <div ng-if="!currentItem.pageContentID">
                         <p>You must save the current page first, before you can manage images.</p>
                         <button class="btn btn-primary" ng-disabled="managePageContents.$invalid || processing" ng-click="saveAndStay(currentItem)">Save and Stay</button>
@@ -117,14 +117,14 @@
                     <a ui-sref="pagecontentimages/:id({id:currentItem.pageContentID})">
                         Manage Images
                     </a>           
-                </accordion-group>
-            </accordion>
-            <accordion>
-                <accordion-group is-open="showContentBlocks">
-                    <accordion-heading>
+                </uib-accordion-group>
+            </uib-accordion>
+            <uib-accordion>
+                <uib-accordion-group is-open="showContentBlocks">
+                    <uib-accordion-heading>
                         <i class="fa" ng-class="{'fa-chevron-down':showContentBlocks, 'fa-chevron-right':!showContentBlocks}"></i>
                         Show Content Blocks
-                    </accordion-heading>
+                    </uib-accordion-heading>
                     <div ng-if="!currentItem.pageContentID">
                          <p>You must save the current page first, before you can add content blocks.</p>
                         <button class="btn btn-primary" ng-disabled="managePageContents.$invalid || processing" ng-click="saveAndStay(currentItem)">Save and Stay</button>
@@ -156,14 +156,14 @@
                         </ul>
                     </div>
                     <a ng-if="currentItem.pageContentID" ng-hide="currentItem.contentBlocks.length >= 3" ui-sref="contentblocks/new/:parentId({parentId:currentItem.pageContentID})">Add New Block</a>
-                </accordion-group>
-            </accordion>
-            <accordion>
-                <accordion-group is-open="showAdvanced">
-                    <accordion-heading>
+                </uib-accordion-group>
+            </uib-accordion>
+            <uib-accordion>
+                <uib-accordion-group is-open="showAdvanced">
+                    <uib-accordion-heading>
                         <i class="fa" ng-class="{'fa-chevron-down':showAdvanced, 'fa-chevron-right':!showAdvanced}"></i>
                         Show Advanced
-                    </accordion-heading>
+                    </uib-accordion-heading>
                     <div class="form-group">
                         <label for="contentAreaID">Area:</label>
                         <select class="form-control" name="contentAreaID" id="contentAreaID" 
@@ -196,8 +196,8 @@
                                tooltip-trigger="focus" tooltip-placement="bottom"
                                ng-model="currentItem.urlSegment" />
                     </div>
-                </accordion-group>
-            </accordion>
+                </uib-accordion-group>
+            </uib-accordion>
 
             <div class="well text-danger" ng-if="modelError">
                 <h3>{{modelError.message}}</h3>
