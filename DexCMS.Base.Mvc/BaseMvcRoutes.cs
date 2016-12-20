@@ -68,6 +68,16 @@ namespace DexCMS.Base.Mvc
                 defaults: new { controller = "PublicContent", action = "RetrieveContentBySubCategory" }
             );
         }
+
+
+        public static void ControlPanelDefaultRoutes(AreaRegistrationContext context, DexCMSConfiguration config)
+        {
+            context.MapRoute(
+                "ControlPanel_default",
+                "ControlPanel/{*routes}",
+                new { action = "Index", controller = "ControlPanel", area = "ControlPanel" }
+            );
+        }
     }
 
 }
