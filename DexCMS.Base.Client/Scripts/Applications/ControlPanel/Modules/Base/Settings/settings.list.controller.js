@@ -1,4 +1,4 @@
-﻿define([
+define([
     'controlpanel-app'
 ], function (app) {
     app.controller('settingsListCtrl', [
@@ -8,6 +8,7 @@
         'dexCMSControlPanelSettings',
         function ($scope, Settings, $window, dexcmsSettings) {
             $scope.title = "View Settings";
+            $scope.isInstaller = cpUser.isInstaller;
 
             $scope.table = {
                 columns: [
@@ -52,6 +53,12 @@
                     {
                         property: '', title: '', disableSorting: true,
                         dataTemplate: dexcmsSettings.startingRoute + 'modules/base/settings/_settings.list.buttons.html'
+                    });
+            } else {
+                $scope.table.columns.push(
+                    {
+                        property: '', title: '', disableSorting: true,
+                        dataTemplate: dexcmsSettings.startingRoute + 'modules/base/settings/_settings.list.editonly.buttons.html'
                     });
             }
 

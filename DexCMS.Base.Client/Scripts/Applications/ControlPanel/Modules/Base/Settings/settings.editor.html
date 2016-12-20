@@ -31,7 +31,7 @@
                 <!-- bool -->
                 <div ng-switch-when="Bool" class="checkbox">
                     <label>
-                        <input type="checkbox" id="value" name="value" 
+                        <input type="checkbox" id="value" name="value"
                                ng-model="currentItem.value">
                     </label>
                 </div>
@@ -39,7 +39,7 @@
                 <div ng-switch-when="Html">
                     <label for="value">Value:</label>
                     <dexcms-html-editor required
-                              ng-model="currentItem.value"></dexcms-html-editor>
+                                        ng-model="currentItem.value"></dexcms-html-editor>
                     <span class="control-label text-danger"
                           n-show="!currentItem.value">
                         <strong>
@@ -51,7 +51,7 @@
                 <div ng-switch-when="Int">
                     <label for="value">Value:</label>
                     <input class="form-control" pattern="[0-9]*" name="value" id="value"
-                           validate-on="dirty" 
+                           validate-on="dirty"
                            required
                            ng-model="currentItem.value" />
                 </div>
@@ -59,28 +59,28 @@
                 <div ng-switch-when="Multiline">
                     <label for="value">Value:</label>
                     <textarea class="form-control" name="value" id="value" required
-                              validate-on="dirty" 
-                           ng-model="currentItem.value"></textarea>
+                              validate-on="dirty"
+                              ng-model="currentItem.value"></textarea>
                 </div>
                 <!-- fourdigitwhole -->
                 <div ng-switch-when="FourDigitWhole">
                     <label for="value">Value:</label>
                     <input class="form-control" pattern="[0-9]{4}" name="value" id="value"
-                           validate-on="dirty"  required
+                           validate-on="dirty" required
                            ng-model="currentItem.value" />
                 </div>
                 <!-- email -->
                 <div ng-switch-when="Email">
                     <label for="value">Value:</label>
                     <input class="form-control" type="email" name="value" id="value"
-                           validate-on="dirty"  required
+                           validate-on="dirty" required
                            ng-model="currentItem.value" />
                 </div>
                 <!-- password -->
                 <div ng-switch-when="Password">
                     <label for="value">Value:</label>
                     <input class="form-control" type="password" name="value" id="value"
-                           validate-on="dirty"  required
+                           validate-on="dirty" required
                            ng-model="currentItem.value" />
                 </div>
                 <!-- File -->
@@ -120,16 +120,16 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group" >
+            <div class="form-group" ng-hide="!isInstaller">
                 <label for="settingDataTypeID">Data Type:</label>
                 <select name="settingDataTypeID" id="settingDataTypeID" ng-change="setDataTypeName(currentItem)"
-                        validate-on="dirty"  required ng-model="currentItem.settingDataTypeID" 
+                        validate-on="dirty" required ng-model="currentItem.settingDataTypeID"
                         ng-options="item.settingDataTypeID as item.name for item in settingDataTypes"></select>
             </div>
-            <div class="form-group">
+            <div class="form-group" ng-hide="!isInstaller">
                 <label for="settingGroupID">Group:</label>
                 <select name="settingGroupID" id="settingGroupID"
-                        validate-on="dirty"  required ng-model="currentItem.settingGroupID" 
+                        validate-on="dirty" required ng-model="currentItem.settingGroupID"
                         ng-options="item.settingGroupID as item.settingGroupName for item in settingGroups"></select>
             </div>
             <button class="btn btn-primary" type="submit" ng-disabled="manageSetting.$invalid">Save</button>

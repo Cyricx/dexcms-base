@@ -150,6 +150,7 @@
     <Content Include="Scripts\Applications\ControlPanel\Modules\Base\SettingGroups\_settinggroups.list.buttons.html" />
     <Content Include="Scripts\Applications\ControlPanel\Modules\Base\Settings\settings.editor.html" />
     <Content Include="Scripts\Applications\ControlPanel\Modules\Base\Settings\settings.list.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\Settings\_settings.list.editonly.buttons.html" />
     <Content Include="Scripts\Applications\ControlPanel\Modules\Base\Settings\_settings.list.buttons.html" />
     <Content Include="Scripts\Applications\ControlPanel\Modules\Base\States\states.editor.html" />
     <Content Include="Scripts\Applications\ControlPanel\Modules\Base\States\states.list.html" />

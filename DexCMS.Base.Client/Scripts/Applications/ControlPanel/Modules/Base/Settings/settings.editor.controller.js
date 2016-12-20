@@ -1,4 +1,4 @@
-﻿define([
+define([
     'controlpanel-app',
     'underscore',
     '../settingdatatypes/settingdatatypes.service',
@@ -16,7 +16,7 @@
         function ($scope, Settings, $stateParams, $state, SettingDataTypes, SettingGroups, dexcmsSettings, Upload) {
 
             var id = $stateParams.id || null;
-
+            $scope.isInstaller = cpUser.isInstaller;
             $scope.baseUrl = dexcmsSettings.baseUrl;
 
             $scope.title = (id == null ? "Add " : "Edit ") + "Setting";
@@ -30,6 +30,8 @@
                         $scope.currentItem.value = new Date($scope.currentItem.value);
                     }
                 });
+            } else if (!$scope.isInstaller) {
+                $state.go('settings');
             }
 
             $scope.save = function (item) {
