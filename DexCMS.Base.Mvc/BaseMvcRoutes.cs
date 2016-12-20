@@ -72,10 +72,13 @@ namespace DexCMS.Base.Mvc
 
         public static void ControlPanelDefaultRoutes(AreaRegistrationContext context, DexCMSConfiguration config)
         {
+            string[] ControlPanelNamespaces = new[] { "DexCMS.Base.Mvc.Controllers.ControlPanel" };
+
             context.MapRoute(
                 "ControlPanel_default",
                 "ControlPanel/{*routes}",
-                new { action = "Index", controller = "ControlPanel", area = "ControlPanel" }
+                new { action = "Index", controller = "ControlPanel", area = "ControlPanel" }, 
+                ControlPanelNamespaces
             );
         }
     }

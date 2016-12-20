@@ -1,7 +1,7 @@
 ﻿using DexCMS.Base.Interfaces;
 using System.Web.Mvc;
 
-namespace DexCMS.Base.Mvc.Areas.ControlPanel.Controllers
+namespace DexCMS.Base.Mvc.Controllers.ControlPanel
 {
     [Authorize(Roles = "Admin")]
     public class ControlPanelController : Controller
