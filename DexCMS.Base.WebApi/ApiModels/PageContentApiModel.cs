@@ -57,6 +57,7 @@ namespace DexCMS.Base.WebApi.ApiModels
     {
         public int ContentBlockID { get; set; }
         public string BlockTitle { get; set; }
+        public string BlockBody { get; set; }
         public int DisplayOrder { get; set; }
     }
 

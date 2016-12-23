@@ -93,6 +93,7 @@ namespace DexCMS.Base.WebApi.Controllers
                     {
                         ContentBlockID = x.ContentBlockID,
                         BlockTitle = x.BlockTitle,
+                        BlockBody = x.BlockBody,
                         DisplayOrder = x.DisplayOrder
                     }).ToList(),
                 PageContentImages = pageContent.PageContentImages.OrderBy(x => x.DisplayOrder)
