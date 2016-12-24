@@ -1,11 +1,10 @@
-﻿using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using DexCMS.Base.Models;
 using DexCMS.Base.Interfaces;
 using System.Threading.Tasks;
 using DexCMS.Base.Mvc.Extensions;
 using System;
-using DexCMS.Core.Mvc;
+using DexCMS.Core.Mvc.Globals;
 
 namespace DexCMS.Base.Mvc.Controllers
 {

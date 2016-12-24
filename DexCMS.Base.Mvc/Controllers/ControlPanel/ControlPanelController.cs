@@ -1,5 +1,5 @@
 ﻿using DexCMS.Base.Interfaces;
-using DexCMS.Core.Mvc;
+using DexCMS.Core.Mvc.Globals;
 using System.Web.Mvc;
 
 namespace DexCMS.Base.Mvc.Controllers.ControlPanel

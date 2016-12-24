@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using DexCMS.Base.Mvc.Models;
 using DexCMS.Core.Infrastructure.Globals;
 using DexCMS.Core.Infrastructure.Models;
-using DexCMS.Core.Mvc;
+using DexCMS.Core.Mvc.Globals;
 
 namespace DexCMS.Base.Mvc.Controllers
 {
