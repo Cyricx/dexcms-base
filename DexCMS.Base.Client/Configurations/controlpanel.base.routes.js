@@ -64,6 +64,10 @@
                 "module": "base"
             },
             {
+                name: "pageContentRedirects",
+                module: "base"
+            },
+            {
                 "name": "countries",
                 "module": "base"
             },

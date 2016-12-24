@@ -131,6 +131,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ControlPanel\ControlPanelController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\PublicContentController.cs" />
     <Compile Include="Controllers\SitemapController.cs" />
     <Compile Include="Enums\BaseRouteOptions.cs" />
@@ -181,6 +182,9 @@
     <None Include="Views\RootViews\Account\_ExternalLoginsListPartial.cshtml" />
     <None Include="Views\RootViews\Contact\Index.cshtml" />
     <None Include="Views\RootViews\Contact\Success.cshtml" />
+    <None Include="Views\RootViews\Errors\NotFound.cshtml" />
+    <None Include="Views\RootViews\Errors\GeneralError.cshtml" />
+    <None Include="Views\RootViews\Errors\DisplayContent.cshtml" />
     <None Include="Views\RootViews\Manage\ChangeInfo.cshtml" />
     <None Include="Views\RootViews\Manage\ChangePassword.cshtml" />
     <None Include="Views\RootViews\Manage\Index.cshtml" />

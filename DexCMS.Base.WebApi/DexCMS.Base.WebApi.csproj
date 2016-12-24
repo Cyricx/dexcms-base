@@ -68,6 +68,7 @@
     <Compile Include="ApiModels\ContactApiModel.cs" />
     <Compile Include="ApiModels\ContactTypeApiModel.cs" />
     <Compile Include="ApiModels\ContentAreaApiModel.cs" />
+    <Compile Include="ApiModels\PageContentRedirectApiModel.cs" />
     <Compile Include="ApiModels\ContentBlockApiModel.cs" />
     <Compile Include="ApiModels\ContentBlockOrderApiModel.cs" />
     <Compile Include="ApiModels\ContentCategoryApiModel.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Controllers\ContactTypesController.cs" />
     <Compile Include="Controllers\ContentAreasController.cs" />
     <Compile Include="Controllers\ContentBlockOrderController.cs" />
+    <Compile Include="Controllers\PageContentRedirectsController.cs" />
     <Compile Include="Controllers\ContentBlocksController.cs" />
     <Compile Include="Controllers\ContentCategoriesController.cs" />
     <Compile Include="Controllers\ContentSubCategoriesController.cs" />

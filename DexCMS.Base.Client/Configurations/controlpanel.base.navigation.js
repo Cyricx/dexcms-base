@@ -44,6 +44,10 @@
                     {
                         "title": "Sub Categories",
                         href: overrides.contentsubcategories || "contentsubcategories"
+                    },
+                    {
+                        title: "Redirects",
+                        href: overrides.pagecontentredirects || "pagecontentredirects"
                     }
                 ]
             },

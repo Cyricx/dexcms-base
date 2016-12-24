@@ -68,6 +68,10 @@
     <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\Images\images.list.controller.js" />
     <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\Images\images.service.js" />
     <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\Images\index.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\PageContentRedirects\index.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\PageContentRedirects\pagecontentredirects.editor.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\PageContentRedirects\pagecontentredirects.list.controller.js" />
+    <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\PageContentRedirects\pagecontentredirects.service.js" />
     <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\LayoutTypes\index.js" />
     <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\LayoutTypes\layouttypes.editor.controller.js" />
     <Compile Include="Scripts\Applications\ControlPanel\Modules\Base\LayoutTypes\layouttypes.list.controller.js" />
@@ -132,6 +136,9 @@
     <Content Include="Scripts\Applications\ControlPanel\Modules\Base\Images\_images.list.buttons.html" />
     <Content Include="Scripts\Applications\ControlPanel\Modules\Base\Images\_images.list.copypath.html" />
     <Content Include="Scripts\Applications\ControlPanel\Modules\Base\Images\_images.list.thumbnail.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\PageContentRedirects\pagecontentredirects.editor.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\PageContentRedirects\pagecontentredirects.list.html" />
+    <Content Include="Scripts\Applications\ControlPanel\Modules\Base\PageContentRedirects\_pagecontentredirects.list.buttons.html" />
     <Content Include="Scripts\Applications\ControlPanel\Modules\Base\LayoutTypes\layouttypes.editor.html" />
     <Content Include="Scripts\Applications\ControlPanel\Modules\Base\LayoutTypes\layouttypes.list.html" />
     <Content Include="Scripts\Applications\ControlPanel\Modules\Base\LayoutTypes\_layouttypes.list.buttons.html" />
@@ -175,6 +182,7 @@
     <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\ContentSubCategories\" />
     <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\Countries\" />
     <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\Images\" />
+    <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\PageContentRedirects\" />
     <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\LayoutTypes\" />
     <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\PageContentImages\" />
     <Folder Include="Scripts\Applications\ControlPanel\Modules\Base\PageContents\" />

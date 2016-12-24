@@ -1,0 +1,23 @@
+﻿<div class="col-xs-12">
+    <h2>{{title}}</h2>
+    <form name="managePageContentRedirects" novalidate angular-validator angular-validator-submit="save(currentItem)">
+        <div class="panel-body">
+            <div class="form-group">
+                <label for="url">Url:</label>
+                <input class="form-control" name="url" id="url" required
+                       validate-on="dirty"
+                       ng-model="currentItem.url" />
+            </div>
+            <div class="form-group">
+                <label for="pageContentID">Page Content:</label>
+                <select class="form-control" name="pageContentID" id="pageContentID" required ng-model="currentItem.pageContentID"
+                        ng-options="item.pageContentID as item.heading for item in pageContents">
+                </select>
+            </div>
+
+            <button class="btn btn-primary" type="submit" ng-disabled="managePageContentRedirects.$invalid" 
+                    >Save</button>
+            <a class="btn btn-primary" ui-sref="pagecontentredirects">Cancel</a>
+        </div>
+    </form>
+</div>
