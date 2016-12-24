@@ -5,10 +5,11 @@ using System.Web.Mvc;
 using DexCMS.Base.Interfaces;
 using DexCMS.Base.Infrastructure;
 using DexCMS.Base.Mvc.Extensions;
+using DexCMS.Core.Mvc;
 
 namespace DexCMS.Base.Mvc.Controllers
 {
-    public class SitemapController : Controller
+    public class SitemapController : DexCMSController
     {
         private IPageContentRepository repository;
 

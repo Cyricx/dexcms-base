@@ -362,6 +362,34 @@ namespace DexCMS.Base.Initializers
 <p>Human give me attention meow. Chase the pig around the house mrow chew on cable, but ignore the squirrels, you'll never catch them anyway where is my slave? I'm getting hungry, but get video posted to internet for chasing red dot. Destroy couch meow all night having their mate disturbing sleeping humans. Intrigued by the shower pee in human's bed until he cleans the litter box. Soft kitty warm kitty little ball of furr sleep on dog bed, force dog to sleep on floor human is washing you why halp oh the horror flee scratch hiss bite and hiss at vacuum cleaner, so cats making all the muffins. Gnaw the corn cob. Meow run in circles kitty scratches couch bad kitty sleep nap. Spread kitty litter all over house put butt in owner's face. Climb a tree, wait for a fireman jump to fireman then scratch his face pee in the shoe chase imaginary bugs kitty loves pigs. Curl up and sleep on the freshly laundered towels curl up and sleep on the freshly laundered towels yet sleep on keyboard hide head under blanket so no one can see and lounge in doorway love to play with owner's hair tie. </p>",
                     LayoutTypeID = LayoutTypes.LeftSidebarOnly,
                     IsDisabled = false
+                },
+                new PageContent
+                {
+                    PageTitle = "Error",
+                    ChangeFrequency = 0,
+                    LastModified = Today,
+                    AddToSitemap = false,
+                    Heading = "Error Occured",
+                    ContentAreaID = Areas.Public,
+                    UrlSegment = "error",
+                    PageTypeID = Types.SiteContent,
+                    Body = @"<p>We apologize, an error has occured. We are looking into the issue and will work on a resolution.</p>",
+                    LayoutTypeID = LayoutTypes.OneColumn,
+                    IsDisabled = false
+                },
+                new PageContent
+                {
+                    PageTitle = "Page Not Found",
+                    ChangeFrequency = 0,
+                    LastModified = Today,
+                    AddToSitemap = false,
+                    Heading = "Page NotFound",
+                    ContentAreaID = Areas.Public,
+                    UrlSegment = "notfound",
+                    PageTypeID = Types.SiteContent,
+                    Body = @"<p>The page you are looking for does not exist. Please use the menu to navigate the website.</p>",
+                    LayoutTypeID = LayoutTypes.OneColumn,
+                    IsDisabled = false
                 }
             );
             Context.SaveChanges();

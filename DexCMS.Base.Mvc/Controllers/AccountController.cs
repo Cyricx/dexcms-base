@@ -9,10 +9,11 @@ using DexCMS.Base.Mvc.Models;
 using DexCMS.Core.Infrastructure.Globals;
 using DexCMS.Core.Infrastructure.Models;
 using System.Web.Configuration;
+using DexCMS.Core.Mvc;
 
 namespace DexCMS.Base.Mvc.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : DexCMSController
     {
         public AccountController()
         {

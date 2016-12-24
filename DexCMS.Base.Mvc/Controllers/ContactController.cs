@@ -6,10 +6,11 @@ using DexCMS.Base.Models;
 using DexCMS.Base.Mvc.Models;
 using DexCMS.Core.Infrastructure;
 using System.Web.Configuration;
+using DexCMS.Core.Mvc;
 
 namespace DexCMS.Base.Mvc.Controllers
 {
-    public class ContactController : Controller
+    public class ContactController : DexCMSController
     {
     	private IContactRepository repository;
 

@@ -4,16 +4,23 @@ using DexCMS.Base.Models;
 using DexCMS.Base.Interfaces;
 using System.Threading.Tasks;
 using DexCMS.Base.Mvc.Extensions;
+using System;
+using DexCMS.Core.Mvc;
 
 namespace DexCMS.Base.Mvc.Controllers
 {
-    public class PublicContentController : Controller
+    public class PublicContentController : DexCMSController
     {
         IPageContentRepository repository;
 
         public PublicContentController(IPageContentRepository _repo)
         {
             repository = _repo;
+        }
+
+        public ActionResult Boom()
+        {
+            throw new ApplicationException("Boom");
         }
 
         public async Task<ActionResult> RetrieveContent(string urlSegment)
@@ -25,6 +32,10 @@ namespace DexCMS.Base.Mvc.Controllers
                 if (content != null)
                 {
                     return RedirectPermanent(UrlBuilder.BuildUrl(content));
+                }
+                else
+                {
+                    return HttpNotFound();
                 }
             }
             ViewBag.PageContent = content;
@@ -42,6 +53,10 @@ namespace DexCMS.Base.Mvc.Controllers
                 {
                     return RedirectPermanent(UrlBuilder.BuildUrl(content));
                 }
+                else
+                {
+                    return HttpNotFound();
+                }
             }
             ViewBag.PageContent = content;
 
@@ -58,6 +73,10 @@ namespace DexCMS.Base.Mvc.Controllers
                 {
                     return RedirectPermanent(UrlBuilder.BuildUrl(content));
                 }
+                else
+                {
+                    return HttpNotFound();
+                }
             }
             ViewBag.PageContent = content;
 
@@ -73,6 +92,10 @@ namespace DexCMS.Base.Mvc.Controllers
                 {
                     return RedirectPermanent(UrlBuilder.BuildUrl(content));
                 }
+                else
+                {
+                    return HttpNotFound();
+                }
             }
             ViewBag.PageContent = content;
 
@@ -83,12 +106,7 @@ namespace DexCMS.Base.Mvc.Controllers
         {
             string url = HttpContext.Request.RawUrl;
             url = url.Length > 0 && url[0] == '/' ? url.Substring(1) : url;
-            PageContent content = await repository.RetrieveRedirectAsync(url);
-            if (content == null)
-            {
-                throw new HttpException(404, "HTTP/1.1 404 Not Found");
-            }
-            return content;
+            return await repository.RetrieveRedirectAsync(url);
         }
     }
 }

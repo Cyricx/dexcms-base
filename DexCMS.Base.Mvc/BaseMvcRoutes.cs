@@ -9,7 +9,11 @@ namespace DexCMS.Base.Mvc
     {
         public static void CreateDefaultRoutes(RouteCollection routes, DexCMSConfiguration config)
         {
-            routes.MapRoute("sitemap", "sitemap.xml", new { controller = "Sitemap", action = "Index" });
+            routes.MapRoute(
+                "boom", "boom", new { controller = "PublicContent", action = "Boom" });
+
+            routes.MapRoute(
+                "sitemap", "sitemap.xml", new { controller = "Sitemap", action = "Index" });
 
             routes.MapRoute(
                 name: "Contact",

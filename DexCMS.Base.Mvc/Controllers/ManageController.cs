@@ -8,11 +8,12 @@ using System.Web.Mvc;
 using DexCMS.Base.Mvc.Models;
 using DexCMS.Core.Infrastructure.Globals;
 using DexCMS.Core.Infrastructure.Models;
+using DexCMS.Core.Mvc;
 
 namespace DexCMS.Base.Mvc.Controllers
 {
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : DexCMSController
     {
         public ManageController()
         {
