@@ -63,6 +63,8 @@ namespace DexCMS.Base.Models
 
         public virtual ICollection<ContentStyle> ContentStyles { get; set; }
 
+        public virtual ICollection<PageContentRedirect> PageContentRedirects { get; set; }
+
         public virtual ContentArea ContentArea { get; set; }
         public virtual ContentCategory ContentCategory { get; set; }
         public virtual ContentSubCategory ContentSubCategory { get; set; }

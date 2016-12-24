@@ -8,7 +8,7 @@ namespace DexCMS.Base.Interfaces
     {
         Task<PageContent> RetrieveAsync(string urlSegment, string contentArea, string contentCategory = "", string contentSubCategory = "");
         Task<PageContent> RetrieveAsync(string urlSegment, int contentAreaID, int? contentCategoryID = null, int? contentSubCategoryID = null);
-
+        Task<PageContent> RetrieveRedirectAsync(string url);
     }
 
 }

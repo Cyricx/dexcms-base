@@ -6,6 +6,7 @@ using DexCMS.Base.Contexts;
 using DexCMS.Base.Interfaces;
 using DexCMS.Core.Infrastructure.Contexts;
 using DexCMS.Core.Infrastructure.Repositories;
+using System;
 
 namespace DexCMS.Base.Repositories
 {
@@ -112,6 +113,11 @@ namespace DexCMS.Base.Repositories
             }
 
             return base.DeleteAsync(item);
+        }
+
+        public Task<PageContent> RetrieveRedirectAsync(string url)
+        {
+            return _ctx.PageContentRedirects.Where(x => x.Url == url).Select(x => x.PageContent).SingleOrDefaultAsync();
         }
     }
 }

@@ -17,6 +17,7 @@ namespace DexCMS.Base.Globals
             kernel.Bind<IContentSubCategoryRepository>().To<ContentSubCategoryRepository>();
             kernel.Bind<ILayoutTypeRepository>().To<LayoutTypeRepository>();
             kernel.Bind<IPageContentImageRepository>().To<PageContentImageRepository>();
+            kernel.Bind<IPageContentRedirectRepository>().To<PageContentRedirectRepository>();
             kernel.Bind<IPageContentRepository>().To<PageContentRepository>();
             kernel.Bind<IPageTypeRepository>().To<PageTypeRepository>();
             kernel.Bind<IDexCMSBaseContext>().To<T>();

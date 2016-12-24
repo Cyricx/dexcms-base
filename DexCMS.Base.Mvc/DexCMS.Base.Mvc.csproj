@@ -181,9 +181,6 @@
     <None Include="Views\RootViews\Account\_ExternalLoginsListPartial.cshtml" />
     <None Include="Views\RootViews\Contact\Index.cshtml" />
     <None Include="Views\RootViews\Contact\Success.cshtml" />
-    <None Include="Views\RootViews\Errors\NotFound.cshtml" />
-    <None Include="Views\RootViews\Errors\GeneralError.cshtml" />
-    <None Include="Views\RootViews\Errors\DisplayContent.cshtml" />
     <None Include="Views\RootViews\Manage\ChangeInfo.cshtml" />
     <None Include="Views\RootViews\Manage\ChangePassword.cshtml" />
     <None Include="Views\RootViews\Manage\Index.cshtml" />

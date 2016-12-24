@@ -3,18 +3,17 @@ using System.Web.Mvc;
 using DexCMS.Base.Models;
 using DexCMS.Base.Interfaces;
 using System.Threading.Tasks;
+using DexCMS.Base.Mvc.Extensions;
 
 namespace DexCMS.Base.Mvc.Controllers
 {
     public class PublicContentController : Controller
     {
         IPageContentRepository repository;
-        IPageContentRedirectRepository redirectRepository;
 
-        public PublicContentController(IPageContentRepository _repo, IPageContentRedirectRepository _redirectRepo)
+        public PublicContentController(IPageContentRepository _repo)
         {
             repository = _repo;
-            redirectRepository = _redirectRepo;
         }
 
         public async Task<ActionResult> RetrieveContent(string urlSegment)
@@ -22,46 +21,69 @@ namespace DexCMS.Base.Mvc.Controllers
             PageContent content = repository.RetrieveAsync(urlSegment.ToLower(), "").Result;
             if (content == null || content.PageType.Name != "Site Content")
             {
-                content = await CheckForRedirect(urlSegment);
+                content = await CheckForRedirect();
+                if (content != null)
+                {
+                    return RedirectPermanent(UrlBuilder.BuildUrl(content));
+                }
             }
+            ViewBag.PageContent = content;
+
             return View("DisplayContent");
         }
 
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             PageContent content = repository.RetrieveAsync("index", "").Result;
             if (content == null || content.PageType.Name != "Site Content")
             {
-
-                throw new HttpException(404, "HTTP/1.1 404 Not Found");
+                content = await CheckForRedirect();
+                if (content != null)
+                {
+                    return RedirectPermanent(UrlBuilder.BuildUrl(content));
+                }
             }
+            ViewBag.PageContent = content;
+
             return View();
         }
 
-        public ActionResult RetrieveContentByCategory(string category, string urlSegment)
+        public async Task<ActionResult> RetrieveContentByCategory(string category, string urlSegment)
         {
             PageContent content = repository.RetrieveAsync(urlSegment.ToLower(), "", category.ToLower()).Result;
             if (content == null)
             {
-
-                throw new HttpException(404, "HTTP/1.1 404 Not Found");
+                content = await CheckForRedirect();
+                if (content != null)
+                {
+                    return RedirectPermanent(UrlBuilder.BuildUrl(content));
+                }
             }
+            ViewBag.PageContent = content;
+
             return View("DisplayContent");
         }
-        public ActionResult RetrieveContentBySubCategory(string category, string subCategory, string urlSegment)
+        public async Task<ActionResult> RetrieveContentBySubCategory(string category, string subCategory, string urlSegment)
         {
             PageContent content = repository.RetrieveAsync(urlSegment.ToLower(), "", category.ToLower(), subCategory.ToLower()).Result;
             if (content == null)
             {
-
-                throw new HttpException(404, "HTTP/1.1 404 Not Found");
+                content = await CheckForRedirect();
+                if (content != null)
+                {
+                    return RedirectPermanent(UrlBuilder.BuildUrl(content));
+                }
             }
+            ViewBag.PageContent = content;
+
             return View("DisplayContent");
         }
 
-        private async Task<PageContent> CheckForRedirect(string url)
+        private async Task<PageContent> CheckForRedirect()
         {
-            PageContent content = await redirectRepository.RetrieveAsync(url);
+            string url = HttpContext.Request.RawUrl;
+            url = url.Length > 0 && url[0] == '/' ? url.Substring(1) : url;
+            PageContent content = await repository.RetrieveRedirectAsync(url);
             if (content == null)
             {
                 throw new HttpException(404, "HTTP/1.1 404 Not Found");

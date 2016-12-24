@@ -11,7 +11,7 @@
             <div class="form-group">
                 <label for="pageContentID">Page Content:</label>
                 <select class="form-control" name="pageContentID" id="pageContentID" required ng-model="currentItem.pageContentID"
-                        ng-options="item.pageContentID as item.heading for item in pageContents">
+                        ng-options="item.pageContentID as item.heading for item in pageContents | orderBy: 'heading'">
                 </select>
             </div>
 
