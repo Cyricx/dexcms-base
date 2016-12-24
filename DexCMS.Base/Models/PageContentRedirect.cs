@@ -13,7 +13,7 @@ namespace DexCMS.Base.Models
         public int PageContentID { get; set; }
 
         [Required]
-        [StringLength(500)]
+        [StringLength(250)]
         [Index(IsUnique =true)]
         public string Url { get; set; }
 

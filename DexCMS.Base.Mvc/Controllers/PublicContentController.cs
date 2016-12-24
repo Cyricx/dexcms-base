@@ -2,25 +2,27 @@
 using System.Web.Mvc;
 using DexCMS.Base.Models;
 using DexCMS.Base.Interfaces;
+using System.Threading.Tasks;
 
 namespace DexCMS.Base.Mvc.Controllers
 {
     public class PublicContentController : Controller
     {
         IPageContentRepository repository;
+        IPageContentRedirectRepository redirectRepository;
 
-        public PublicContentController(IPageContentRepository _repo)
+        public PublicContentController(IPageContentRepository _repo, IPageContentRedirectRepository _redirectRepo)
         {
             repository = _repo;
+            redirectRepository = _redirectRepo;
         }
 
-        public ActionResult RetrieveContent(string urlSegment)
+        public async Task<ActionResult> RetrieveContent(string urlSegment)
         {
             PageContent content = repository.RetrieveAsync(urlSegment.ToLower(), "").Result;
             if (content == null || content.PageType.Name != "Site Content")
             {
-
-                throw new HttpException(404, "HTTP/1.1 404 Not Found");
+                content = await CheckForRedirect(urlSegment);
             }
             return View("DisplayContent");
         }
@@ -57,5 +59,14 @@ namespace DexCMS.Base.Mvc.Controllers
             return View("DisplayContent");
         }
 
+        private async Task<PageContent> CheckForRedirect(string url)
+        {
+            PageContent content = await redirectRepository.RetrieveAsync(url);
+            if (content == null)
+            {
+                throw new HttpException(404, "HTTP/1.1 404 Not Found");
+            }
+            return content;
+        }
     }
 }

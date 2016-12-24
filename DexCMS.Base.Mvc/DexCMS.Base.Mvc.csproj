@@ -131,7 +131,6 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ControlPanel\ControlPanelController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\PublicContentController.cs" />
     <Compile Include="Controllers\SitemapController.cs" />
     <Compile Include="Enums\BaseRouteOptions.cs" />
