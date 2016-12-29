@@ -16,16 +16,16 @@ namespace DexCMS.Base.Mvc.Controllers
             repository = _repo;
         }
 
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            ViewBag.PageContent = await repository.RetrieveAsync("error", "");
+            //ViewBag.PageContent = await repository.RetrieveAsync("error", "");
             return View();
         }
 
-        public async Task<ActionResult> NotFound()
+        public ActionResult NotFound()
         {
             Logger.WriteLog(LogType.PageNotFound, "Page Not Found: " + HttpContext.Request.RawUrl);
-            ViewBag.PageContent = await repository.RetrieveAsync("notfound", "");
+            //ViewBag.PageContent = await repository.RetrieveAsync("notfound", "");
             return View();
         }
     }

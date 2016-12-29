@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using DexCMS.Base.Interfaces;
 using DexCMS.Base.Models;
+using DexCMS.Base.Mvc.Enums;
 
 namespace DexCMS.Base.Mvc.Filters
 {
@@ -14,7 +15,18 @@ namespace DexCMS.Base.Mvc.Filters
             repository = _repo;
         }
 
-        public override void OnResultExecuting(ResultExecutingContext filterContext)
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+
+            RetrivePageContent(filterContext);
+        }
+
+        //public override void OnResultExecuting(ResultExecutingContext filterContext)
+        //{
+        //    RetrivePageContent(filterContext);
+        //}//end on result executing
+
+        private void RetrivePageContent(ControllerContext filterContext)
         {
             if (!filterContext.HttpContext.Request.IsAjaxRequest() && filterContext.Controller.ViewBag.PageContent == null)
             {
@@ -30,7 +42,8 @@ namespace DexCMS.Base.Mvc.Filters
                 if (String.IsNullOrEmpty(category))
                 {
                     category = controller == "PublicContent" ? null : controller;
-                } else if (category == "none")
+                }
+                else if (category == "none")
                 {
                     category = null;
                 }
@@ -41,24 +54,44 @@ namespace DexCMS.Base.Mvc.Filters
                 area = area == null ? "" : area;
 
                 content = repository.RetrieveAsync(urlSegment, area, category, subCategory).Result;
-                
+
                 if (content == null)
                 {
-                    content = new PageContent
+                    string url = filterContext.HttpContext.Request.RawUrl;
+                    url = url.Length > 0 && url[0] == '/' ? url.Substring(1) : url;
+                    content = repository.RetrieveRedirectAsync(url).Result;
+
+                    if (content == null)
                     {
-                        Heading = urlSegment + " " + category,
-                        PageTitle = urlSegment + " " + category,
-                        PageContentID = -1,
-                        ContentArea = new ContentArea { Name = area },
-                        ContentCategory = new ContentCategory {  Name = category },
-                        ContentSubCategory = new ContentSubCategory { Name = subCategory },
-                        UrlSegment = urlSegment
-                    };
+                        content = new PageContent
+                        {
+                            Heading = urlSegment + " " + category,
+                            PageTitle = urlSegment + " " + category,
+                            PageContentID = -1,
+                            ContentArea = new ContentArea { Name = area },
+                            ContentCategory = new ContentCategory { Name = category },
+                            ContentSubCategory = new ContentSubCategory { Name = subCategory },
+                            UrlSegment = urlSegment
+                        };
+                        SetPageResolution(filterContext, PageResolution.Generated);
+                    }
+                    else
+                    {
+                        SetPageResolution(filterContext, PageResolution.Redirect);
+                    }
+                }
+                else
+                {
+                    SetPageResolution(filterContext, PageResolution.Retrieved);
                 }
 
                 filterContext.Controller.ViewBag.PageContent = content;
             }
-        }//end on result executing
+        }
 
+        private void SetPageResolution(ControllerContext filterContext, PageResolution pageResolution)
+        {
+            filterContext.Controller.ViewBag.PageResolution = PageResolution.Retrieved;
+        }
     }
 }

@@ -135,6 +135,7 @@
     <Compile Include="Controllers\PublicContentController.cs" />
     <Compile Include="Controllers\SitemapController.cs" />
     <Compile Include="Enums\BaseRouteOptions.cs" />
+    <Compile Include="Enums\PageResolution.cs" />
     <Compile Include="Extensions\DropDownListExtensions.cs" />
     <Compile Include="Extensions\EditorForExtensions.cs" />
     <Compile Include="Extensions\HtmlExtensions.cs" />

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using DexCMS.Base.Mvc.Extensions;
 using System;
 using DexCMS.Core.Mvc.Globals;
+using DexCMS.Base.Mvc.Enums;
 
 namespace DexCMS.Base.Mvc.Controllers
 {
@@ -22,90 +23,52 @@ namespace DexCMS.Base.Mvc.Controllers
             throw new ApplicationException("Boom");
         }
 
-        public async Task<ActionResult> RetrieveContent(string urlSegment)
+        public ActionResult RetrieveContent(string urlSegment)
         {
-            PageContent content = repository.RetrieveAsync(urlSegment.ToLower(), "").Result;
-            if (content == null || content.PageType.Name != "Site Content")
-            {
-                content = await CheckForRedirect();
-                if (content != null)
-                {
-                    return RedirectPermanent(UrlBuilder.BuildUrl(content));
-                }
-                else
-                {
-                    return HttpNotFound();
-                }
-            }
-            ViewBag.PageContent = content;
-
-            return View("DisplayContent");
+            return ProcessContent();
+        }
+        
+        public ActionResult Index()
+        {
+            return ProcessContent();
         }
 
-        public async Task<ActionResult> Index()
+        public ActionResult RetrieveContentByCategory(string category, string urlSegment)
         {
-            PageContent content = repository.RetrieveAsync("index", "").Result;
-            if (content == null || content.PageType.Name != "Site Content")
-            {
-                content = await CheckForRedirect();
-                if (content != null)
-                {
-                    return RedirectPermanent(UrlBuilder.BuildUrl(content));
-                }
-                else
-                {
-                    return HttpNotFound();
-                }
-            }
-            ViewBag.PageContent = content;
-
-            return View();
+            return ProcessContent();
         }
 
-        public async Task<ActionResult> RetrieveContentByCategory(string category, string urlSegment)
+        public ActionResult RetrieveContentBySubCategory(string category, string subCategory, string urlSegment)
         {
-            PageContent content = repository.RetrieveAsync(urlSegment.ToLower(), "", category.ToLower()).Result;
-            if (content == null)
-            {
-                content = await CheckForRedirect();
-                if (content != null)
-                {
-                    return RedirectPermanent(UrlBuilder.BuildUrl(content));
-                }
-                else
-                {
-                    return HttpNotFound();
-                }
-            }
-            ViewBag.PageContent = content;
-
-            return View("DisplayContent");
-        }
-        public async Task<ActionResult> RetrieveContentBySubCategory(string category, string subCategory, string urlSegment)
-        {
-            PageContent content = repository.RetrieveAsync(urlSegment.ToLower(), "", category.ToLower(), subCategory.ToLower()).Result;
-            if (content == null)
-            {
-                content = await CheckForRedirect();
-                if (content != null)
-                {
-                    return RedirectPermanent(UrlBuilder.BuildUrl(content));
-                }
-                else
-                {
-                    return HttpNotFound();
-                }
-            }
-            ViewBag.PageContent = content;
-
-            return View("DisplayContent");
+            return ProcessContent();
         }
 
-        private async Task<PageContent> CheckForRedirect()
+        private ActionResult ProcessContent()
         {
-            string url = HttpContext.Request.RawUrl;
-            url = url.Length > 0 && url[0] == '/' ? url.Substring(1) : url;
-            return await repository.RetrieveRedirectAsync(url);
+            PageContent content = GetPageContent();
+            PageResolution pageResolution = GetPageResolution();
+
+            if (pageResolution == PageResolution.Retrieved && content.PageType.Name == "Site Content")
+            {
+                return View("DisplayContent");
+            }
+            else if (pageResolution == PageResolution.Redirect && content.PageType.Name == "Site Content")
+            {
+                return RedirectPermanent(UrlBuilder.BuildUrl(content));
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+        private PageContent GetPageContent()
+        {
+            return (PageContent)ViewBag.PageContent;
+        }
+        private PageResolution GetPageResolution()
+        {
+            return (PageResolution)ViewBag.PageResolution;
         }
     }
 }
