@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using DexCMS.Core.Infrastructure.Models;
+using DexCMS.Core.Infrastructure.Contexts;
 
 namespace DexCMS.Base.Mvc.Extensions
 {
@@ -10,7 +11,7 @@ namespace DexCMS.Base.Mvc.Extensions
 
         public static string GetName(this IIdentity identity)
         {
-            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new DexCMSContext()));
             var currentUser = manager.FindById(identity.GetUserId());
             if (currentUser == null)
             {
@@ -25,7 +26,7 @@ namespace DexCMS.Base.Mvc.Extensions
 
         public static ApplicationUser GetAdditionalInfo(this IIdentity identity)
         {
-            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new DexCMSContext()));
             var currentUser = manager.FindById(identity.GetUserId());
             if (currentUser == null)
             {
