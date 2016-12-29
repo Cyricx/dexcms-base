@@ -12,6 +12,7 @@ namespace DexCMS.Base.Initializers.Helpers
         public int LeftSidebar { get; set; }
         public int RightSidebarOnly { get; set; }
         public int LeftSidebarOnly { get; set; }
+        public int ControlPanel { get; set; }
 
         public ContentsReference(IDexCMSBaseContext Context)
         {
@@ -22,6 +23,7 @@ namespace DexCMS.Base.Initializers.Helpers
             LeftSidebar = Context.PageContents.Where(x => x.PageTitle == "Left Sidebar").Select(x => x.PageContentID).Single();
             RightSidebarOnly = Context.PageContents.Where(x => x.PageTitle == "Right Sidebar Only").Select(x => x.PageContentID).Single();
             LeftSidebarOnly = Context.PageContents.Where(x => x.PageTitle == "Left Sidebar Only").Select(x => x.PageContentID).Single();
+            ControlPanel = Context.PageContents.Where(x => x.PageTitle == "Control Panel").Select(x => x.PageContentID).Single();
         }
     }
 }

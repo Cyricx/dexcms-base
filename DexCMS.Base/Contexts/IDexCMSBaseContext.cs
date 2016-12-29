@@ -18,6 +18,7 @@ namespace DexCMS.Base.Contexts
         DbSet<PageContent> PageContents { get; set; } 
         DbSet<PageContentImage> PageContentImages { get; set; }
         DbSet<PageContentRedirect> PageContentRedirects { get; set; }
+        DbSet<PageContentPermission> PageContentPermissions { get; set; }
         DbSet<PageType> PageTypes { get; set; }
         DbSet<VisitedPage> VisitedPages { get; set; }
     }
