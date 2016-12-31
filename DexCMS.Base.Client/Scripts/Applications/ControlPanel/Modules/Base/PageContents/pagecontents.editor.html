@@ -198,6 +198,28 @@
                     </div>
                 </uib-accordion-group>
             </uib-accordion>
+            <uib-accordion>
+                <uib-accordion-group is-open="showSecurity">
+                    <uib-accordion-heading>
+                        <i class="fa" ng-class="{'fa-chevron-down':showSecurity, 'fa-chevron-right':!showSecurity}"></i>
+                        Show Security
+                    </uib-accordion-heading>
+                    <div class="form-group checkbox-inline">
+                        <label>
+
+                            <input type="checkbox" id="requiresLogin" name="requiresLogin"
+                                   ng-model="currentItem.requiresLogin">
+                            Requires Login?
+                        </label>
+                    </div>
+                    <div class="form-group" ng-hide="!currentItem.requiresLogin">
+                        <label>Limit to specific roles:</label>
+                        <div class="checkbox" ng-repeat="role in roles">
+                            <input type="checkbox" ng-checked="role.isSelected" ng-click="changeRole(currentItem, role)" /> {{role.name}}
+                        </div>
+                    </div>
+                </uib-accordion-group>
+            </uib-accordion>
 
             <div class="well text-danger" ng-if="modelError">
                 <h3>{{modelError.message}}</h3>

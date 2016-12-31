@@ -91,6 +91,23 @@ namespace DexCMS.Base.Repositories
             }
         }
 
+        private void UpdatePageContentPermissions(PageContent item)
+        {
+            _ctx.PageContentPermissions.RemoveRange(_ctx.PageContentPermissions.Where(x => x.PageContentID == item.PageContentID));
+            _ctx.SaveChanges();
+            if (item.RequiresLogin && item.PageContentPermissions.Count > 0)
+            {
+                _ctx.PageContentPermissions.AddRange(item.PageContentPermissions);
+                _ctx.SaveChanges();
+            }
+        }
+
+        public override Task<int> UpdateAsync(PageContent item, int id)
+        {
+            UpdatePageContentPermissions(item);
+            return base.UpdateAsync(item, id);
+        }
+
         public override Task<int> DeleteAsync(PageContent item)
         {
 

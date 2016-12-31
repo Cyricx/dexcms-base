@@ -8,7 +8,8 @@
     '../contentblocks/contentblocks.service',
     '../pagecontentimages/pagecontentimages.service',
     '../pagetypes/pagetypes.service',
-    '../layouttypes/layouttypes.service'
+    '../layouttypes/layouttypes.service',
+    '../../core/roles/roles.service'
 ], function (app) {
     app.controller('pageContentsEditorCtrl', [
         '$scope',
@@ -25,6 +26,7 @@
         'ContentAreas',
         'ContentCategories',
         'ContentSubCategories',
+        'Roles',
         function (
             $scope,
             PageContents,
@@ -39,7 +41,8 @@
             LayoutTypes,
             ContentAreas,
             ContentCategories,
-            ContentSubCategories) {
+            ContentSubCategories,
+            Roles) {
 
             $scope.processing = false;
 
@@ -58,6 +61,7 @@
                     });
                 }
             });
+
             ContentCategories.getList().then(function (response) {
                 $scope.contentCategories = response;
                 if ($location.search().fromcategory) {
@@ -68,6 +72,7 @@
                     });
                 }
             });
+
             ContentSubCategories.getList().then(function (response) {
                 $scope.contentSubCategories = response;
                 if ($location.search().fromcategory) {
@@ -78,9 +83,15 @@
                     });
                 }
             });
+
             LayoutTypes.getList().then(function (response) {
                 $scope.layoutTypes = response;
             });
+            
+            Roles.getList().then(function (data) {
+                $scope.roles = data;
+            });
+
             $scope.hasDragged = false;
             $scope.dragTime = function (event) {
                 $scope.hasDragged = true;
@@ -97,6 +108,15 @@
                 PageContents.getItem(id).then(function (response) {
                     if (response.data.pageTypeID == 1) {
                         $scope.currentItem = response.data;
+
+                        angular.forEach($scope.roles, function (role) {
+                            role.isSelected = false;
+                            angular.forEach($scope.currentItem.pageContentPermissions, function (userRole) {
+                                if (userRole.id === role.id) {
+                                    role.isSelected = true;
+                                }
+                            });
+                        });
                     } else {
                         //! Toast error - invalid page number
                         $state.go('pagecontents');
@@ -107,24 +127,40 @@
                 $scope.currentItem.pageTypeID = 1;
                 $scope.showAdvanced = true;
                 $scope.isDisabled = false;
+                $scope.requiresLogin = false;
             }
 
             $scope.saveAndStay = function (item) {
                 $scope.processing = true;
-                    PageContents.createItem(item).then(function (response) {
-                        $scope.currentItem.pageContentID = response.data.pageContentID;
-                        $scope.processing = false;
-                    });
-            }
+                PageContents.createItem(item).then(function (response) {
+                    $scope.currentItem.pageContentID = response.data.pageContentID;
+                    $scope.processing = false;
+                });
+            };
+
+            $scope.changeRole = function (item, role) {
+                if (role.isSelected) {
+                    for (var i = 0; i < item.pageContentPermissions.length; i++) {
+                        if (item.pageContentPermissions[i].id === role.id) {
+                            item.pageContentPermissions.splice(i, 1);
+                            role.isSelected = false;
+                            return;
+                        }
+                    }
+                } else {
+                    role.isSelected = true;
+                    item.pageContentPermissions.push({id: role.id, pageContentID: item.pageContentID});
+                }
+            };
 
             $scope.save = function (item) {
                 $scope.processing = true;
                 $scope.modelError = null;
-
+                
                 if (item.pageContentID) {
-                    PageContents.updateItem(item.pageContentID, item).success(function (response) {
+                    PageContents.updateItem(item.pageContentID, item).then(function (response) {
                         redirect(item);
-                    }).error(function (err) {
+                    }, function (err) {
                         console.warn('ERROR');
                         console.log(err);
                         $scope.modelError = {
@@ -134,9 +170,9 @@
                         $scope.processing = false;
                     });
                 } else {
-                    PageContents.createItem(item).success(function (response) {
+                    PageContents.createItem(item).then(function (response) {
                         redirect(item);
-                    }).error(function (err) {
+                    }, function (err) {
                         console.warn('ERROR');
                         console.log(err);
                         $scope.modelError = {
@@ -146,7 +182,7 @@
                         $scope.processing = false;
                     });
                 }
-            }
+            };
 
             $scope.savePageContentImageOrder = function (item) {
                 $scope.processing = true;
@@ -167,6 +203,7 @@
                     $scope.processing = false;
                 });
             };
+
             $scope.deletePageContentImage = function ($event, item) {
                 $scope.processing = true;
                 $event.preventDefault();
