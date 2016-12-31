@@ -5,7 +5,7 @@
         '$resource',
         '$http',
         function ($resource, $http) {
-            var baseUrl = '../api/contentBlockOrder';
+            var baseUrl = '../api/contentblockorder';
 
             return {
                 //Update the Record

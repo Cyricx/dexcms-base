@@ -48,11 +48,11 @@ namespace DexCMS.Base.Mvc.Controllers
             PageContent content = GetPageContent();
             PageResolution pageResolution = GetPageResolution();
 
-            if (pageResolution == PageResolution.Retrieved && content.PageType.Name == "Site Content")
+            if (pageResolution == PageResolution.Retrieved && content.PageType != null && content.PageType.Name == "Site Content")
             {
                 return View("DisplayContent");
             }
-            else if (pageResolution == PageResolution.Redirect && content.PageType.Name == "Site Content")
+            else if (pageResolution == PageResolution.Redirect && content.PageType != null && content.PageType.Name == "Site Content")
             {
                 return RedirectPermanent(UrlBuilder.BuildUrl(content));
             }

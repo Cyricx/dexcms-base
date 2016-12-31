@@ -5,7 +5,7 @@
         '$resource',
         '$http',
         function ($resource, $http) {
-            var baseUrl = '../api/pageContentRedirects';
+            var baseUrl = '../api/pagecontentredirects';
 
             return {
                 //Create new record
