@@ -40,7 +40,6 @@ namespace DexCMS.Base.Mvc.Controllers
 
         //
         // GET: /Account/Login
-        [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
@@ -61,7 +60,6 @@ namespace DexCMS.Base.Mvc.Controllers
         //
         // POST: /Account/Login
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
@@ -91,7 +89,6 @@ namespace DexCMS.Base.Mvc.Controllers
 
         //
         // GET: /Account/VerifyCode
-        [AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl)
         {
             // Require that the user has already logged in via username/password or external login
@@ -110,7 +107,6 @@ namespace DexCMS.Base.Mvc.Controllers
         //
         // POST: /Account/VerifyCode
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> VerifyCode(VerifyCodeViewModel model)
         {
@@ -135,7 +131,6 @@ namespace DexCMS.Base.Mvc.Controllers
 
         //
         // GET: /Account/Register
-        // [AllowAnonymous]
         public ActionResult Register(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
@@ -145,7 +140,6 @@ namespace DexCMS.Base.Mvc.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        // [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model, string returnUrl)
         {
@@ -191,7 +185,6 @@ namespace DexCMS.Base.Mvc.Controllers
 
         //
         // GET: /Account/ConfirmEmail
-        [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
             if (userId == null || code == null)
@@ -208,7 +201,6 @@ namespace DexCMS.Base.Mvc.Controllers
 
         //
         // GET: /Account/ResendConfirmation
-        [AllowAnonymous]
         public ActionResult ResendConfirmation()
         {
             return View();
@@ -217,7 +209,6 @@ namespace DexCMS.Base.Mvc.Controllers
         //
         // POST: /Account/ForgotPassword
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ResendConfirmation(ResendViewModel model)
         {
@@ -251,7 +242,6 @@ namespace DexCMS.Base.Mvc.Controllers
 
         //
         // GET: /Account/ForgotPassword
-        [AllowAnonymous]
         public ActionResult ForgotPassword()
         {
             return View();
@@ -260,7 +250,6 @@ namespace DexCMS.Base.Mvc.Controllers
         //
         // POST: /Account/ForgotPassword
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model)
         {
@@ -289,7 +278,6 @@ namespace DexCMS.Base.Mvc.Controllers
 
         //
         // GET: /Account/ForgotPasswordConfirmation
-        [AllowAnonymous]
         public ActionResult ForgotPasswordConfirmation()
         {
             return View();
@@ -297,7 +285,6 @@ namespace DexCMS.Base.Mvc.Controllers
 
         //
         // GET: /Account/ResetPassword
-        [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
             return code == null ? View("Error") : View();
@@ -306,7 +293,6 @@ namespace DexCMS.Base.Mvc.Controllers
         //
         // POST: /Account/ResetPassword
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
         {
@@ -331,7 +317,6 @@ namespace DexCMS.Base.Mvc.Controllers
 
         //
         // GET: /Account/ResetPasswordConfirmation
-        [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
         {
             return View();
@@ -350,7 +335,6 @@ namespace DexCMS.Base.Mvc.Controllers
 
         //
         // GET: /Account/SendCode
-        [AllowAnonymous]
         public async Task<ActionResult> SendCode(string returnUrl)
         {
             var userId = await SignInManager.GetVerifiedUserIdAsync();
@@ -366,7 +350,6 @@ namespace DexCMS.Base.Mvc.Controllers
         //
         // POST: /Account/SendCode
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> SendCode(SendCodeViewModel model)
         {

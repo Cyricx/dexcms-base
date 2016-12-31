@@ -52,7 +52,8 @@ namespace DexCMS.Base.WebApi.Controllers
                 MaximumImages = x.MaximumImages,
                 LayoutTypeID = x.LayoutTypeID,
                 LayoutTypeName = x.LayoutType.Name,
-                IsDisabled = x.IsDisabled
+                IsDisabled = x.IsDisabled,
+                RequiresLogin = x.RequiresLogin
             }).ToList();
 
 			return items;
@@ -68,25 +69,25 @@ namespace DexCMS.Base.WebApi.Controllers
                 return NotFound();
             }
 
-			PageContentApiModel model = new PageContentApiModel()
-			{
-				PageContentID = pageContent.PageContentID,
-				Heading = pageContent.Heading,
-				Body = pageContent.Body,
-				PageTitle = pageContent.PageTitle,
-				MetaKeywords = pageContent.MetaKeywords,
-				MetaDescription = pageContent.MetaDescription,
-				ContentAreaID = pageContent.ContentAreaID,
+            PageContentApiModel model = new PageContentApiModel()
+            {
+                PageContentID = pageContent.PageContentID,
+                Heading = pageContent.Heading,
+                Body = pageContent.Body,
+                PageTitle = pageContent.PageTitle,
+                MetaKeywords = pageContent.MetaKeywords,
+                MetaDescription = pageContent.MetaDescription,
+                ContentAreaID = pageContent.ContentAreaID,
                 ContentCategoryID = pageContent.ContentCategoryID,
                 ContentSubCategoryID = pageContent.ContentSubCategoryID,
                 ContentAreaName = pageContent.ContentArea.Name,
                 ContentCategoryName = pageContent.ContentCategoryID.HasValue ? pageContent.ContentCategory.Name : "",
                 ContentSubCategoryName = pageContent.ContentSubCategoryID.HasValue ? pageContent.ContentSubCategory.Name : "",
                 ChangeFrequency = pageContent.ChangeFrequency,
-				LastModified = pageContent.LastModified,
-				LastModifiedBy = pageContent.LastModifiedBy,
-				Priority = pageContent.Priority,
-				AddToSitemap = pageContent.AddToSitemap,
+                LastModified = pageContent.LastModified,
+                LastModifiedBy = pageContent.LastModifiedBy,
+                Priority = pageContent.Priority,
+                AddToSitemap = pageContent.AddToSitemap,
                 MaximumImages = pageContent.MaximumImages,
                 ContentBlocks = pageContent.ContentBlocks.OrderBy(x => x.DisplayOrder)
                     .Select(x => new ContentBlockInfo
@@ -105,10 +106,16 @@ namespace DexCMS.Base.WebApi.Controllers
                         Thumbnail = x.Image.Thumbnail
                     }).ToList(),
                 LayoutTypeID = pageContent.LayoutTypeID,
-                PageTypeID  = pageContent.PageTypeID,
+                PageTypeID = pageContent.PageTypeID,
                 UrlSegment = pageContent.UrlSegment,
                 LayoutTypeName = pageContent.LayoutTypeID.HasValue ? pageContent.LayoutType.Name : "",
-                IsDisabled = pageContent.IsDisabled
+                IsDisabled = pageContent.IsDisabled,
+                RequiresLogin = pageContent.RequiresLogin,
+                PageContentPermissions = pageContent.PageContentPermissions.Select(x => new PermissionInfo
+                {
+                    Id = x.Id,
+                    PageContentID = x.PageContentID
+                }).ToList()
             };
 
             return Ok(model);

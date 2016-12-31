@@ -54,6 +54,8 @@ namespace DexCMS.Base.Models
 
         public bool IsDisabled { get; set; }
 
+        public bool RequiresLogin { get; set; }
+        
         //Relationships
         public virtual ICollection<PageContentImage> PageContentImages { get; set; }
 
@@ -73,6 +75,8 @@ namespace DexCMS.Base.Models
 
         public int PageTypeID { get; set; }
         public virtual PageType PageType { get; set; }
+
+        public virtual ICollection<PageContentPermission> PageContentPermissions { get; set; }
 
         //Not mapped
         //Will be in the UI

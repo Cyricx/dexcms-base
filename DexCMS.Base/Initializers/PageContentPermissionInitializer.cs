@@ -6,6 +6,7 @@ using System.Linq;
 using DexCMS.Base.Initializers.Helpers;
 using System.Collections.Generic;
 using DexCMS.Core.Infrastructure.Contexts;
+using DexCMS.Core.Infrastructure.Initializers.Helpers;
 
 namespace DexCMS.Base.Initializers
 {
@@ -14,10 +15,10 @@ namespace DexCMS.Base.Initializers
         private ContentsReference Contents { get; set; }
         private RolesReference Roles { get; set; }
 
-        public PageContentPermissionInitializer(IDexCMSBaseContext context, DexCMSContext coreContext) : base(context)
+        public PageContentPermissionInitializer(IDexCMSBaseContext context) : base(context)
         {
             Contents = new ContentsReference(context);
-            Roles = new RolesReference(coreContext);
+            Roles = new RolesReference(context);
         }
 
         public override void Run()

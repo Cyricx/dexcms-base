@@ -142,9 +142,11 @@
     <Compile Include="Extensions\IIdentityExtensions.cs" />
     <Compile Include="Extensions\LabelForExtensions.cs" />
     <Compile Include="Extensions\UrlBuilder.cs" />
+    <Compile Include="Filters\AuthorizePageContent.cs" />
     <Compile Include="Filters\ResolvePageContent.cs" />
     <Compile Include="Filters\SavePageRequest.cs" />
     <Compile Include="Globals\MvcFiltersConfig.cs" />
+    <Compile Include="Helpers\PageContentFactory.cs" />
     <Compile Include="Infrastructure\ISitemapGenerator.cs" />
     <Compile Include="Infrastructure\ISitemapItem.cs" />
     <Compile Include="Infrastructure\SitemapGenerator.cs" />
@@ -209,7 +211,9 @@
     <None Include="Views\Web.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Attributes\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

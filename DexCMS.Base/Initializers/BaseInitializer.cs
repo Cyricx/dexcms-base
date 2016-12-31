@@ -6,10 +6,9 @@ namespace DexCMS.Base.Initializers
 {
     public class BaseInitializer: DexCMSInitializer<IDexCMSBaseContext>
     {
-        public DexCMSContext CoreContext { get; set; }
-        public BaseInitializer(IDexCMSBaseContext context, DexCMSContext coreContext) : base(context)
+        public BaseInitializer(IDexCMSBaseContext context) : base(context)
         {
-            CoreContext = coreContext;
+
         }
 
         public override void Run()
@@ -22,7 +21,7 @@ namespace DexCMS.Base.Initializers
             (new PageContentInitializer(Context)).Run();
             (new ContentBlockInitializer(Context)).Run();
             (new PageContentImageInitializer(Context)).Run();
-            (new PageContentPermissionInitializer(Context, CoreContext)).Run();
+            (new PageContentPermissionInitializer(Context)).Run();
         }
     }
 }

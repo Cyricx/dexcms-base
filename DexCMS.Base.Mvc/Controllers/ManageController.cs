@@ -12,7 +12,6 @@ using DexCMS.Core.Mvc.Globals;
 
 namespace DexCMS.Base.Mvc.Controllers
 {
-    [Authorize]
     public class ManageController : DexCMSController
     {
         public ManageController()

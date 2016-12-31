@@ -1,10 +1,10 @@
 ﻿using DexCMS.Base.Interfaces;
+using DexCMS.Base.Mvc.Filters;
 using DexCMS.Core.Mvc.Globals;
 using System.Web.Mvc;
 
 namespace DexCMS.Base.Mvc.Controllers.ControlPanel
 {
-    [Authorize(Roles = "Admin")]
     public class ControlPanelController : DexCMSController
     {
         private IPageContentRepository repository;

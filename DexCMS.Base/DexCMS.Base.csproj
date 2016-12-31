@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contexts\IDexCMSBaseContext.cs"/>
+    <Compile Include="HelperModels\RoutePageRequest.cs"/>
     <Compile Include="Initializers\Helpers\AreasReference.cs"/>
     <Compile Include="Initializers\Helpers\CategoriesReference.cs"/>
     <Compile Include="Initializers\Helpers\ContentsReference.cs"/>
@@ -67,7 +68,9 @@
     <Compile Include="Initializers\PageContentImageInitializer.cs"/>
     <Compile Include="Initializers\ContentBlockInitializer.cs"/>
     <Compile Include="Initializers\LayoutTypeInitializer.cs"/>
+    <Compile Include="Initializers\PageContentPermissionInitializer.cs"/>
     <Compile Include="Interfaces\IPageContentRedirectRepository.cs"/>
+    <Compile Include="Models\PageContentPermission.cs"/>
     <Compile Include="Models\PageContentRedirect.cs"/>
     <Compile Include="Repositories\ContactRepository.cs"/>
     <Compile Include="Repositories\ContactTypeRepository.cs"/>

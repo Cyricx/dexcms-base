@@ -81,7 +81,7 @@ namespace DexCMS.Base.Mvc
             context.MapRoute(
                 "ControlPanel_default",
                 "ControlPanel/{*routes}",
-                new { action = "Index", controller = "ControlPanel", area = "ControlPanel" }, 
+                new { action = "Index", controller = "ControlPanel", area = "ControlPanel", category="none" }, 
                 ControlPanelNamespaces
             );
         }

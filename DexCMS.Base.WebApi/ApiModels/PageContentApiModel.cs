@@ -51,7 +51,8 @@ namespace DexCMS.Base.WebApi.ApiModels
         public List<ContentBlockInfo> ContentBlocks { get; set; }
         public List<PageContentImageInfo> PageContentImages { get; set; }
         public bool IsDisabled { get; set; }
-
+        public bool RequiresLogin { get; set; }
+        public List<PermissionInfo> PageContentPermissions { get; set; }
     }
     public class ContentBlockInfo
     {
@@ -68,4 +69,11 @@ namespace DexCMS.Base.WebApi.ApiModels
         public string Thumbnail { get; set; }
         public int DisplayOrder { get; set; }
     }
+
+    public class PermissionInfo
+    {
+        public int PageContentID { get; set; }
+        public string Id { get; set; }
+    }
+
 }

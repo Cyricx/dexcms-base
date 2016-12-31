@@ -42,7 +42,8 @@ namespace DexCMS.Base.Initializers
                     UrlSegment = "confirmemail",
                     PageTypeID = Types.SiteContent,
                     LayoutTypeID = LayoutTypes.OneColumn,
-                    IsDisabled = false
+                    IsDisabled = false,
+                    RequiresLogin = false
                 },
                 new PageContent
                 {
@@ -57,7 +58,8 @@ namespace DexCMS.Base.Initializers
                     UrlSegment = "forgotpasswordconfirmation",
                     PageTypeID = Types.SiteContent,
                     LayoutTypeID = LayoutTypes.OneColumn,
-                    IsDisabled = false
+                    IsDisabled = false,
+                    RequiresLogin = false
                 },
                 new PageContent
                 {
@@ -71,7 +73,8 @@ namespace DexCMS.Base.Initializers
                     UrlSegment = "manage",
                     PageTypeID = Types.SiteContent,
                     LayoutTypeID = LayoutTypes.OneColumn,
-                    IsDisabled = false
+                    IsDisabled = false,
+                    RequiresLogin = true
                 },
                 new PageContent
                 {
@@ -85,7 +88,8 @@ namespace DexCMS.Base.Initializers
                     UrlSegment = "changeinfo",
                     PageTypeID = Types.SiteContent,
                     LayoutTypeID = LayoutTypes.OneColumn,
-                    IsDisabled = false
+                    IsDisabled = false,
+                    RequiresLogin = true
                 },
                 new PageContent
                 {
@@ -99,7 +103,8 @@ namespace DexCMS.Base.Initializers
                     UrlSegment = "changepassword",
                     PageTypeID = Types.SiteContent,
                     LayoutTypeID = LayoutTypes.OneColumn,
-                    IsDisabled = false
+                    IsDisabled = false,
+                    RequiresLogin = true
                 },
                 new PageContent
                 {
@@ -114,7 +119,8 @@ namespace DexCMS.Base.Initializers
                     UrlSegment = "contact",
                     PageTypeID = Types.SiteContent,
                     LayoutTypeID = LayoutTypes.OneColumn,
-                    IsDisabled = false
+                    IsDisabled = false,
+                    RequiresLogin = false
                 },
                 new PageContent
                 {
@@ -129,7 +135,8 @@ namespace DexCMS.Base.Initializers
                     UrlSegment = "success",
                     PageTypeID = Types.SiteContent,
                     LayoutTypeID = LayoutTypes.OneColumn,
-                    IsDisabled = false
+                    IsDisabled = false,
+                    RequiresLogin = false
                 },
                 new PageContent
                 {
@@ -144,7 +151,8 @@ namespace DexCMS.Base.Initializers
                     UrlSegment = "login",
                     PageTypeID = Types.SiteContent,
                     LayoutTypeID = LayoutTypes.OneColumn,
-                    IsDisabled = false
+                    IsDisabled = false,
+                    RequiresLogin = false
                 },
                 new PageContent
                 {
@@ -162,7 +170,8 @@ namespace DexCMS.Base.Initializers
                     UrlSegment = "forgotpassword",
                     PageTypeID = Types.SiteContent,
                     LayoutTypeID = LayoutTypes.OneColumn,
-                    IsDisabled = false
+                    IsDisabled = false,
+                    RequiresLogin = false
                 },
                 new PageContent
                 {
@@ -177,7 +186,8 @@ namespace DexCMS.Base.Initializers
                     UrlSegment = "register",
                     PageTypeID = Types.SiteContent,
                     LayoutTypeID = LayoutTypes.OneColumn,
-                    IsDisabled = false
+                    IsDisabled = false,
+                    RequiresLogin = false
                 },
                 new PageContent
                 {
@@ -192,7 +202,8 @@ namespace DexCMS.Base.Initializers
                     UrlSegment = "resetpassword",
                     PageTypeID = Types.SiteContent,
                     LayoutTypeID = LayoutTypes.OneColumn,
-                    IsDisabled = false
+                    IsDisabled = false,
+                    RequiresLogin = false
                 },
                 new PageContent
                 {
@@ -207,7 +218,8 @@ namespace DexCMS.Base.Initializers
                     UrlSegment = "resetpasswordconfirmation",
                     PageTypeID = Types.SiteContent,
                     LayoutTypeID = LayoutTypes.OneColumn,
-                    IsDisabled = false
+                    IsDisabled = false,
+                    RequiresLogin = false
                 },
                 new PageContent
                 {
@@ -221,7 +233,8 @@ namespace DexCMS.Base.Initializers
                     UrlSegment = "resendconfirmation",
                     PageTypeID = Types.SiteContent,
                     LayoutTypeID = LayoutTypes.OneColumn,
-                    IsDisabled = false
+                    IsDisabled = false,
+                    RequiresLogin = false
                 },
                 new PageContent
                 {
@@ -237,7 +250,8 @@ namespace DexCMS.Base.Initializers
 <p>Eat owner's food have secret plans. Steal the warm chair right after you get up pushes butt to face. Damn that dog my left donut is missing, as is my right so hiss at vacuum cleaner gnaw the corn cob wake up wander around the house making large amounts of noise jump on top of your human's bed and fall asleep again when in doubt, wash. Kitty loves pigs leave dead animals as gifts claws in your leg so kitty loves pigs yet put butt in owner's face soft kitty warm kitty little ball of furr cat snacks. Attack dog, run away and pretend to be victim cats go for world domination. Eat prawns daintily with a claw then lick paws clean wash down prawns with a lap of carnation milk then retire to the warmest spot on the couch to claw at the fabric before taking a catnap chase dog then run away and plan steps for world domination russian blue yet my slave human didn't give me any food so i pooped on the floor. Lies down chew foot, but plan steps for world domination and scratch leg; meow for can opener to feed me but meow meow, i tell my human. Catch mouse and gave it as a present flop over rub whiskers on bare skin act innocent for purr while eating yet climb a tree, wait for a fireman jump to fireman then scratch his face, and damn that dog or sit in box. </p>
 <p>Human give me attention meow. Chase the pig around the house mrow chew on cable, but ignore the squirrels, you'll never catch them anyway where is my slave? I'm getting hungry, but get video posted to internet for chasing red dot. Destroy couch meow all night having their mate disturbing sleeping humans. Intrigued by the shower pee in human's bed until he cleans the litter box. Soft kitty warm kitty little ball of furr sleep on dog bed, force dog to sleep on floor human is washing you why halp oh the horror flee scratch hiss bite and hiss at vacuum cleaner, so cats making all the muffins. Gnaw the corn cob. Meow run in circles kitty scratches couch bad kitty sleep nap. Spread kitty litter all over house put butt in owner's face. Climb a tree, wait for a fireman jump to fireman then scratch his face pee in the shoe chase imaginary bugs kitty loves pigs. Curl up and sleep on the freshly laundered towels curl up and sleep on the freshly laundered towels yet sleep on keyboard hide head under blanket so no one can see and lounge in doorway love to play with owner's hair tie. </p>",
                     LayoutTypeID = LayoutTypes.OneColumn,
-                    IsDisabled = false
+                    IsDisabled = false,
+                    RequiresLogin = false
                 },
                 new PageContent
                 {
@@ -249,7 +263,8 @@ namespace DexCMS.Base.Initializers
                     ContentAreaID = Areas.ControlPanel,
                     UrlSegment = "index",
                     PageTypeID = Types.SiteContent,
-                    IsDisabled = false
+                    IsDisabled = false,
+                    RequiresLogin = true
                 },
                 new PageContent
                 {
@@ -265,7 +280,8 @@ namespace DexCMS.Base.Initializers
 <p>Eat owner's food have secret plans. Steal the warm chair right after you get up pushes butt to face. Damn that dog my left donut is missing, as is my right so hiss at vacuum cleaner gnaw the corn cob wake up wander around the house making large amounts of noise jump on top of your human's bed and fall asleep again when in doubt, wash. Kitty loves pigs leave dead animals as gifts claws in your leg so kitty loves pigs yet put butt in owner's face soft kitty warm kitty little ball of furr cat snacks. Attack dog, run away and pretend to be victim cats go for world domination. Eat prawns daintily with a claw then lick paws clean wash down prawns with a lap of carnation milk then retire to the warmest spot on the couch to claw at the fabric before taking a catnap chase dog then run away and plan steps for world domination russian blue yet my slave human didn't give me any food so i pooped on the floor. Lies down chew foot, but plan steps for world domination and scratch leg; meow for can opener to feed me but meow meow, i tell my human. Catch mouse and gave it as a present flop over rub whiskers on bare skin act innocent for purr while eating yet climb a tree, wait for a fireman jump to fireman then scratch his face, and damn that dog or sit in box. </p>
 <p>Human give me attention meow. Chase the pig around the house mrow chew on cable, but ignore the squirrels, you'll never catch them anyway where is my slave? I'm getting hungry, but get video posted to internet for chasing red dot. Destroy couch meow all night having their mate disturbing sleeping humans. Intrigued by the shower pee in human's bed until he cleans the litter box. Soft kitty warm kitty little ball of furr sleep on dog bed, force dog to sleep on floor human is washing you why halp oh the horror flee scratch hiss bite and hiss at vacuum cleaner, so cats making all the muffins. Gnaw the corn cob. Meow run in circles kitty scratches couch bad kitty sleep nap. Spread kitty litter all over house put butt in owner's face. Climb a tree, wait for a fireman jump to fireman then scratch his face pee in the shoe chase imaginary bugs kitty loves pigs. Curl up and sleep on the freshly laundered towels curl up and sleep on the freshly laundered towels yet sleep on keyboard hide head under blanket so no one can see and lounge in doorway love to play with owner's hair tie. </p>",
                     LayoutTypeID = LayoutTypes.OneColumn,
-                    IsDisabled = false
+                    IsDisabled = false,
+                    RequiresLogin = false
                 },
                 new PageContent
                 {
@@ -281,7 +297,8 @@ namespace DexCMS.Base.Initializers
 <p>Eat owner's food have secret plans. Steal the warm chair right after you get up pushes butt to face. Damn that dog my left donut is missing, as is my right so hiss at vacuum cleaner gnaw the corn cob wake up wander around the house making large amounts of noise jump on top of your human's bed and fall asleep again when in doubt, wash. Kitty loves pigs leave dead animals as gifts claws in your leg so kitty loves pigs yet put butt in owner's face soft kitty warm kitty little ball of furr cat snacks. Attack dog, run away and pretend to be victim cats go for world domination. Eat prawns daintily with a claw then lick paws clean wash down prawns with a lap of carnation milk then retire to the warmest spot on the couch to claw at the fabric before taking a catnap chase dog then run away and plan steps for world domination russian blue yet my slave human didn't give me any food so i pooped on the floor. Lies down chew foot, but plan steps for world domination and scratch leg; meow for can opener to feed me but meow meow, i tell my human. Catch mouse and gave it as a present flop over rub whiskers on bare skin act innocent for purr while eating yet climb a tree, wait for a fireman jump to fireman then scratch his face, and damn that dog or sit in box. </p>
 <p>Human give me attention meow. Chase the pig around the house mrow chew on cable, but ignore the squirrels, you'll never catch them anyway where is my slave? I'm getting hungry, but get video posted to internet for chasing red dot. Destroy couch meow all night having their mate disturbing sleeping humans. Intrigued by the shower pee in human's bed until he cleans the litter box. Soft kitty warm kitty little ball of furr sleep on dog bed, force dog to sleep on floor human is washing you why halp oh the horror flee scratch hiss bite and hiss at vacuum cleaner, so cats making all the muffins. Gnaw the corn cob. Meow run in circles kitty scratches couch bad kitty sleep nap. Spread kitty litter all over house put butt in owner's face. Climb a tree, wait for a fireman jump to fireman then scratch his face pee in the shoe chase imaginary bugs kitty loves pigs. Curl up and sleep on the freshly laundered towels curl up and sleep on the freshly laundered towels yet sleep on keyboard hide head under blanket so no one can see and lounge in doorway love to play with owner's hair tie. </p>",
                     LayoutTypeID = LayoutTypes.TwoColumn,
-                    IsDisabled = false
+                    IsDisabled = false,
+                    RequiresLogin = false
                 },
                 new PageContent
                 {
@@ -297,7 +314,8 @@ namespace DexCMS.Base.Initializers
 <p>Eat owner's food have secret plans. Steal the warm chair right after you get up pushes butt to face. Damn that dog my left donut is missing, as is my right so hiss at vacuum cleaner gnaw the corn cob wake up wander around the house making large amounts of noise jump on top of your human's bed and fall asleep again when in doubt, wash. Kitty loves pigs leave dead animals as gifts claws in your leg so kitty loves pigs yet put butt in owner's face soft kitty warm kitty little ball of furr cat snacks. Attack dog, run away and pretend to be victim cats go for world domination. Eat prawns daintily with a claw then lick paws clean wash down prawns with a lap of carnation milk then retire to the warmest spot on the couch to claw at the fabric before taking a catnap chase dog then run away and plan steps for world domination russian blue yet my slave human didn't give me any food so i pooped on the floor. Lies down chew foot, but plan steps for world domination and scratch leg; meow for can opener to feed me but meow meow, i tell my human. Catch mouse and gave it as a present flop over rub whiskers on bare skin act innocent for purr while eating yet climb a tree, wait for a fireman jump to fireman then scratch his face, and damn that dog or sit in box. </p>
 <p>Human give me attention meow. Chase the pig around the house mrow chew on cable, but ignore the squirrels, you'll never catch them anyway where is my slave? I'm getting hungry, but get video posted to internet for chasing red dot. Destroy couch meow all night having their mate disturbing sleeping humans. Intrigued by the shower pee in human's bed until he cleans the litter box. Soft kitty warm kitty little ball of furr sleep on dog bed, force dog to sleep on floor human is washing you why halp oh the horror flee scratch hiss bite and hiss at vacuum cleaner, so cats making all the muffins. Gnaw the corn cob. Meow run in circles kitty scratches couch bad kitty sleep nap. Spread kitty litter all over house put butt in owner's face. Climb a tree, wait for a fireman jump to fireman then scratch his face pee in the shoe chase imaginary bugs kitty loves pigs. Curl up and sleep on the freshly laundered towels curl up and sleep on the freshly laundered towels yet sleep on keyboard hide head under blanket so no one can see and lounge in doorway love to play with owner's hair tie. </p>",
                     LayoutTypeID = LayoutTypes.ThreeColumn,
-                    IsDisabled = false
+                    IsDisabled = false,
+                    RequiresLogin = false
                 },
                 new PageContent
                 {
@@ -313,7 +331,8 @@ namespace DexCMS.Base.Initializers
 <p>Eat owner's food have secret plans. Steal the warm chair right after you get up pushes butt to face. Damn that dog my left donut is missing, as is my right so hiss at vacuum cleaner gnaw the corn cob wake up wander around the house making large amounts of noise jump on top of your human's bed and fall asleep again when in doubt, wash. Kitty loves pigs leave dead animals as gifts claws in your leg so kitty loves pigs yet put butt in owner's face soft kitty warm kitty little ball of furr cat snacks. Attack dog, run away and pretend to be victim cats go for world domination. Eat prawns daintily with a claw then lick paws clean wash down prawns with a lap of carnation milk then retire to the warmest spot on the couch to claw at the fabric before taking a catnap chase dog then run away and plan steps for world domination russian blue yet my slave human didn't give me any food so i pooped on the floor. Lies down chew foot, but plan steps for world domination and scratch leg; meow for can opener to feed me but meow meow, i tell my human. Catch mouse and gave it as a present flop over rub whiskers on bare skin act innocent for purr while eating yet climb a tree, wait for a fireman jump to fireman then scratch his face, and damn that dog or sit in box. </p>
 <p>Human give me attention meow. Chase the pig around the house mrow chew on cable, but ignore the squirrels, you'll never catch them anyway where is my slave? I'm getting hungry, but get video posted to internet for chasing red dot. Destroy couch meow all night having their mate disturbing sleeping humans. Intrigued by the shower pee in human's bed until he cleans the litter box. Soft kitty warm kitty little ball of furr sleep on dog bed, force dog to sleep on floor human is washing you why halp oh the horror flee scratch hiss bite and hiss at vacuum cleaner, so cats making all the muffins. Gnaw the corn cob. Meow run in circles kitty scratches couch bad kitty sleep nap. Spread kitty litter all over house put butt in owner's face. Climb a tree, wait for a fireman jump to fireman then scratch his face pee in the shoe chase imaginary bugs kitty loves pigs. Curl up and sleep on the freshly laundered towels curl up and sleep on the freshly laundered towels yet sleep on keyboard hide head under blanket so no one can see and lounge in doorway love to play with owner's hair tie. </p>",
                     LayoutTypeID = LayoutTypes.RightSidebar,
-                    IsDisabled = false
+                    IsDisabled = false,
+                    RequiresLogin = false
                 },
                 new PageContent
                 {
@@ -329,7 +348,8 @@ namespace DexCMS.Base.Initializers
 <p>Eat owner's food have secret plans. Steal the warm chair right after you get up pushes butt to face. Damn that dog my left donut is missing, as is my right so hiss at vacuum cleaner gnaw the corn cob wake up wander around the house making large amounts of noise jump on top of your human's bed and fall asleep again when in doubt, wash. Kitty loves pigs leave dead animals as gifts claws in your leg so kitty loves pigs yet put butt in owner's face soft kitty warm kitty little ball of furr cat snacks. Attack dog, run away and pretend to be victim cats go for world domination. Eat prawns daintily with a claw then lick paws clean wash down prawns with a lap of carnation milk then retire to the warmest spot on the couch to claw at the fabric before taking a catnap chase dog then run away and plan steps for world domination russian blue yet my slave human didn't give me any food so i pooped on the floor. Lies down chew foot, but plan steps for world domination and scratch leg; meow for can opener to feed me but meow meow, i tell my human. Catch mouse and gave it as a present flop over rub whiskers on bare skin act innocent for purr while eating yet climb a tree, wait for a fireman jump to fireman then scratch his face, and damn that dog or sit in box. </p>
 <p>Human give me attention meow. Chase the pig around the house mrow chew on cable, but ignore the squirrels, you'll never catch them anyway where is my slave? I'm getting hungry, but get video posted to internet for chasing red dot. Destroy couch meow all night having their mate disturbing sleeping humans. Intrigued by the shower pee in human's bed until he cleans the litter box. Soft kitty warm kitty little ball of furr sleep on dog bed, force dog to sleep on floor human is washing you why halp oh the horror flee scratch hiss bite and hiss at vacuum cleaner, so cats making all the muffins. Gnaw the corn cob. Meow run in circles kitty scratches couch bad kitty sleep nap. Spread kitty litter all over house put butt in owner's face. Climb a tree, wait for a fireman jump to fireman then scratch his face pee in the shoe chase imaginary bugs kitty loves pigs. Curl up and sleep on the freshly laundered towels curl up and sleep on the freshly laundered towels yet sleep on keyboard hide head under blanket so no one can see and lounge in doorway love to play with owner's hair tie. </p>",
                     LayoutTypeID = LayoutTypes.LeftSidebar,
-                    IsDisabled = false
+                    IsDisabled = false,
+                    RequiresLogin = false
                 },
                 new PageContent
                 {
@@ -345,7 +365,8 @@ namespace DexCMS.Base.Initializers
 <p>Eat owner's food have secret plans. Steal the warm chair right after you get up pushes butt to face. Damn that dog my left donut is missing, as is my right so hiss at vacuum cleaner gnaw the corn cob wake up wander around the house making large amounts of noise jump on top of your human's bed and fall asleep again when in doubt, wash. Kitty loves pigs leave dead animals as gifts claws in your leg so kitty loves pigs yet put butt in owner's face soft kitty warm kitty little ball of furr cat snacks. Attack dog, run away and pretend to be victim cats go for world domination. Eat prawns daintily with a claw then lick paws clean wash down prawns with a lap of carnation milk then retire to the warmest spot on the couch to claw at the fabric before taking a catnap chase dog then run away and plan steps for world domination russian blue yet my slave human didn't give me any food so i pooped on the floor. Lies down chew foot, but plan steps for world domination and scratch leg; meow for can opener to feed me but meow meow, i tell my human. Catch mouse and gave it as a present flop over rub whiskers on bare skin act innocent for purr while eating yet climb a tree, wait for a fireman jump to fireman then scratch his face, and damn that dog or sit in box. </p>
 <p>Human give me attention meow. Chase the pig around the house mrow chew on cable, but ignore the squirrels, you'll never catch them anyway where is my slave? I'm getting hungry, but get video posted to internet for chasing red dot. Destroy couch meow all night having their mate disturbing sleeping humans. Intrigued by the shower pee in human's bed until he cleans the litter box. Soft kitty warm kitty little ball of furr sleep on dog bed, force dog to sleep on floor human is washing you why halp oh the horror flee scratch hiss bite and hiss at vacuum cleaner, so cats making all the muffins. Gnaw the corn cob. Meow run in circles kitty scratches couch bad kitty sleep nap. Spread kitty litter all over house put butt in owner's face. Climb a tree, wait for a fireman jump to fireman then scratch his face pee in the shoe chase imaginary bugs kitty loves pigs. Curl up and sleep on the freshly laundered towels curl up and sleep on the freshly laundered towels yet sleep on keyboard hide head under blanket so no one can see and lounge in doorway love to play with owner's hair tie. </p>",
                     LayoutTypeID = LayoutTypes.RightSidebarOnly,
-                    IsDisabled = false
+                    IsDisabled = false,
+                    RequiresLogin = false
                 },
                 new PageContent
                 {
@@ -361,7 +382,8 @@ namespace DexCMS.Base.Initializers
 <p>Eat owner's food have secret plans. Steal the warm chair right after you get up pushes butt to face. Damn that dog my left donut is missing, as is my right so hiss at vacuum cleaner gnaw the corn cob wake up wander around the house making large amounts of noise jump on top of your human's bed and fall asleep again when in doubt, wash. Kitty loves pigs leave dead animals as gifts claws in your leg so kitty loves pigs yet put butt in owner's face soft kitty warm kitty little ball of furr cat snacks. Attack dog, run away and pretend to be victim cats go for world domination. Eat prawns daintily with a claw then lick paws clean wash down prawns with a lap of carnation milk then retire to the warmest spot on the couch to claw at the fabric before taking a catnap chase dog then run away and plan steps for world domination russian blue yet my slave human didn't give me any food so i pooped on the floor. Lies down chew foot, but plan steps for world domination and scratch leg; meow for can opener to feed me but meow meow, i tell my human. Catch mouse and gave it as a present flop over rub whiskers on bare skin act innocent for purr while eating yet climb a tree, wait for a fireman jump to fireman then scratch his face, and damn that dog or sit in box. </p>
 <p>Human give me attention meow. Chase the pig around the house mrow chew on cable, but ignore the squirrels, you'll never catch them anyway where is my slave? I'm getting hungry, but get video posted to internet for chasing red dot. Destroy couch meow all night having their mate disturbing sleeping humans. Intrigued by the shower pee in human's bed until he cleans the litter box. Soft kitty warm kitty little ball of furr sleep on dog bed, force dog to sleep on floor human is washing you why halp oh the horror flee scratch hiss bite and hiss at vacuum cleaner, so cats making all the muffins. Gnaw the corn cob. Meow run in circles kitty scratches couch bad kitty sleep nap. Spread kitty litter all over house put butt in owner's face. Climb a tree, wait for a fireman jump to fireman then scratch his face pee in the shoe chase imaginary bugs kitty loves pigs. Curl up and sleep on the freshly laundered towels curl up and sleep on the freshly laundered towels yet sleep on keyboard hide head under blanket so no one can see and lounge in doorway love to play with owner's hair tie. </p>",
                     LayoutTypeID = LayoutTypes.LeftSidebarOnly,
-                    IsDisabled = false
+                    IsDisabled = false,
+                    RequiresLogin = false
                 },
                 new PageContent
                 {
@@ -375,7 +397,8 @@ namespace DexCMS.Base.Initializers
                     PageTypeID = Types.SiteContent,
                     Body = @"<p>We apologize, an error has occured. We are looking into the issue and will work on a resolution.</p>",
                     LayoutTypeID = LayoutTypes.OneColumn,
-                    IsDisabled = false
+                    IsDisabled = false,
+                    RequiresLogin = false
                 },
                 new PageContent
                 {
@@ -389,7 +412,8 @@ namespace DexCMS.Base.Initializers
                     PageTypeID = Types.SiteContent,
                     Body = @"<p>The page you are looking for does not exist. Please use the menu to navigate the website.</p>",
                     LayoutTypeID = LayoutTypes.OneColumn,
-                    IsDisabled = false
+                    IsDisabled = false,
+                    RequiresLogin = false
                 }
             );
             Context.SaveChanges();

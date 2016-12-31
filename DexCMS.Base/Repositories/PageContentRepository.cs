@@ -7,6 +7,7 @@ using DexCMS.Base.Interfaces;
 using DexCMS.Core.Infrastructure.Contexts;
 using DexCMS.Core.Infrastructure.Repositories;
 using System;
+using DexCMS.Base.HelperModels;
 
 namespace DexCMS.Base.Repositories
 {
@@ -22,6 +23,11 @@ namespace DexCMS.Base.Repositories
         public PageContentRepository(IDexCMSBaseContext ctx)
         {
             _ctx = ctx;
+        }
+
+        public Task<PageContent> RetrieveAsync(RoutePageRequest routeRequest)
+        {
+            return RetrieveAsync(routeRequest.UrlSegment, routeRequest.Area, routeRequest.Category, routeRequest.SubCategory);
         }
 
         public Task<PageContent> RetrieveAsync(string urlSegment, string contentArea, string contentCategory = "", string contentSubCategory = "")
@@ -110,6 +116,11 @@ namespace DexCMS.Base.Repositories
             if (item.PageContentImages.Count > 0)
             {
                 _ctx.PageContentImages.RemoveRange(item.PageContentImages);
+            }
+
+            if (item.PageContentPermissions.Count > 0)
+            {
+                _ctx.PageContentPermissions.RemoveRange(item.PageContentPermissions);
             }
 
             return base.DeleteAsync(item);
