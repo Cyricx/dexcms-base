@@ -31,8 +31,8 @@
                 <!-- bool -->
                 <div ng-switch-when="Bool" class="checkbox">
                     <label>
-                        <input type="checkbox" id="value" name="value"
-                               ng-model="currentItem.value">
+                        <input type="checkbox" id="value" name="value" ng-changed="flipValue(currentItem)" ng-checked="currentItem.value === 'true'"
+                               >
                     </label>
                 </div>
                 <!-- html -->

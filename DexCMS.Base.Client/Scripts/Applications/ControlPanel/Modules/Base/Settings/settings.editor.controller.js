@@ -53,6 +53,14 @@ define([
             SettingGroups.getList().then(function (response) {
                 $scope.settingGroups = response;
             });
+            
+            $scope.flipValue = function (currentItem) {
+                if (currentItem.value === 'true') {
+                    currentItem.value = 'false';
+                } else {
+                    currentItem.value = 'true';
+                }
+            }
 
             $scope.setDataTypeName = function (item) {
                 if (item.settingDataTypeID) {

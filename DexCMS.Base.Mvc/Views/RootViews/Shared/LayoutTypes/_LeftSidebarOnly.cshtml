@@ -1,7 +1,7 @@
 ﻿@{
     DexCMS.Base.Models.PageContent pageContent = ViewBag.PageContent;
     Layout = System.Web.Configuration.WebConfigurationManager.AppSettings["PublicLayoutPath"];
-    var contentCssClass = "content " + pageContent.Heading.ToLower().Replace(" ", "-");
+    var contentCssClass = "content " + pageContent.PageTitle.ToLower().Replace(" ", "-");
 }
 
 @section head {

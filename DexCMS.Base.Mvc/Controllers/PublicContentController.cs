@@ -30,7 +30,7 @@ namespace DexCMS.Base.Mvc.Controllers
         
         public ActionResult Index()
         {
-            return ProcessContent();
+            return ProcessContent("Index");
         }
 
         public ActionResult RetrieveContentByCategory(string category, string urlSegment)
@@ -43,14 +43,14 @@ namespace DexCMS.Base.Mvc.Controllers
             return ProcessContent();
         }
 
-        private ActionResult ProcessContent()
+        private ActionResult ProcessContent(string viewFile = "DisplayContent")
         {
             PageContent content = GetPageContent();
             PageResolution pageResolution = GetPageResolution();
 
             if (pageResolution == PageResolution.Retrieved && content.PageType != null && content.PageType.Name == "Site Content")
             {
-                return View("DisplayContent");
+                return View(viewFile);
             }
             else if (pageResolution == PageResolution.Redirect && content.PageType != null && content.PageType.Name == "Site Content")
             {
