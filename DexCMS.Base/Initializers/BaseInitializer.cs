@@ -1,5 +1,4 @@
 ﻿using DexCMS.Base.Contexts;
-using DexCMS.Core.Infrastructure.Contexts;
 using DexCMS.Core.Infrastructure.Globals;
 
 namespace DexCMS.Base.Initializers
