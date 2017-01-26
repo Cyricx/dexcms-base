@@ -16,6 +16,10 @@ aggregation of shared code across several small websites. Soon it will be awesom
 * Before submitting a pull request, be sure you have installed the node packages and build the project in Release.
     * This includes the compiled dll into a /dist/ folder that consuming applications can use if I cut a new version off of your pull request.
 
+## 0.5.2-alpha
+* Client
+** Fixed copy path link in control panel
+
 ## 0.5.1-alpha
 * Client
 ** Fixed saving bool value settings
