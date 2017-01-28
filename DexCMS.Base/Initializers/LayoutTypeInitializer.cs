@@ -11,18 +11,21 @@ namespace DexCMS.Base.Initializers
         {
         }
 
-        public override void Run()
+        public override void Run(bool addDemoContent = true)
         {
-            Context.LayoutTypes.AddIfNotExists(x => x.Name,
-                new LayoutType { Name = "One Column", CssClass="one-column-layout" },
-                new LayoutType { Name = "Two Column", CssClass = "two-column-layout" },
-                new LayoutType { Name = "Three Column", CssClass = "three-column-layout" },
-                new LayoutType { Name = "Right Sidebar with Content", CssClass = "right-sidebar-layout" },
-                new LayoutType { Name = "Left Sidebar with Content", CssClass = "left-sidebar-layout" },
-                new LayoutType { Name = "Right Sidebar Only", CssClass = "right-sidebar-only-layout" },
-                new LayoutType { Name = "Left Sidebar Only", CssClass = "left-sidebar-only-layout" }
-            );
-            Context.SaveChanges();
+            if (addDemoContent)
+            {
+                Context.LayoutTypes.AddIfNotExists(x => x.Name,
+                    new LayoutType { Name = "One Column", CssClass = "one-column-layout" },
+                    new LayoutType { Name = "Two Column", CssClass = "two-column-layout" },
+                    new LayoutType { Name = "Three Column", CssClass = "three-column-layout" },
+                    new LayoutType { Name = "Right Sidebar with Content", CssClass = "right-sidebar-layout" },
+                    new LayoutType { Name = "Left Sidebar with Content", CssClass = "left-sidebar-layout" },
+                    new LayoutType { Name = "Right Sidebar Only", CssClass = "right-sidebar-only-layout" },
+                    new LayoutType { Name = "Left Sidebar Only", CssClass = "left-sidebar-only-layout" }
+                );
+                Context.SaveChanges();
+            }
         }
     }
 }

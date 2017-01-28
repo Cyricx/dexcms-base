@@ -18,24 +18,27 @@ namespace DexCMS.Base.Initializers
             Contents = new ContentsReference(context);
         }
 
-        public override void Run()
+        public override void Run(bool addDemoContent = true)
         {
-            Context.PageContentImages.AddIfNotExists(x => new { x.PageContentID, x.ImageID },
-                new PageContentImage { PageContentID = Contents.LeftSidebar, ImageID = Images.ImageOne, DisplayOrder = 0 },
-                new PageContentImage { PageContentID = Contents.LeftSidebar, ImageID = Images.ImageTwo, DisplayOrder = 1 },
-                new PageContentImage { PageContentID = Contents.LeftSidebarOnly, ImageID = Images.ImageOne, DisplayOrder = 0 },
-                new PageContentImage { PageContentID = Contents.LeftSidebarOnly, ImageID = Images.ImageTwo, DisplayOrder = 1 },
-                new PageContentImage { PageContentID = Contents.OneColumn, ImageID = Images.ImageOne, DisplayOrder = 0 },
-                new PageContentImage { PageContentID = Contents.OneColumn, ImageID = Images.ImageTwo, DisplayOrder = 1 },
-                new PageContentImage { PageContentID = Contents.RightSidebar, ImageID = Images.ImageOne, DisplayOrder = 0 },
-                new PageContentImage { PageContentID = Contents.RightSidebar, ImageID = Images.ImageTwo, DisplayOrder = 1 },
-                new PageContentImage { PageContentID = Contents.RightSidebarOnly, ImageID = Images.ImageOne, DisplayOrder = 0 },
-                new PageContentImage { PageContentID = Contents.RightSidebarOnly, ImageID = Images.ImageTwo, DisplayOrder = 1 },
-                new PageContentImage { PageContentID = Contents.ThreeColumn, ImageID = Images.ImageOne, DisplayOrder = 0 },
-                new PageContentImage { PageContentID = Contents.ThreeColumn, ImageID = Images.ImageTwo, DisplayOrder = 1 },
-                new PageContentImage { PageContentID = Contents.TwoColumn, ImageID = Images.ImageOne, DisplayOrder = 0 },
-                new PageContentImage { PageContentID = Contents.TwoColumn, ImageID = Images.ImageTwo, DisplayOrder = 1 }
-            );
+            if (addDemoContent)
+            {
+                Context.PageContentImages.AddIfNotExists(x => new { x.PageContentID, x.ImageID },
+                    new PageContentImage { PageContentID = Contents.LeftSidebar, ImageID = Images.ImageOne, DisplayOrder = 0 },
+                    new PageContentImage { PageContentID = Contents.LeftSidebar, ImageID = Images.ImageTwo, DisplayOrder = 1 },
+                    new PageContentImage { PageContentID = Contents.LeftSidebarOnly, ImageID = Images.ImageOne, DisplayOrder = 0 },
+                    new PageContentImage { PageContentID = Contents.LeftSidebarOnly, ImageID = Images.ImageTwo, DisplayOrder = 1 },
+                    new PageContentImage { PageContentID = Contents.OneColumn, ImageID = Images.ImageOne, DisplayOrder = 0 },
+                    new PageContentImage { PageContentID = Contents.OneColumn, ImageID = Images.ImageTwo, DisplayOrder = 1 },
+                    new PageContentImage { PageContentID = Contents.RightSidebar, ImageID = Images.ImageOne, DisplayOrder = 0 },
+                    new PageContentImage { PageContentID = Contents.RightSidebar, ImageID = Images.ImageTwo, DisplayOrder = 1 },
+                    new PageContentImage { PageContentID = Contents.RightSidebarOnly, ImageID = Images.ImageOne, DisplayOrder = 0 },
+                    new PageContentImage { PageContentID = Contents.RightSidebarOnly, ImageID = Images.ImageTwo, DisplayOrder = 1 },
+                    new PageContentImage { PageContentID = Contents.ThreeColumn, ImageID = Images.ImageOne, DisplayOrder = 0 },
+                    new PageContentImage { PageContentID = Contents.ThreeColumn, ImageID = Images.ImageTwo, DisplayOrder = 1 },
+                    new PageContentImage { PageContentID = Contents.TwoColumn, ImageID = Images.ImageOne, DisplayOrder = 0 },
+                    new PageContentImage { PageContentID = Contents.TwoColumn, ImageID = Images.ImageTwo, DisplayOrder = 1 }
+                );
+            }
         }
 
     }

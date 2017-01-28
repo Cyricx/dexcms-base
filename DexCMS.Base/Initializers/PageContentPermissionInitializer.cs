@@ -21,9 +21,9 @@ namespace DexCMS.Base.Initializers
             Roles = new RolesReference(context);
         }
 
-        public override void Run()
+        public override void Run(bool addDemoContent = true)
         {
-            if (Context.PageContentPermissions.Count() == 0)
+            if (addDemoContent && Context.PageContentPermissions.Count() == 0)
             {
                 Context.PageContentPermissions.AddRange(new List<PageContentPermission>
                 {

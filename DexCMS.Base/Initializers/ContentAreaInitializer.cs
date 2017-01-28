@@ -11,7 +11,7 @@ namespace DexCMS.Base.Initializers
         {
         }
 
-        public override void Run()
+        public override void Run(bool addDemoContent = true)
         {
             Context.ContentAreas.AddIfNotExists(x => x.Name,
                 new ContentArea { Name = "Public", UrlSegment = "", IsActive = true },

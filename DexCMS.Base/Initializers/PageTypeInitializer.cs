@@ -11,7 +11,7 @@ namespace DexCMS.Base.Initializers
         {
         }
 
-        public override void Run()
+        public override void Run(bool addDemoContent = true)
         {
             Context.PageTypes.AddIfNotExists(x => x.Name,
                 new PageType { Name = "Site Content", IsActive = true }

@@ -15,24 +15,27 @@ namespace DexCMS.Base.Initializers
             Contents = new ContentsReference(context);
         }
 
-        public override void Run()
+        public override void Run(bool addDemoContent = true)
         {
-            Context.ContentBlocks.AddIfNotExists(x => x.BlockTitle,
-                new ContentBlock { BlockTitle = "LS Block One", PageContentID = Contents.LeftSidebar, DisplayOrder = 1, ShowTitle = true, BlockBody = MakeBody() },
-                new ContentBlock { BlockTitle = "LS Block Two", PageContentID = Contents.LeftSidebar, DisplayOrder = 2, ShowTitle = true, BlockBody = MakeAlternateBody() },
-                new ContentBlock { BlockTitle = "LSO Block One", PageContentID = Contents.LeftSidebarOnly, DisplayOrder = 1, ShowTitle = true, BlockBody = MakeBody() },
-                new ContentBlock { BlockTitle = "LSO Block Two", PageContentID = Contents.LeftSidebarOnly, DisplayOrder = 2, ShowTitle = true, BlockBody = MakeAlternateBody() },
-                new ContentBlock { BlockTitle = "RS Block One", PageContentID = Contents.RightSidebar, DisplayOrder = 1, ShowTitle = true, BlockBody = MakeBody() },
-                new ContentBlock { BlockTitle = "RS Block Two", PageContentID = Contents.RightSidebar, DisplayOrder = 2, ShowTitle = true, BlockBody = MakeAlternateBody() },
-                new ContentBlock { BlockTitle = "RSO Block One", PageContentID = Contents.RightSidebarOnly, DisplayOrder = 1, ShowTitle = true, BlockBody = MakeBody() },
-                new ContentBlock { BlockTitle = "RSO Block Two", PageContentID = Contents.RightSidebarOnly, DisplayOrder = 2, ShowTitle = true, BlockBody = MakeAlternateBody() },
-                new ContentBlock { BlockTitle = "1C Block One", PageContentID = Contents.OneColumn, DisplayOrder = 1, ShowTitle = true, BlockBody = MakeBody() },
-                new ContentBlock { BlockTitle = "1C Block Two", PageContentID = Contents.OneColumn, DisplayOrder = 2, ShowTitle = true, BlockBody = MakeAlternateBody() },
-                new ContentBlock { BlockTitle = "2C Block One", PageContentID = Contents.TwoColumn, DisplayOrder = 1, ShowTitle = true, BlockBody = MakeBody() },
-                new ContentBlock { BlockTitle = "2C Block Two", PageContentID = Contents.TwoColumn, DisplayOrder = 2, ShowTitle = true, BlockBody = MakeAlternateBody() },
-                new ContentBlock { BlockTitle = "3C Block One", PageContentID = Contents.ThreeColumn, DisplayOrder = 1, ShowTitle = true, BlockBody = MakeBody() },
-                new ContentBlock { BlockTitle = "3C Block Two", PageContentID = Contents.ThreeColumn, DisplayOrder = 2, ShowTitle = true, BlockBody = MakeAlternateBody() }
-            );
+            if (addDemoContent)
+            {
+                Context.ContentBlocks.AddIfNotExists(x => x.BlockTitle,
+                    new ContentBlock { BlockTitle = "LS Block One", PageContentID = Contents.LeftSidebar, DisplayOrder = 1, ShowTitle = true, BlockBody = MakeBody() },
+                    new ContentBlock { BlockTitle = "LS Block Two", PageContentID = Contents.LeftSidebar, DisplayOrder = 2, ShowTitle = true, BlockBody = MakeAlternateBody() },
+                    new ContentBlock { BlockTitle = "LSO Block One", PageContentID = Contents.LeftSidebarOnly, DisplayOrder = 1, ShowTitle = true, BlockBody = MakeBody() },
+                    new ContentBlock { BlockTitle = "LSO Block Two", PageContentID = Contents.LeftSidebarOnly, DisplayOrder = 2, ShowTitle = true, BlockBody = MakeAlternateBody() },
+                    new ContentBlock { BlockTitle = "RS Block One", PageContentID = Contents.RightSidebar, DisplayOrder = 1, ShowTitle = true, BlockBody = MakeBody() },
+                    new ContentBlock { BlockTitle = "RS Block Two", PageContentID = Contents.RightSidebar, DisplayOrder = 2, ShowTitle = true, BlockBody = MakeAlternateBody() },
+                    new ContentBlock { BlockTitle = "RSO Block One", PageContentID = Contents.RightSidebarOnly, DisplayOrder = 1, ShowTitle = true, BlockBody = MakeBody() },
+                    new ContentBlock { BlockTitle = "RSO Block Two", PageContentID = Contents.RightSidebarOnly, DisplayOrder = 2, ShowTitle = true, BlockBody = MakeAlternateBody() },
+                    new ContentBlock { BlockTitle = "1C Block One", PageContentID = Contents.OneColumn, DisplayOrder = 1, ShowTitle = true, BlockBody = MakeBody() },
+                    new ContentBlock { BlockTitle = "1C Block Two", PageContentID = Contents.OneColumn, DisplayOrder = 2, ShowTitle = true, BlockBody = MakeAlternateBody() },
+                    new ContentBlock { BlockTitle = "2C Block One", PageContentID = Contents.TwoColumn, DisplayOrder = 1, ShowTitle = true, BlockBody = MakeBody() },
+                    new ContentBlock { BlockTitle = "2C Block Two", PageContentID = Contents.TwoColumn, DisplayOrder = 2, ShowTitle = true, BlockBody = MakeAlternateBody() },
+                    new ContentBlock { BlockTitle = "3C Block One", PageContentID = Contents.ThreeColumn, DisplayOrder = 1, ShowTitle = true, BlockBody = MakeBody() },
+                    new ContentBlock { BlockTitle = "3C Block Two", PageContentID = Contents.ThreeColumn, DisplayOrder = 2, ShowTitle = true, BlockBody = MakeAlternateBody() }
+                );
+            }
         }
 
         private string MakeBody()

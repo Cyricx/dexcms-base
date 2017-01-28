@@ -11,7 +11,7 @@ namespace DexCMS.Base.Initializers
         {
         }
 
-        public override void Run()
+        public override void Run(bool addDemoContent = true)
         {
             Context.ContactTypes.AddIfNotExists(x => x.Name,
                 new ContactType { Name = "General", DisplayOrder = 0, IsActive = true });

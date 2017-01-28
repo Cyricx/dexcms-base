@@ -1,26 +1,34 @@
-﻿using DexCMS.Base.Contexts;
+﻿using System;
+using System.Collections.Generic;
+using DexCMS.Base.Contexts;
 using DexCMS.Core.Infrastructure.Globals;
 
 namespace DexCMS.Base.Initializers
 {
-    public class BaseInitializer: DexCMSInitializer<IDexCMSBaseContext>
+    public class BaseInitializer: DexCMSLibraryInitializer<IDexCMSBaseContext>
     {
         public BaseInitializer(IDexCMSBaseContext context) : base(context)
         {
 
         }
 
-        public override void Run()
+        public override List<Type> Initializers
         {
-            (new ContactTypeInitializer(Context)).Run();
-            (new ContentAreaInitializer(Context)).Run();
-            (new ContentCategoryInitializer(Context)).Run();
-            (new LayoutTypeInitializer(Context)).Run();
-            (new PageTypeInitializer(Context)).Run();
-            (new PageContentInitializer(Context)).Run();
-            (new ContentBlockInitializer(Context)).Run();
-            (new PageContentImageInitializer(Context)).Run();
-            (new PageContentPermissionInitializer(Context)).Run();
+            get
+            {
+                return new List<Type>
+                {
+                    typeof(ContactTypeInitializer),
+                    typeof(ContentAreaInitializer),
+                    typeof(ContentCategoryInitializer),
+                    typeof(LayoutTypeInitializer),
+                    typeof(PageTypeInitializer),
+                    typeof(PageContentInitializer),
+                    typeof(ContentBlockInitializer),
+                    typeof(PageContentImageInitializer),
+                    typeof(PageContentPermissionInitializer)
+                };
+            }
         }
     }
 }

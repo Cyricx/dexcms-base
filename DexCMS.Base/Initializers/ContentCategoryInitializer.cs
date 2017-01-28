@@ -11,7 +11,7 @@ namespace DexCMS.Base.Initializers
         {
         }
 
-        public override void Run()
+        public override void Run(bool addDemoContent = true)
         {
             Context.ContentCategories.AddIfNotExists(x => x.Name,
                 new ContentCategory { Name = "Account", UrlSegment = "account", IsActive = true },
