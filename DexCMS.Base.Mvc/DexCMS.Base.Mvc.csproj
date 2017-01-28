@@ -150,6 +150,7 @@
     <Compile Include="Infrastructure\SitemapGenerator.cs" />
     <Compile Include="Infrastructure\SitemapItem.cs" />
     <Compile Include="Infrastructure\SitemapResult.cs" />
+    <Compile Include="Initializers\BaseMvcInitializer.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CheckBoxItem.cs" />
     <Compile Include="Models\ContentRequest.cs" />
