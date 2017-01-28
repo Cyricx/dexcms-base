@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -30,9 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DexCMS.Core.Infrastructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\node_modules\dexcms-core\dist\DexCMS.Core.Infrastructure.dll</HintPath>
+    <Reference Include="DexCMS.Core">
+      <HintPath>..\node_modules\dexcms-core\dist\DexCMS.Core.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -46,83 +45,83 @@
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System"/>
-    <Reference Include="System.ComponentModel.DataAnnotations"/>
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    <Reference Include="Microsoft.CSharp"/>
-    <Reference Include="System.Data"/>
-    <Reference Include="System.Net.Http"/>
-    <Reference Include="System.Xml"/>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contexts\IDexCMSBaseContext.cs"/>
-    <Compile Include="HelperModels\RoutePageRequest.cs"/>
-    <Compile Include="Initializers\Helpers\AreasReference.cs"/>
-    <Compile Include="Initializers\Helpers\CategoriesReference.cs"/>
-    <Compile Include="Initializers\Helpers\ContentsReference.cs"/>
-    <Compile Include="Initializers\Helpers\ImagesReference.cs"/>
-    <Compile Include="Initializers\Helpers\LayoutTypesReference.cs"/>
-    <Compile Include="Initializers\Helpers\PageTypesReference.cs"/>
-    <Compile Include="Initializers\PageContentImageInitializer.cs"/>
-    <Compile Include="Initializers\ContentBlockInitializer.cs"/>
-    <Compile Include="Initializers\LayoutTypeInitializer.cs"/>
-    <Compile Include="Initializers\PageContentPermissionInitializer.cs"/>
-    <Compile Include="Interfaces\IPageContentRedirectRepository.cs"/>
-    <Compile Include="Models\PageContentPermission.cs"/>
-    <Compile Include="Models\PageContentRedirect.cs"/>
-    <Compile Include="Repositories\ContactRepository.cs"/>
-    <Compile Include="Repositories\ContactTypeRepository.cs"/>
-    <Compile Include="Repositories\ContentAreaRepository.cs"/>
-    <Compile Include="Repositories\ContentBlockRepository.cs"/>
-    <Compile Include="Repositories\ContentCategoryRepository.cs"/>
-    <Compile Include="Repositories\ContentSubCategoryRepository.cs"/>
-    <Compile Include="Repositories\PageContentRedirectRepository.cs"/>
-    <Compile Include="Repositories\LayoutTypeRepository.cs"/>
-    <Compile Include="Repositories\PageContentImageRepository.cs"/>
-    <Compile Include="Repositories\PageContentRepository.cs"/>
-    <Compile Include="Repositories\PageTypeRepository.cs"/>
-    <Compile Include="Enums\SEOChangeFrequency.cs"/>
-    <Compile Include="Initializers\BaseInitializer.cs"/>
-    <Compile Include="Globals\DexBaseRegister.cs"/>
-    <Compile Include="Initializers\ContactTypeInitializer.cs"/>
-    <Compile Include="Initializers\ContentAreaInitializer.cs"/>
-    <Compile Include="Initializers\ContentCategoryInitializer.cs"/>
-    <Compile Include="Initializers\PageContentInitializer.cs"/>
-    <Compile Include="Initializers\PageTypeInitializer.cs"/>
-    <Compile Include="Interfaces\IContactRepository.cs"/>
-    <Compile Include="Interfaces\IContactTypeRepository.cs"/>
-    <Compile Include="Interfaces\IContentAreaRepository.cs"/>
-    <Compile Include="Interfaces\IContentBlockRepository.cs"/>
-    <Compile Include="Interfaces\IContentCategoryRepository.cs"/>
-    <Compile Include="Interfaces\IContentScriptRepository.cs"/>
-    <Compile Include="Interfaces\IContentStyleRepository.cs"/>
-    <Compile Include="Interfaces\IContentSubCategoryRepository.cs"/>
-    <Compile Include="Interfaces\ILayoutTypeRepository.cs"/>
-    <Compile Include="Interfaces\IPageContentImageRepository.cs"/>
-    <Compile Include="Interfaces\IPageContentRepository.cs"/>
-    <Compile Include="Interfaces\IPageTypeRepository.cs"/>
-    <Compile Include="Models\Contact.cs"/>
-    <Compile Include="Models\ContactType.cs"/>
-    <Compile Include="Models\ContentArea.cs"/>
-    <Compile Include="Models\ContentBlock.cs"/>
-    <Compile Include="Models\ContentCategory.cs"/>
-    <Compile Include="Models\ContentScript.cs"/>
-    <Compile Include="Models\ContentStyle.cs"/>
-    <Compile Include="Models\ContentSubCategory.cs"/>
-    <Compile Include="Models\LayoutType.cs"/>
-    <Compile Include="Models\PageContent.cs"/>
-    <Compile Include="Models\PageContentImage.cs"/>
-    <Compile Include="Models\PageType.cs"/>
-    <Compile Include="Models\VisitedPage.cs"/>
-    <Compile Include="Properties\AssemblyInfo.cs"/>
+    <Compile Include="Contexts\IDexCMSBaseContext.cs" />
+    <Compile Include="HelperModels\RoutePageRequest.cs" />
+    <Compile Include="Initializers\Helpers\AreasReference.cs" />
+    <Compile Include="Initializers\Helpers\CategoriesReference.cs" />
+    <Compile Include="Initializers\Helpers\ContentsReference.cs" />
+    <Compile Include="Initializers\Helpers\ImagesReference.cs" />
+    <Compile Include="Initializers\Helpers\LayoutTypesReference.cs" />
+    <Compile Include="Initializers\Helpers\PageTypesReference.cs" />
+    <Compile Include="Initializers\PageContentImageInitializer.cs" />
+    <Compile Include="Initializers\ContentBlockInitializer.cs" />
+    <Compile Include="Initializers\LayoutTypeInitializer.cs" />
+    <Compile Include="Initializers\PageContentPermissionInitializer.cs" />
+    <Compile Include="Interfaces\IPageContentRedirectRepository.cs" />
+    <Compile Include="Models\PageContentPermission.cs" />
+    <Compile Include="Models\PageContentRedirect.cs" />
+    <Compile Include="Repositories\ContactRepository.cs" />
+    <Compile Include="Repositories\ContactTypeRepository.cs" />
+    <Compile Include="Repositories\ContentAreaRepository.cs" />
+    <Compile Include="Repositories\ContentBlockRepository.cs" />
+    <Compile Include="Repositories\ContentCategoryRepository.cs" />
+    <Compile Include="Repositories\ContentSubCategoryRepository.cs" />
+    <Compile Include="Repositories\PageContentRedirectRepository.cs" />
+    <Compile Include="Repositories\LayoutTypeRepository.cs" />
+    <Compile Include="Repositories\PageContentImageRepository.cs" />
+    <Compile Include="Repositories\PageContentRepository.cs" />
+    <Compile Include="Repositories\PageTypeRepository.cs" />
+    <Compile Include="Enums\SEOChangeFrequency.cs" />
+    <Compile Include="Initializers\BaseInitializer.cs" />
+    <Compile Include="Globals\DexBaseRegister.cs" />
+    <Compile Include="Initializers\ContactTypeInitializer.cs" />
+    <Compile Include="Initializers\ContentAreaInitializer.cs" />
+    <Compile Include="Initializers\ContentCategoryInitializer.cs" />
+    <Compile Include="Initializers\PageContentInitializer.cs" />
+    <Compile Include="Initializers\PageTypeInitializer.cs" />
+    <Compile Include="Interfaces\IContactRepository.cs" />
+    <Compile Include="Interfaces\IContactTypeRepository.cs" />
+    <Compile Include="Interfaces\IContentAreaRepository.cs" />
+    <Compile Include="Interfaces\IContentBlockRepository.cs" />
+    <Compile Include="Interfaces\IContentCategoryRepository.cs" />
+    <Compile Include="Interfaces\IContentScriptRepository.cs" />
+    <Compile Include="Interfaces\IContentStyleRepository.cs" />
+    <Compile Include="Interfaces\IContentSubCategoryRepository.cs" />
+    <Compile Include="Interfaces\ILayoutTypeRepository.cs" />
+    <Compile Include="Interfaces\IPageContentImageRepository.cs" />
+    <Compile Include="Interfaces\IPageContentRepository.cs" />
+    <Compile Include="Interfaces\IPageTypeRepository.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\ContactType.cs" />
+    <Compile Include="Models\ContentArea.cs" />
+    <Compile Include="Models\ContentBlock.cs" />
+    <Compile Include="Models\ContentCategory.cs" />
+    <Compile Include="Models\ContentScript.cs" />
+    <Compile Include="Models\ContentStyle.cs" />
+    <Compile Include="Models\ContentSubCategory.cs" />
+    <Compile Include="Models\LayoutType.cs" />
+    <Compile Include="Models\PageContent.cs" />
+    <Compile Include="Models\PageContentImage.cs" />
+    <Compile Include="Models\PageType.cs" />
+    <Compile Include="Models\VisitedPage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config"/>
-    <None Include="packages.config"/>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

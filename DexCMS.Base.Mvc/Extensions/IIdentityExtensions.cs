@@ -1,8 +1,8 @@
 ﻿using System.Security.Principal;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using DexCMS.Core.Infrastructure.Models;
-using DexCMS.Core.Infrastructure.Contexts;
+using DexCMS.Core.Models;
+using DexCMS.Core.Contexts;
 
 namespace DexCMS.Base.Mvc.Extensions
 {

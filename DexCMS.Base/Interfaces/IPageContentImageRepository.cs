@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using DexCMS.Base.Models;
-using DexCMS.Core.Infrastructure.Interfaces;
-using DexCMS.Core.Infrastructure.Models;
+using DexCMS.Core.Interfaces;
+using DexCMS.Core.Models;
 
 namespace DexCMS.Base.Interfaces
 {

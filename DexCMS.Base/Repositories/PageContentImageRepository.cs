@@ -6,9 +6,9 @@ using DexCMS.Base.Models;
 using System.Data.Entity;
 using DexCMS.Base.Contexts;
 using DexCMS.Base.Interfaces;
-using DexCMS.Core.Infrastructure.Contexts;
-using DexCMS.Core.Infrastructure.Repositories;
-using DexCMS.Core.Infrastructure.Models;
+using DexCMS.Core.Contexts;
+using DexCMS.Core.Repositories;
+using DexCMS.Core.Models;
 
 namespace DexCMS.Base.Repositories
 {

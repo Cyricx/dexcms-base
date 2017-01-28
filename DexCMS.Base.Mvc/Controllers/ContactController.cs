@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using DexCMS.Base.Interfaces;
 using DexCMS.Base.Models;
 using DexCMS.Base.Mvc.Models;
-using DexCMS.Core.Infrastructure;
+using DexCMS.Core;
 using System.Web.Configuration;
 using DexCMS.Core.Mvc.Globals;
 

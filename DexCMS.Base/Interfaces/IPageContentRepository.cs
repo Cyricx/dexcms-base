@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using DexCMS.Base.Models;
-using DexCMS.Core.Infrastructure.Interfaces;
+using DexCMS.Core.Interfaces;
 using DexCMS.Base.HelperModels;
 
 namespace DexCMS.Base.Interfaces

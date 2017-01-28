@@ -1,5 +1,5 @@
 ﻿using DexCMS.Base.Models;
-using DexCMS.Core.Infrastructure.Contexts;
+using DexCMS.Core.Contexts;
 using System.Data.Entity;
 
 namespace DexCMS.Base.Contexts

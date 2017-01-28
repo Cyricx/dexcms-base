@@ -11,9 +11,9 @@ using DexCMS.Base.Models;
 using DexCMS.Base.Interfaces;
 using System.Web.Hosting;
 using System.IO;
-using DexCMS.Core.Infrastructure.Extensions;
+using DexCMS.Core.Extensions;
 using DexCMS.Base.WebApi.ApiModels;
-using DexCMS.Core.Infrastructure.Interfaces;
+using DexCMS.Core.Interfaces;
 
 namespace DexCMS.Base.WebApi.Controllers
 {

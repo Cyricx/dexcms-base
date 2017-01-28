@@ -2,8 +2,8 @@
 using DexCMS.Base.Models;
 using System.Linq;
 using System;
-using DexCMS.Core.Infrastructure.Globals;
-using DexCMS.Core.Infrastructure.Extensions;
+using DexCMS.Core.Globals;
+using DexCMS.Core.Extensions;
 using DexCMS.Base.Initializers.Helpers;
 using DexCMS.Base.Enums;
 

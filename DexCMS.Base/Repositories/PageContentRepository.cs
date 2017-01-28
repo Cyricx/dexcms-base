@@ -4,8 +4,8 @@ using DexCMS.Base.Models;
 using System.Data.Entity;
 using DexCMS.Base.Contexts;
 using DexCMS.Base.Interfaces;
-using DexCMS.Core.Infrastructure.Contexts;
-using DexCMS.Core.Infrastructure.Repositories;
+using DexCMS.Core.Contexts;
+using DexCMS.Core.Repositories;
 using System;
 using DexCMS.Base.HelperModels;
 

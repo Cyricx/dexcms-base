@@ -1,7 +1,7 @@
 ﻿using DexCMS.Base.Models;
 using DexCMS.Base.Interfaces;
-using DexCMS.Core.Infrastructure.Contexts;
-using DexCMS.Core.Infrastructure.Repositories;
+using DexCMS.Core.Contexts;
+using DexCMS.Core.Repositories;
 
 namespace DexCMS.Base.Repositories
 {

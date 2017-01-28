@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Threading.Tasks;
 using DexCMS.Base.Models;
-using DexCMS.Core.Infrastructure.Contexts;
+using DexCMS.Core.Contexts;
 using DexCMS.Base.Contexts;
-using DexCMS.Core.Infrastructure.Repositories;
+using DexCMS.Core.Repositories;
 using DexCMS.Base.Interfaces;
 
 namespace DexCMS.Base.Repositories

@@ -1,5 +1,5 @@
 ﻿using DexCMS.Base.Models;
-using DexCMS.Core.Infrastructure.Interfaces;
+using DexCMS.Core.Interfaces;
 
 namespace DexCMS.Base.Interfaces
 {

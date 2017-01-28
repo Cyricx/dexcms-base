@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using DexCMS.Base.Mvc.Models;
-using DexCMS.Core.Infrastructure.Globals;
-using DexCMS.Core.Infrastructure.Models;
+using DexCMS.Core.Globals;
+using DexCMS.Core.Models;
 using System.Web.Configuration;
 using DexCMS.Core.Mvc.Globals;
 

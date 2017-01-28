@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 using DexCMS.Core.WebApi.Enums;
-using DexCMS.Core.Infrastructure.Models;
+using DexCMS.Core.Models;
 
 namespace DexCMS.Base.WebApi
 {
