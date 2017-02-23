@@ -10,8 +10,8 @@ namespace DexCMS.Base.Initializers.Helpers
 
         public ImagesReference(IDexCMSBaseContext Context)
         {
-            ImageOne = Context.Images.Where(x => x.Alt == "Gaea Retreat").Select(x => x.ImageID).Single();
-            ImageTwo = Context.Images.Where(x => x.Alt == "Lawrence Busker").Select(x => x.ImageID).Single();
+            ImageOne = Context.Images.Where(x => x.Alt == "Gaea Retreat").Select(x => x.ImageID).SingleOrDefault();
+            ImageTwo = Context.Images.Where(x => x.Alt == "Lawrence Busker").Select(x => x.ImageID).SingleOrDefault();
 
         }
     }

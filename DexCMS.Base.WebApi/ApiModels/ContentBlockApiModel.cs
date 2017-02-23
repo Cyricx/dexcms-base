@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DexCMS.Base.Models;
 
 namespace DexCMS.Base.WebApi.ApiModels
 {
@@ -23,5 +19,17 @@ namespace DexCMS.Base.WebApi.ApiModels
 
         public int DisplayOrder { get; set; }
 
+        public ContentBlockApiModel() { }
+
+        public ContentBlockApiModel(ContentBlock contentBlock)
+        {
+            ContentBlockID = contentBlock.ContentBlockID;
+            BlockTitle = contentBlock.BlockTitle;
+            ShowTitle = contentBlock.ShowTitle;
+            BlockBody = contentBlock.BlockBody;
+            PageContentID = contentBlock.PageContentID;
+            CssClass = contentBlock.CssClass;
+            DisplayOrder = contentBlock.DisplayOrder;
+        }
     }
 }

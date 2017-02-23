@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DexCMS.Base.Models;
 
 namespace DexCMS.Base.WebApi.ApiModels
@@ -31,6 +29,22 @@ namespace DexCMS.Base.WebApi.ApiModels
 
         public List<VisitedPage> VisitedPages { get; set; }
 
+        public ContactApiModel() { }
+
+        public ContactApiModel(Contact contact)
+        {
+            ContactID = contact.ContactID;
+            Name = contact.Name;
+            Phone = contact.Phone;
+            Email = contact.Email;
+            Message = contact.Message;
+            OtherSubject = contact.OtherSubject;
+            SubmitDate = contact.SubmitDate;
+            Referrer = contact.Referrer;
+            ContactTypeID = contact.ContactTypeID;
+            ContactTypeName = contact.ContactType.Name;
+            VisitedPages = contact.VisitedPages == null ? new List<VisitedPage>() : contact.VisitedPages.OrderBy(x => x.VisitOrder).ToList();
+        }
     }
 
 }

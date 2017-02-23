@@ -11,9 +11,9 @@ namespace DexCMS.Base.Initializers.Helpers
 
         public CategoriesReference(IDexCMSBaseContext Context)
         {
-            Account = Context.ContentCategories.Where(x => x.Name == "Account").Select(x => x.ContentCategoryID).Single();
-            Contact = Context.ContentCategories.Where(x => x.Name == "Contact").Select(x => x.ContentCategoryID).Single();
-            ManageAccount = Context.ContentCategories.Where(x => x.Name == "Manage Account").Select(x => x.ContentCategoryID).Single();
+            Account = Context.ContentCategories.Where(x => x.Name == "Account").Select(x => x.ContentCategoryID).SingleOrDefault();
+            Contact = Context.ContentCategories.Where(x => x.Name == "Contact").Select(x => x.ContentCategoryID).SingleOrDefault();
+            ManageAccount = Context.ContentCategories.Where(x => x.Name == "Manage Account").Select(x => x.ContentCategoryID).SingleOrDefault();
         }
     }
 }

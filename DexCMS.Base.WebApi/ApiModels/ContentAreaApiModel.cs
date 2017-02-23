@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DexCMS.Base.Models;
 
 namespace DexCMS.Base.WebApi.ApiModels
 {
@@ -18,5 +14,15 @@ namespace DexCMS.Base.WebApi.ApiModels
 
         public int ContentCount { get; set; }
 
+        public ContentAreaApiModel() { }
+
+        public ContentAreaApiModel(ContentArea contentArea)
+        {
+            ContentAreaID = contentArea.ContentAreaID;
+            Name = contentArea.Name;
+            IsActive = contentArea.IsActive;
+            UrlSegment = contentArea.UrlSegment;
+            ContentCount = contentArea.PageContents.Count;
+        }
     }
 }

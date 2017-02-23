@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DexCMS.Base.Models;
 
 namespace DexCMS.Base.WebApi.ApiModels
 {
@@ -18,5 +14,16 @@ namespace DexCMS.Base.WebApi.ApiModels
         public bool IsActive { get; set; }
 
         public int ContactCount { get; set; }
+
+        public ContactTypeApiModel() { }
+
+        public ContactTypeApiModel(ContactType contactType)
+        {
+            ContactTypeID = contactType.ContactTypeID;
+            Name = contactType.Name;
+            DisplayOrder = contactType.DisplayOrder;
+            IsActive = contactType.IsActive;
+            ContactCount = contactType.Contacts.Count;
+        }
     }
 }

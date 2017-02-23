@@ -10,8 +10,8 @@ namespace DexCMS.Base.Initializers.Helpers
 
         public AreasReference(IDexCMSBaseContext Context)
         {
-            Public = Context.ContentAreas.Where(x => x.Name == "Public").Select(x => x.ContentAreaID).Single();
-            ControlPanel = Context.ContentAreas.Where(x => x.Name == "Control Panel").Select(x => x.ContentAreaID).Single();
+            Public = Context.ContentAreas.Where(x => x.Name == "Public").Select(x => x.ContentAreaID).SingleOrDefault();
+            ControlPanel = Context.ContentAreas.Where(x => x.Name == "Control Panel").Select(x => x.ContentAreaID).SingleOrDefault();
         }
     }
 }

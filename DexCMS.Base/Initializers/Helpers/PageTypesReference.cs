@@ -9,7 +9,7 @@ namespace DexCMS.Base.Initializers.Helpers
 
         public PageTypesReference(IDexCMSBaseContext Context)
         {
-            SiteContent = Context.PageTypes.Where(x => x.Name == "Site Content").Select(x => x.PageTypeID).Single();
+            SiteContent = Context.PageTypes.Where(x => x.Name == "Site Content").Select(x => x.PageTypeID).SingleOrDefault();
         }
     }
 }

@@ -15,13 +15,13 @@ namespace DexCMS.Base.Initializers.Helpers
 
         public LayoutTypesReference(IDexCMSBaseContext Context)
         {
-            OneColumn = Context.LayoutTypes.Where(x => x.Name == "One Column").Select(x => x.LayoutTypeID).Single();
-            TwoColumn = Context.LayoutTypes.Where(x => x.Name == "Two Column").Select(x => x.LayoutTypeID).Single();
-            ThreeColumn = Context.LayoutTypes.Where(x => x.Name == "Three Column").Select(x => x.LayoutTypeID).Single();
-            RightSidebar = Context.LayoutTypes.Where(x => x.Name == "Right Sidebar with Content").Select(x => x.LayoutTypeID).Single();
-            LeftSidebar = Context.LayoutTypes.Where(x => x.Name == "Left Sidebar with Content").Select(x => x.LayoutTypeID).Single();
-            RightSidebarOnly = Context.LayoutTypes.Where(x => x.Name == "Right Sidebar Only").Select(x => x.LayoutTypeID).Single();
-            LeftSidebarOnly = Context.LayoutTypes.Where(x => x.Name == "Left Sidebar Only").Select(x => x.LayoutTypeID).Single();
+            OneColumn = Context.LayoutTypes.Where(x => x.Name == "One Column").Select(x => x.LayoutTypeID).SingleOrDefault();
+            TwoColumn = Context.LayoutTypes.Where(x => x.Name == "Two Column").Select(x => x.LayoutTypeID).SingleOrDefault();
+            ThreeColumn = Context.LayoutTypes.Where(x => x.Name == "Three Column").Select(x => x.LayoutTypeID).SingleOrDefault();
+            RightSidebar = Context.LayoutTypes.Where(x => x.Name == "Right Sidebar with Content").Select(x => x.LayoutTypeID).SingleOrDefault();
+            LeftSidebar = Context.LayoutTypes.Where(x => x.Name == "Left Sidebar with Content").Select(x => x.LayoutTypeID).SingleOrDefault();
+            RightSidebarOnly = Context.LayoutTypes.Where(x => x.Name == "Right Sidebar Only").Select(x => x.LayoutTypeID).SingleOrDefault();
+            LeftSidebarOnly = Context.LayoutTypes.Where(x => x.Name == "Left Sidebar Only").Select(x => x.LayoutTypeID).SingleOrDefault();
         }
     }
 }

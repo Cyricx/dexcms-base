@@ -26,18 +26,7 @@ namespace DexCMS.Base.WebApi.Controllers
         // GET api/Contacts
         public List<ContactApiModel> GetContacts()
         {
-			var items = repository.Items.Select(x => new ContactApiModel {
-				ContactID = x.ContactID,
-				Name = x.Name,
-				Phone = x.Phone,
-				Email = x.Email,
-				Message = x.Message,
-				OtherSubject = x.OtherSubject,
-				SubmitDate = x.SubmitDate,
-				Referrer = x.Referrer,
-				ContactTypeID = x.ContactTypeID,
-                ContactTypeName = x.ContactType.Name
-			}).ToList();
+			var items = repository.Items.Select(x => new ContactApiModel(x)).ToList();
 
 			return items;
         }
@@ -52,20 +41,7 @@ namespace DexCMS.Base.WebApi.Controllers
                 return NotFound();
             }
 
-			ContactApiModel model = new ContactApiModel()
-			{
-				ContactID = contact.ContactID,
-				Name = contact.Name,
-				Phone = contact.Phone,
-				Email = contact.Email,
-				Message = contact.Message,
-				OtherSubject = contact.OtherSubject,
-				SubmitDate = contact.SubmitDate,
-				Referrer = contact.Referrer,
-				ContactTypeID = contact.ContactTypeID,
-			    ContactTypeName = contact.ContactType.Name,
-                VisitedPages = contact.VisitedPages == null ? new List<VisitedPage>(): contact.VisitedPages.OrderBy(x => x.VisitOrder).ToList()
-			};
+            ContactApiModel model = new ContactApiModel(contact);
 
             return Ok(model);
         }
@@ -118,7 +94,4 @@ namespace DexCMS.Base.WebApi.Controllers
         }
 
     }
-
-
-
 }

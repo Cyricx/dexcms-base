@@ -24,13 +24,7 @@ namespace DexCMS.Base.WebApi.Controllers
         // GET api/ContentCategories
         public List<ContentCategoryApiModel> GetContentCategories()
         {
-			var items = repository.Items.Select(x => new ContentCategoryApiModel {
-				ContentCategoryID = x.ContentCategoryID,
-                UrlSegment = x.UrlSegment,
-				Name = x.Name,
-				IsActive = x.IsActive,
-                ContentCount = x.PageContents.Count
-			}).ToList();
+			var items = repository.Items.Select(x => new ContentCategoryApiModel(x)).ToList();
 
 			return items;
         }
@@ -45,13 +39,7 @@ namespace DexCMS.Base.WebApi.Controllers
                 return NotFound();
             }
 
-			ContentCategoryApiModel model = new ContentCategoryApiModel()
-			{
-				ContentCategoryID = contentCategory.ContentCategoryID,
-				Name = contentCategory.Name,
-				IsActive = contentCategory.IsActive,
-			    UrlSegment = contentCategory.UrlSegment
-			};
+			ContentCategoryApiModel model = new ContentCategoryApiModel(contentCategory);
 
             return Ok(model);
         }

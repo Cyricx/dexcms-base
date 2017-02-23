@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Http.Description;
 using DexCMS.Base.Interfaces;
 using DexCMS.Base.Models;
 using DexCMS.Base.WebApi.ApiModels;
@@ -16,17 +10,17 @@ namespace DexCMS.Base.WebApi.Controllers
     [Authorize(Roles = "Admin")]
     public class ContentBlockOrderController : ApiController
     {
-		private IContentBlockRepository repository;
+        private IContentBlockRepository repository;
 
-		public ContentBlockOrderController(IContentBlockRepository repo) 
-		{
-			repository = repo;
-		}
+        public ContentBlockOrderController(IContentBlockRepository repo)
+        {
+            repository = repo;
+        }
 
         // PUT api/ContentBlockOrder/5
         public async Task<IHttpActionResult> PutContentBlockOrderModel(ContentBlockOrderModel contentBlockOrderModel)
         {
-            
+
 
             if (!ModelState.IsValid)
             {
