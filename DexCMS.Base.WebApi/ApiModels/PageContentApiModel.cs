@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DexCMS.Base.Enums;
+using DexCMS.Base.Models;
+using DexCMS.Core.Attributes;
+using DexCMS.Core.Globals;
 
 namespace DexCMS.Base.WebApi.ApiModels
 {
-    public class PageContentApiModel
+    public class PageContentApiModel:DexCMSViewModel<PageContentApiModel, PageContent>
     {
         public int PageContentID { get; set; }
 
@@ -37,43 +37,43 @@ namespace DexCMS.Base.WebApi.ApiModels
 
         public int? MaximumImages { get; set; }
 
+        [OverrideMappingType(MappingType.ClientOnly)]
+        [NestedPropertyMapping("ContentArea", "Name")]
         public string ContentAreaName { get; set; }
+
+        [OverrideMappingType(MappingType.ClientOnly)]
+        [NestedPropertyMapping("ContentCategory", "Name")]
         public string ContentCategoryName { get; set; }
+
+        [OverrideMappingType(MappingType.ClientOnly)]
+        [NestedPropertyMapping("ContentSubCategory", "Name")]
         public string ContentSubCategoryName { get; set; }
+
         public string UrlSegment { get; set; }
 
         public int? PageTypeID { get; set; }
+        [OverrideMappingType(MappingType.ClientOnly)]
+        [NestedPropertyMapping("PageType", "Name")]
         public string PageTypeName { get; set; }
 
         public int? LayoutTypeID { get; set; }
+
+        [OverrideMappingType(MappingType.ClientOnly)]
+        [NestedPropertyMapping("LayoutType", "Name")]
         public string LayoutTypeName { get; set; }
 
-        public List<ContentBlockInfo> ContentBlocks { get; set; }
-        public List<PageContentImageInfo> PageContentImages { get; set; }
+        [OverrideMappingType(MappingType.ClientOnly)]
+        [NestedClassMapping(typeof(ContentBlockApiModel), true)]
+        public List<ContentBlockApiModel> ContentBlocks { get; set; }
+
+        [OverrideMappingType(MappingType.ClientOnly)]
+        [NestedClassMapping(typeof(PageContentImageApiModel), true)]
+        public List<PageContentImageApiModel> PageContentImages { get; set; }
         public bool IsDisabled { get; set; }
         public bool RequiresLogin { get; set; }
-        public List<PermissionInfo> PageContentPermissions { get; set; }
-    }
-    public class ContentBlockInfo
-    {
-        public int ContentBlockID { get; set; }
-        public string BlockTitle { get; set; }
-        public string BlockBody { get; set; }
-        public int DisplayOrder { get; set; }
-    }
 
-    public class PageContentImageInfo
-    {
-        public int ImageID { get; set; }
-        public string Alt { get; set; }
-        public string Thumbnail { get; set; }
-        public int DisplayOrder { get; set; }
+        [OverrideMappingType(MappingType.ClientOnly)]
+        [NestedClassMapping(typeof(PageContentPermissionApiModel), true)]
+        public List<PageContentPermissionApiModel> PageContentPermissions { get; set; }
     }
-
-    public class PermissionInfo
-    {
-        public int PageContentID { get; set; }
-        public string Id { get; set; }
-    }
-
 }

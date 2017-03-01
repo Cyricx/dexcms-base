@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -21,21 +19,12 @@ namespace DexCMS.Base.WebApi.Controllers
 			repository = repo;
 		}
 
-        // GET api/ContentSubCategories
+        [ResponseType(typeof(List<ContentSubCategoryApiModel>))]
         public List<ContentSubCategoryApiModel> GetContentSubCategories()
         {
-			var items = repository.Items.Select(x => new ContentSubCategoryApiModel {
-				ContentSubCategoryID = x.ContentSubCategoryID,
-                UrlSegment = x.UrlSegment,
-				Name = x.Name,
-				IsActive = x.IsActive,
-                ContentCount = x.PageContents.Count
-			}).ToList();
-
-			return items;
+            return ContentSubCategoryApiModel.MapForClient(repository.Items);
         }
 
-        // GET api/ContentSubCategories/5
         [ResponseType(typeof(ContentSubCategory))]
         public async Task<IHttpActionResult> GetContentSubCategory(int id)
         {
@@ -45,51 +34,44 @@ namespace DexCMS.Base.WebApi.Controllers
                 return NotFound();
             }
 
-			ContentSubCategoryApiModel model = new ContentSubCategoryApiModel()
-			{
-				ContentSubCategoryID = contentSubCategory.ContentSubCategoryID,
-				Name = contentSubCategory.Name,
-				IsActive = contentSubCategory.IsActive,
-			    UrlSegment = contentSubCategory.UrlSegment
-			};
-
-            return Ok(model);
+            return Ok(ContentSubCategoryApiModel.MapForClient(contentSubCategory));
         }
 
-        // PUT api/ContentSubCategories/5
-        public async Task<IHttpActionResult> PutContentSubCategory(int id, ContentSubCategory contentSubCategory)
+        public async Task<IHttpActionResult> PutContentSubCategory(int id, ContentSubCategoryApiModel apiModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != contentSubCategory.ContentSubCategoryID)
+            if (id != apiModel.ContentSubCategoryID)
             {
                 return BadRequest();
             }
+            ContentSubCategory contentSubCategory = await repository.RetrieveAsync(id);
+            ContentSubCategoryApiModel.MapForServer(apiModel, contentSubCategory);
 
-			await repository.UpdateAsync(contentSubCategory, contentSubCategory.ContentSubCategoryID);
+            await repository.UpdateAsync(contentSubCategory, contentSubCategory.ContentSubCategoryID);
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST api/ContentSubCategories
-        [ResponseType(typeof(ContentSubCategory))]
-        public async Task<IHttpActionResult> PostContentSubCategory(ContentSubCategory contentSubCategory)
+        [ResponseType(typeof(ContentSubCategoryApiModel))]
+        public async Task<IHttpActionResult> PostContentSubCategory(ContentSubCategoryApiModel apiModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            ContentSubCategory contentSubCategory = new ContentSubCategory();
+            ContentSubCategoryApiModel.MapForServer(apiModel, contentSubCategory);
 
-			await repository.AddAsync(contentSubCategory);
+            await repository.AddAsync(contentSubCategory);
 
-            return CreatedAtRoute("DefaultApi", new { id = contentSubCategory.ContentSubCategoryID }, contentSubCategory);
+            return CreatedAtRoute("DefaultApi", new { id = contentSubCategory.ContentSubCategoryID }, ContentSubCategoryApiModel.MapForClient(contentSubCategory));
         }
 
-        // DELETE api/ContentSubCategories/5
-        [ResponseType(typeof(ContentSubCategory))]
+        [ResponseType(typeof(ContentSubCategoryApiModel))]
         public async Task<IHttpActionResult> DeleteContentSubCategory(int id)
         {
 			ContentSubCategory contentSubCategory = await repository.RetrieveAsync(id);
@@ -100,8 +82,7 @@ namespace DexCMS.Base.WebApi.Controllers
 
 			await repository.DeleteAsync(contentSubCategory);
 
-            return Ok(contentSubCategory);
+            return Ok(ContentSubCategoryApiModel.MapForClient(contentSubCategory));
         }
-
     }
 }

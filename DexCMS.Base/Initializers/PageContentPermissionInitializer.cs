@@ -27,8 +27,8 @@ namespace DexCMS.Base.Initializers
             {
                 Context.PageContentPermissions.AddRange(new List<PageContentPermission>
                 {
-                    new PageContentPermission { PageContentID = Contents.ControlPanel, Id = Roles.Admin },
-                    new PageContentPermission { PageContentID = Contents.ControlPanel, Id = Roles.Installer },
+                    new PageContentPermission { PageContentID = Contents.ControlPanel, Id = Roles.Admin.Id },
+                    new PageContentPermission { PageContentID = Contents.ControlPanel, Id = Roles.Installer.Id },
                 });
                 Context.SaveChanges();
             }

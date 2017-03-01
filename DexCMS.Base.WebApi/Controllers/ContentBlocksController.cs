@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -21,16 +19,13 @@ namespace DexCMS.Base.WebApi.Controllers
             repository = repo;
         }
 
-        // GET api/ContentBlocks
+        [ResponseType(typeof(List<ContentBlockApiModel>))]
         public List<ContentBlockApiModel> GetContentBlocks()
         {
-            var items = repository.Items.Select(x => new ContentBlockApiModel(x)).ToList();
-
-            return items;
+            return ContentBlockApiModel.MapForClient(repository.Items);
         }
 
-        // GET api/ContentBlocks/5
-        [ResponseType(typeof(ContentBlock))]
+        [ResponseType(typeof(ContentBlockApiModel))]
         public async Task<IHttpActionResult> GetContentBlock(int id)
         {
             ContentBlock contentBlock = await repository.RetrieveAsync(id);
@@ -39,45 +34,44 @@ namespace DexCMS.Base.WebApi.Controllers
                 return NotFound();
             }
 
-            ContentBlockApiModel model = new ContentBlockApiModel(contentBlock);
-
-            return Ok(model);
+            return Ok(ContentBlockApiModel.MapForClient(contentBlock));
         }
 
-        // PUT api/ContentBlocks/5
-        public async Task<IHttpActionResult> PutContentBlock(int id, ContentBlock contentBlock)
+        public async Task<IHttpActionResult> PutContentBlock(int id, ContentBlockApiModel apiModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != contentBlock.ContentBlockID)
+            if (id != apiModel.ContentBlockID)
             {
                 return BadRequest();
             }
+            ContentBlock contentBlock = await repository.RetrieveAsync(id);
+            ContentBlockApiModel.MapForServer(apiModel, contentBlock);
 
             await repository.UpdateAsync(contentBlock, contentBlock.ContentBlockID);
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST api/ContentBlocks
-        [ResponseType(typeof(ContentBlock))]
-        public async Task<IHttpActionResult> PostContentBlock(ContentBlock contentBlock)
+        [ResponseType(typeof(ContentBlockApiModel))]
+        public async Task<IHttpActionResult> PostContentBlock(ContentBlockApiModel apiModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            ContentBlock contentBlock = new ContentBlock();
+            ContentBlockApiModel.MapForServer(apiModel, contentBlock);
 
             await repository.AddAsync(contentBlock);
 
-            return CreatedAtRoute("DefaultApi", new { id = contentBlock.ContentBlockID }, contentBlock);
+            return CreatedAtRoute("DefaultApi", new { id = contentBlock.ContentBlockID }, ContentBlockApiModel.MapForClient(contentBlock));
         }
 
-        // DELETE api/ContentBlocks/5
-        [ResponseType(typeof(ContentBlock))]
+        [ResponseType(typeof(ContentBlockApiModel))]
         public async Task<IHttpActionResult> DeleteContentBlock(int id)
         {
             ContentBlock contentBlock = await repository.RetrieveAsync(id);
@@ -88,7 +82,7 @@ namespace DexCMS.Base.WebApi.Controllers
 
             await repository.DeleteAsync(contentBlock);
 
-            return Ok(contentBlock);
+            return Ok(ContentBlockApiModel.MapForClient(contentBlock));
         }
     }
 }

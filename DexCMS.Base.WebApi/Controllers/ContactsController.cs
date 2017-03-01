@@ -23,16 +23,13 @@ namespace DexCMS.Base.WebApi.Controllers
 			repository = repo;
 		}
 
-        // GET api/Contacts
+        [ResponseType(typeof(List<ContactApiModel>))]
         public List<ContactApiModel> GetContacts()
         {
-			var items = repository.Items.Select(x => new ContactApiModel(x)).ToList();
-
-			return items;
+            return ContactApiModel.MapForClient(repository.Items);
         }
 
-        // GET api/Contacts/5
-        [ResponseType(typeof(Contact))]
+        [ResponseType(typeof(ContactApiModel))]
         public async Task<IHttpActionResult> GetContact(int id)
         {
 			Contact contact = await repository.RetrieveAsync(id);
@@ -41,45 +38,44 @@ namespace DexCMS.Base.WebApi.Controllers
                 return NotFound();
             }
 
-            ContactApiModel model = new ContactApiModel(contact);
-
-            return Ok(model);
+            return Ok(ContactApiModel.MapForClient(contact));
         }
 
-        // PUT api/Contacts/5
-        public async Task<IHttpActionResult> PutContact(int id, Contact contact)
+        public async Task<IHttpActionResult> PutContact(int id, ContactApiModel apiModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != contact.ContactID)
+            if (id != apiModel.ContactID)
             {
                 return BadRequest();
             }
+            Contact contact = await repository.RetrieveAsync(id);
+            ContactApiModel.MapForServer(apiModel, contact);
 
-			await repository.UpdateAsync(contact, contact.ContactID);
+            await repository.UpdateAsync(contact, contact.ContactID);
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST api/Contacts
-        [ResponseType(typeof(Contact))]
-        public async Task<IHttpActionResult> PostContact(Contact contact)
+        [ResponseType(typeof(ContactApiModel))]
+        public async Task<IHttpActionResult> PostContact(ContactApiModel apiModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            Contact contact = new Contact();
+            ContactApiModel.MapForServer(apiModel, contact);
 
-			await repository.AddAsync(contact);
+            await repository.AddAsync(contact);
 
-            return CreatedAtRoute("DefaultApi", new { id = contact.ContactID }, contact);
+            return CreatedAtRoute("DefaultApi", new { id = contact.ContactID }, ContactApiModel.MapForClient(contact));
         }
 
-        // DELETE api/Contacts/5
-        [ResponseType(typeof(Contact))]
+        [ResponseType(typeof(ContactApiModel))]
         public async Task<IHttpActionResult> DeleteContact(int id)
         {
 			Contact contact = await repository.RetrieveAsync(id);
@@ -90,8 +86,7 @@ namespace DexCMS.Base.WebApi.Controllers
 
 			await repository.DeleteAsync(contact);
 
-            return Ok(contact);
+            return Ok(ContactApiModel.MapForClient(contact));
         }
-
     }
 }

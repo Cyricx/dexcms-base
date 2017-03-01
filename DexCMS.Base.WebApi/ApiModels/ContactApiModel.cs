@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using DexCMS.Base.Models;
+using DexCMS.Core.Globals;
+using DexCMS.Core.Attributes;
 
 namespace DexCMS.Base.WebApi.ApiModels
 {
-    public class ContactApiModel
+    public class ContactApiModel:DexCMSViewModel<ContactApiModel, Contact>
     {
         public int ContactID { get; set; }
 
@@ -25,26 +27,13 @@ namespace DexCMS.Base.WebApi.ApiModels
 
         public int ContactTypeID { get; set; }
 
+        [OverrideMappingType(MappingType.ClientOnly)]
+        [NestedPropertyMapping("ContactType", "Name")]
         public string ContactTypeName { get; set; }
 
-        public List<VisitedPage> VisitedPages { get; set; }
+        [NestedClassMapping(typeof(VisitedPageApiModel), true)]
+        public List<VisitedPageApiModel> VisitedPages { get; set; }
 
-        public ContactApiModel() { }
-
-        public ContactApiModel(Contact contact)
-        {
-            ContactID = contact.ContactID;
-            Name = contact.Name;
-            Phone = contact.Phone;
-            Email = contact.Email;
-            Message = contact.Message;
-            OtherSubject = contact.OtherSubject;
-            SubmitDate = contact.SubmitDate;
-            Referrer = contact.Referrer;
-            ContactTypeID = contact.ContactTypeID;
-            ContactTypeName = contact.ContactType.Name;
-            VisitedPages = contact.VisitedPages == null ? new List<VisitedPage>() : contact.VisitedPages.OrderBy(x => x.VisitOrder).ToList();
-        }
     }
 
 }

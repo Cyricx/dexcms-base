@@ -21,16 +21,13 @@ namespace DexCMS.Base.WebApi.Controllers
 			repository = repo;
 		}
 
-        // GET api/ContentCategories
+        [ResponseType(typeof(List<ContentCategoryApiModel>))]
         public List<ContentCategoryApiModel> GetContentCategories()
         {
-			var items = repository.Items.Select(x => new ContentCategoryApiModel(x)).ToList();
-
-			return items;
+            return ContentCategoryApiModel.MapForClient(repository.Items);
         }
 
-        // GET api/ContentCategories/5
-        [ResponseType(typeof(ContentCategory))]
+        [ResponseType(typeof(ContentCategoryApiModel))]
         public async Task<IHttpActionResult> GetContentCategory(int id)
         {
 			ContentCategory contentCategory = await repository.RetrieveAsync(id);
@@ -39,45 +36,44 @@ namespace DexCMS.Base.WebApi.Controllers
                 return NotFound();
             }
 
-			ContentCategoryApiModel model = new ContentCategoryApiModel(contentCategory);
-
-            return Ok(model);
+            return Ok(ContentCategoryApiModel.MapForClient(contentCategory));
         }
 
-        // PUT api/ContentCategories/5
-        public async Task<IHttpActionResult> PutContentCategory(int id, ContentCategory contentCategory)
+        public async Task<IHttpActionResult> PutContentCategory(int id, ContentCategoryApiModel apiModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != contentCategory.ContentCategoryID)
+            if (id != apiModel.ContentCategoryID)
             {
                 return BadRequest();
             }
+            ContentCategory contentCategory = await repository.RetrieveAsync(id);
+            ContentCategoryApiModel.MapForServer(apiModel, contentCategory);
 
 			await repository.UpdateAsync(contentCategory, contentCategory.ContentCategoryID);
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST api/ContentCategories
-        [ResponseType(typeof(ContentCategory))]
-        public async Task<IHttpActionResult> PostContentCategory(ContentCategory contentCategory)
+        [ResponseType(typeof(ContentCategoryApiModel))]
+        public async Task<IHttpActionResult> PostContentCategory(ContentCategoryApiModel apiModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            ContentCategory contentCategory = new ContentCategory();
+            ContentCategoryApiModel.MapForServer(apiModel, contentCategory);
 
-			await repository.AddAsync(contentCategory);
+            await repository.AddAsync(contentCategory);
 
-            return CreatedAtRoute("DefaultApi", new { id = contentCategory.ContentCategoryID }, contentCategory);
+            return CreatedAtRoute("DefaultApi", new { id = contentCategory.ContentCategoryID }, ContentCategoryApiModel.MapForClient(contentCategory));
         }
 
-        // DELETE api/ContentCategories/5
-        [ResponseType(typeof(ContentCategory))]
+        [ResponseType(typeof(ContentCategoryApiModel))]
         public async Task<IHttpActionResult> DeleteContentCategory(int id)
         {
 			ContentCategory contentCategory = await repository.RetrieveAsync(id);
@@ -88,8 +84,7 @@ namespace DexCMS.Base.WebApi.Controllers
 
 			await repository.DeleteAsync(contentCategory);
 
-            return Ok(contentCategory);
+            return Ok(ContentCategoryApiModel.MapForClient(contentCategory));
         }
-
     }
 }

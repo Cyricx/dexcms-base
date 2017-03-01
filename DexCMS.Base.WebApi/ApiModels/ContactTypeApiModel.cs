@@ -1,9 +1,11 @@
 ﻿using DexCMS.Base.Models;
+using DexCMS.Core.Attributes;
+using DexCMS.Core.Globals;
 
 namespace DexCMS.Base.WebApi.ApiModels
 {
 
-    public class ContactTypeApiModel
+    public class ContactTypeApiModel:DexCMSViewModel<ContactTypeApiModel, ContactType>
     {
         public int ContactTypeID { get; set; }
 
@@ -13,17 +15,9 @@ namespace DexCMS.Base.WebApi.ApiModels
 
         public bool IsActive { get; set; }
 
+        [OverrideMappingType(MappingType.ClientOnly)]
+        [NestedPropertyMapping("Contacts", "Count")]
         public int ContactCount { get; set; }
 
-        public ContactTypeApiModel() { }
-
-        public ContactTypeApiModel(ContactType contactType)
-        {
-            ContactTypeID = contactType.ContactTypeID;
-            Name = contactType.Name;
-            DisplayOrder = contactType.DisplayOrder;
-            IsActive = contactType.IsActive;
-            ContactCount = contactType.Contacts.Count;
-        }
     }
 }

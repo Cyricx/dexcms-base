@@ -24,11 +24,6 @@ namespace DexCMS.Base.Models
         [StringLength(250)]
         public string ExampleImage { get; set; }
 
-        [NotMapped]
-        public string ReplacementFileName { get; set; }
-        [NotMapped]
-        public string TemporaryFileName { get; set; }
-
         public virtual ICollection<PageContent> PageContents { get; set; }
     }
 }

@@ -42,6 +42,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -67,6 +68,7 @@
     <Compile Include="ApiModels\ContactApiModel.cs" />
     <Compile Include="ApiModels\ContactTypeApiModel.cs" />
     <Compile Include="ApiModels\ContentAreaApiModel.cs" />
+    <Compile Include="ApiModels\PageContentPermissionApiModel.cs" />
     <Compile Include="ApiModels\PageContentRedirectApiModel.cs" />
     <Compile Include="ApiModels\ContentBlockApiModel.cs" />
     <Compile Include="ApiModels\ContentBlockOrderApiModel.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="ApiModels\PageContentImageApiModel.cs" />
     <Compile Include="ApiModels\PageTypeApiModel.cs" />
     <Compile Include="ApiModels\RetrieveContentApiModel.cs" />
+    <Compile Include="ApiModels\VisitedPageApiModel.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\ContactTypesController.cs" />
     <Compile Include="Controllers\ContentAreasController.cs" />

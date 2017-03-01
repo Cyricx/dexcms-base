@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DexCMS.Base.Models;
+using DexCMS.Core.Attributes;
+using DexCMS.Core.Globals;
 
 namespace DexCMS.Base.WebApi.ApiModels
 {
-
-    public class PageContentRedirectApiModel
+    public class PageContentRedirectApiModel:DexCMSViewModel<PageContentRedirectApiModel, PageContentRedirect>
     {
         public int PageContentRedirectID { get; set; }
 
@@ -16,10 +13,13 @@ namespace DexCMS.Base.WebApi.ApiModels
         public int PageContentID { get; set; }
 
         public int DisplayOrder { get; set; }
-        public PageContentRedirectPageContentInfoModel PageContent { get; set; }
+
+        [OverrideMappingType(MappingType.ClientOnly)]
+        [NestedClassMapping(typeof(PageContentRedirectPageContentApiModel))]
+        public PageContentRedirectPageContentApiModel PageContent { get; set; }
     }
 
-    public class PageContentRedirectPageContentInfoModel
+    public class PageContentRedirectPageContentApiModel: DexCMSViewModel<PageContentRedirectPageContentApiModel, PageContent>
     {
         public int PageContentID { get; set; }
         public string Heading { get; set; }

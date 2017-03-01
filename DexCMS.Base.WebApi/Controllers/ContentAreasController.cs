@@ -21,16 +21,13 @@ namespace DexCMS.Base.WebApi.Controllers
             repository = repo;
         }
 
-        // GET api/ContentAreas
+        [ResponseType(typeof(List<ContentAreaApiModel>))]
         public List<ContentAreaApiModel> GetContentAreas()
         {
-            var items = repository.Items.Select(x => new ContentAreaApiModel(x)).ToList();
-
-            return items;
+            return ContentAreaApiModel.MapForClient(repository.Items);
         }
 
-        // GET api/ContentAreas/5
-        [ResponseType(typeof(ContentArea))]
+        [ResponseType(typeof(ContentAreaApiModel))]
         public async Task<IHttpActionResult> GetContentArea(int id)
         {
             ContentArea contentArea = await repository.RetrieveAsync(id);
@@ -39,45 +36,44 @@ namespace DexCMS.Base.WebApi.Controllers
                 return NotFound();
             }
 
-            ContentAreaApiModel model = new ContentAreaApiModel(contentArea);
-
-            return Ok(model);
+            return Ok(ContentAreaApiModel.MapForClient(contentArea));
         }
 
-        // PUT api/ContentAreas/5
-        public async Task<IHttpActionResult> PutContentArea(int id, ContentArea contentArea)
+        public async Task<IHttpActionResult> PutContentArea(int id, ContentAreaApiModel apiModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != contentArea.ContentAreaID)
+            if (id != apiModel.ContentAreaID)
             {
                 return BadRequest();
             }
+            ContentArea contentArea = await repository.RetrieveAsync(id);
+            ContentAreaApiModel.MapForServer(apiModel, contentArea);
 
             await repository.UpdateAsync(contentArea, contentArea.ContentAreaID);
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST api/ContentAreas
-        [ResponseType(typeof(ContentArea))]
-        public async Task<IHttpActionResult> PostContentArea(ContentArea contentArea)
+        [ResponseType(typeof(ContentAreaApiModel))]
+        public async Task<IHttpActionResult> PostContentArea(ContentAreaApiModel apiModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            ContentArea contentArea = new ContentArea();
+            ContentAreaApiModel.MapForServer(apiModel, contentArea);
 
             await repository.AddAsync(contentArea);
 
-            return CreatedAtRoute("DefaultApi", new { id = contentArea.ContentAreaID }, contentArea);
+            return CreatedAtRoute("DefaultApi", new { id = contentArea.ContentAreaID }, ContentAreaApiModel.MapForClient(contentArea));
         }
 
-        // DELETE api/ContentAreas/5
-        [ResponseType(typeof(ContentArea))]
+        [ResponseType(typeof(ContentAreaApiModel))]
         public async Task<IHttpActionResult> DeleteContentArea(int id)
         {
             ContentArea contentArea = await repository.RetrieveAsync(id);
@@ -88,7 +84,7 @@ namespace DexCMS.Base.WebApi.Controllers
 
             await repository.DeleteAsync(contentArea);
 
-            return Ok(contentArea);
+            return Ok(ContentAreaApiModel.MapForClient(contentArea));
         }
 
     }

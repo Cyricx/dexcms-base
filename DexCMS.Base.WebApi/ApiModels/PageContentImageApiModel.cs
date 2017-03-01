@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DexCMS.Base.Models;
+using DexCMS.Core.Globals;
 
 namespace DexCMS.Base.WebApi.ApiModels
 {
-    public class PageContentImageApiModel
+    public class PageContentImageApiModel:DexCMSViewModel<PageContentImageApiModel, PageContentImage>
     {
         public int ImageID { get; set; }
         public int PageContentID { get; set; }
@@ -15,12 +17,12 @@ namespace DexCMS.Base.WebApi.ApiModels
         public string Thumbnail { get; set; }
     }
 
-    public class PageContentImagesUpdateModel
+    public class PageContentImagesUpdateApiModel
     {
         public int PageContentID { get; set; }
-        public PageContentImageData[] PageContentImages { get; set; }
+        public PageContentImageDataUpdateApiModel[] PageContentImages { get; set; }
     }
-    public class PageContentImageData
+    public class PageContentImageDataUpdateApiModel
     {
         public int ImageID { get; set; }
         public int DisplayOrder { get; set; }

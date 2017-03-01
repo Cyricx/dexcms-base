@@ -1,5 +1,5 @@
 {
-  "version": "0.6.1-alpha",
+  "version": "0.7.0-alpha",
   "name": "dexcms-base",
   "description": "Base library for Dex CMS",
   "keywords": [ ".net", "cms", "framework" ],
@@ -11,7 +11,7 @@
     "url": "git://github.com/Cyricx/dexcms-base.git"
   },
   "dependencies": {
-    "dexcms-core": "git+https://git@github.com/Cyricx/dexcms-core.git#0.6.2-alpha"
+    "dexcms-core": "git+https://git@github.com/Cyricx/dexcms-core.git#0.7.1-alpha"
   },
   "devDependencies": {
     "grunt": "1.0.1",

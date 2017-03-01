@@ -17,11 +17,8 @@ namespace DexCMS.Base.WebApi.Controllers
             repository = repo;
         }
 
-        // PUT api/ContentBlockOrder/5
         public async Task<IHttpActionResult> PutContentBlockOrderModel(ContentBlockOrderModel contentBlockOrderModel)
         {
-
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

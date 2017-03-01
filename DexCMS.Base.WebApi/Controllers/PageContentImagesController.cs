@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -23,38 +21,19 @@ namespace DexCMS.Base.WebApi.Controllers
             repository = repo;
         }
 
-        // GET api/PageContentImages
+        [ResponseType(typeof(List<PageContentImageApiModel>))]
         public List<PageContentImageApiModel> GetPageContentImages()
         {
-            var items = repository.Items.Select(x => new PageContentImageApiModel
-            {
-                ImageID = x.ImageID,
-                PageContentID = x.PageContentID,
-                DisplayOrder = x.DisplayOrder,
-                Alt = x.Image.Alt,
-                Thumbnail = x.Image.Thumbnail
-            }).ToList();
-
-            return items;
+            return PageContentImageApiModel.MapForClient(repository.Items);
         }
 
-        // GET api/PageContentImages/5
+        [ResponseType(typeof(List<PageContentImageApiModel>))]
         public List<PageContentImageApiModel> GetPageContentImage(int id)
         {
-            var items = repository.Items.Where(x => x.PageContentID == id).Select(x => new PageContentImageApiModel
-            {
-                ImageID = x.ImageID,
-                PageContentID = x.PageContentID,
-                DisplayOrder = x.DisplayOrder,
-                Alt = x.Image.Alt,
-                Thumbnail = x.Image.Thumbnail
-            }).ToList();
-
-            return items;
+            return PageContentImageApiModel.MapForClient(repository.Items.Where(x => x.PageContentID == id));
         }
 
-        // PUT api/PageContentImages/5
-        public async Task<IHttpActionResult> PutPageContentImage(PageContentImagesUpdateModel pageContentImagesUpdate)
+        public async Task<IHttpActionResult> PutPageContentImage(PageContentImagesUpdateApiModel pageContentImagesUpdate)
         {
             if (!ModelState.IsValid)
             {
@@ -79,7 +58,6 @@ namespace DexCMS.Base.WebApi.Controllers
 
         }
 
-        // DELETE api/PageContentImages/5
         [ResponseType(typeof(PageContentImage))]
         public async Task<IHttpActionResult> DeletePageContentImage(int id, int secondKey)
         {
@@ -99,7 +77,4 @@ namespace DexCMS.Base.WebApi.Controllers
         }
 
     }
-
-
-
 }

@@ -29,23 +29,13 @@ namespace DexCMS.Base.WebApi.Controllers
             this.settings = settings;
 		}
 
-        // GET api/LayoutTypes
+        [ResponseType(typeof(List<LayoutTypeApiModel>))]
         public List<LayoutTypeApiModel> GetLayoutypes()
         {
-			var items = repository.Items.Select(x => new LayoutTypeApiModel
-            {
-				LayoutTypeID = x.LayoutTypeID,
-                CssClass = x.CssClass,
-                Name = x.Name,
-                PageContentCount = x.PageContents.Count,
-                ExampleImage = x.ExampleImage
-			}).ToList();
-
-			return items;
+            return LayoutTypeApiModel.MapForClient(repository.Items);
         }
 
-        // GET api/LayoutTypes/5
-        [ResponseType(typeof(LayoutType))]
+        [ResponseType(typeof(LayoutTypeApiModel))]
         public async Task<IHttpActionResult> GetLayoutType(int id)
         {
 			LayoutType layoutType = await repository.RetrieveAsync(id);
@@ -54,61 +44,54 @@ namespace DexCMS.Base.WebApi.Controllers
                 return NotFound();
             }
 
-			LayoutTypeApiModel model = new LayoutTypeApiModel()
-			{
-				LayoutTypeID = layoutType.LayoutTypeID,
-                CssClass = layoutType.CssClass,
-                Name = layoutType.Name,
-                PageContentCount = layoutType.PageContents.Count,
-                ExampleImage = layoutType.ExampleImage		
-			};
-
-            return Ok(model);
+            return Ok(LayoutTypeApiModel.MapForClient(layoutType));
         }
 
-        // PUT api/LayoutTypes/5
-        public async Task<IHttpActionResult> PutLayoutType(int id, LayoutType layoutType)
+        public async Task<IHttpActionResult> PutLayoutType(int id, LayoutTypeApiModel apiModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != layoutType.LayoutTypeID)
+            if (id != apiModel.LayoutTypeID)
             {
                 return BadRequest();
             }
-            
-            if (!String.IsNullOrEmpty(layoutType.ReplacementFileName))
+            LayoutType layoutType = await repository.RetrieveAsync(id);
+            LayoutTypeApiModel.MapForServer(apiModel, layoutType);
+
+            if (!String.IsNullOrEmpty(apiModel.ReplacementFileName))
             {
-                SaveFile(layoutType);
+                SaveFile(layoutType, apiModel);
             }
 			await repository.UpdateAsync(layoutType, layoutType.LayoutTypeID);
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST api/LayoutTypes
-        [ResponseType(typeof(LayoutType))]
-        public async Task<IHttpActionResult> PostLayoutType(LayoutType layoutType)
+        [ResponseType(typeof(LayoutTypeApiModel))]
+        public async Task<IHttpActionResult> PostLayoutType(LayoutTypeApiModel apiModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            LayoutType layoutType = new LayoutType();
+            LayoutTypeApiModel.MapForServer(apiModel, layoutType);
+
             await repository.AddAsync(layoutType);
 
-            if (!string.IsNullOrEmpty(layoutType.ReplacementFileName))
+            if (!string.IsNullOrEmpty(apiModel.ReplacementFileName))
             {
-                SaveFile(layoutType);
+                SaveFile(layoutType, apiModel);
             }
             await repository.UpdateAsync(layoutType, layoutType.LayoutTypeID);
 
-            return CreatedAtRoute("DefaultApi", new { id = layoutType.LayoutTypeID }, layoutType);
+            return CreatedAtRoute("DefaultApi", new { id = layoutType.LayoutTypeID }, LayoutTypeApiModel.MapForClient(layoutType));
         }
 
-        // DELETE api/LayoutTypes/5
-        [ResponseType(typeof(LayoutType))]
+        [ResponseType(typeof(LayoutTypeApiModel))]
         public async Task<IHttpActionResult> DeleteLayoutType(int id)
         {
 			LayoutType layoutType = await repository.RetrieveAsync(id);
@@ -120,14 +103,14 @@ namespace DexCMS.Base.WebApi.Controllers
             {
                 DeleteLayoutTypeFiles(layoutType);
                 await repository.DeleteAsync(layoutType);
-                return Ok(layoutType);
+                return Ok(LayoutTypeApiModel.MapForClient(layoutType));
             } else
             {
                 return BadRequest();
             }
         }
 
-        private void SaveFile(LayoutType item)
+        private void SaveFile(LayoutType item, LayoutTypeApiModel apiModel)
         {
             int id = item.LayoutTypeID;
             string uploadFolderName = "content/layoutTypes/" + id + "/";
@@ -140,7 +123,7 @@ namespace DexCMS.Base.WebApi.Controllers
             }
 
             string pictureName = item.Name.Clean();
-            string extension = item.ReplacementFileName.Substring(item.ReplacementFileName.LastIndexOf('.'));
+            string extension = apiModel.ReplacementFileName.Substring(apiModel.ReplacementFileName.LastIndexOf('.'));
 
             if (item.ExampleImage != null)
             {
@@ -153,7 +136,7 @@ namespace DexCMS.Base.WebApi.Controllers
             item.Name = newName;
 
             //Retrieve file
-            var file = System.Web.HttpContext.Current.Server.MapPath("~/Tmp/FileUploads/" + item.TemporaryFileName);
+            var file = System.Web.HttpContext.Current.Server.MapPath("~/Tmp/FileUploads/" + apiModel.TemporaryFileName);
 
             //remove special characters from file name
             string fileName = pictureName + extension;

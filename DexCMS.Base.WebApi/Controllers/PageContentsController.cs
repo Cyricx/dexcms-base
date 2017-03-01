@@ -24,43 +24,13 @@ namespace DexCMS.Base.WebApi.Controllers
 			repository = repo;
 		}
 
-        // GET api/PageContents
+        [ResponseType(typeof(List<PageContentApiModel>))]
         public List<PageContentApiModel> GetPageContents()
         {
-			var items = repository.Items.Where(x => x.PageTypeID == 1)
-                .Select(x => new PageContentApiModel {
-				PageContentID = x.PageContentID,
-				Heading = x.Heading,
-				Body = x.Body,
-				PageTitle = x.PageTitle,
-				MetaKeywords = x.MetaKeywords,
-				MetaDescription = x.MetaDescription,
-				ContentAreaID = x.ContentAreaID,
-                ContentAreaName = x.ContentArea.Name,
-                ContentCategoryID = x.ContentCategoryID,
-                ContentCategoryName = x.ContentCategory.Name,
-                ContentSubCategoryID = x.ContentSubCategoryID,
-                ContentSubCategoryName = x.ContentSubCategory.Name,
-                UrlSegment = x.UrlSegment,
-				ChangeFrequency = x.ChangeFrequency,
-				LastModified = x.LastModified,
-				LastModifiedBy = x.LastModifiedBy,
-				Priority = x.Priority,
-				AddToSitemap = x.AddToSitemap,
-                PageTypeID = x.PageTypeID,
-                PageTypeName = x.PageType.Name,
-                MaximumImages = x.MaximumImages,
-                LayoutTypeID = x.LayoutTypeID,
-                LayoutTypeName = x.LayoutType.Name,
-                IsDisabled = x.IsDisabled,
-                RequiresLogin = x.RequiresLogin
-            }).ToList();
-
-			return items;
+            return PageContentApiModel.MapForClient(repository.Items.Where(x => x.PageTypeID == 1));
         }
 
-        // GET api/PageContents/5
-        [ResponseType(typeof(PageContent))]
+        [ResponseType(typeof(PageContentApiModel))]
         public async Task<IHttpActionResult> GetPageContent(int id)
         {
 			PageContent pageContent = await repository.RetrieveAsync(id);
@@ -69,63 +39,11 @@ namespace DexCMS.Base.WebApi.Controllers
                 return NotFound();
             }
 
-            PageContentApiModel model = new PageContentApiModel()
-            {
-                PageContentID = pageContent.PageContentID,
-                Heading = pageContent.Heading,
-                Body = pageContent.Body,
-                PageTitle = pageContent.PageTitle,
-                MetaKeywords = pageContent.MetaKeywords,
-                MetaDescription = pageContent.MetaDescription,
-                ContentAreaID = pageContent.ContentAreaID,
-                ContentCategoryID = pageContent.ContentCategoryID,
-                ContentSubCategoryID = pageContent.ContentSubCategoryID,
-                ContentAreaName = pageContent.ContentArea.Name,
-                ContentCategoryName = pageContent.ContentCategoryID.HasValue ? pageContent.ContentCategory.Name : "",
-                ContentSubCategoryName = pageContent.ContentSubCategoryID.HasValue ? pageContent.ContentSubCategory.Name : "",
-                ChangeFrequency = pageContent.ChangeFrequency,
-                LastModified = pageContent.LastModified,
-                LastModifiedBy = pageContent.LastModifiedBy,
-                Priority = pageContent.Priority,
-                AddToSitemap = pageContent.AddToSitemap,
-                MaximumImages = pageContent.MaximumImages,
-                ContentBlocks = pageContent.ContentBlocks.OrderBy(x => x.DisplayOrder)
-                    .Select(x => new ContentBlockInfo
-                    {
-                        ContentBlockID = x.ContentBlockID,
-                        BlockTitle = x.BlockTitle,
-                        BlockBody = x.BlockBody,
-                        DisplayOrder = x.DisplayOrder
-                    }).ToList(),
-                PageContentImages = pageContent.PageContentImages.OrderBy(x => x.DisplayOrder)
-                    .Select(x => new PageContentImageInfo
-                    {
-                        ImageID = x.ImageID,
-                        Alt = x.Image.Alt,
-                        DisplayOrder = x.DisplayOrder,
-                        Thumbnail = x.Image.Thumbnail
-                    }).ToList(),
-                LayoutTypeID = pageContent.LayoutTypeID,
-                PageTypeID = pageContent.PageTypeID,
-                UrlSegment = pageContent.UrlSegment,
-                LayoutTypeName = pageContent.LayoutTypeID.HasValue ? pageContent.LayoutType.Name : "",
-                IsDisabled = pageContent.IsDisabled,
-                RequiresLogin = pageContent.RequiresLogin,
-                PageContentPermissions = pageContent.PageContentPermissions.Select(x => new PermissionInfo
-                {
-                    Id = x.Id,
-                    PageContentID = x.PageContentID
-                }).ToList()
-            };
-
-            return Ok(model);
+            return Ok(PageContentApiModel.MapForClient(pageContent));
         }
 
-        // PUT api/PageContents/5
-        public async Task<IHttpActionResult> PutPageContent(int id, PageContent pageContent)
+        public async Task<IHttpActionResult> PutPageContent(int id, PageContentApiModel apiModel)
         {
-            pageContent.ContentBlocks = null;
-            pageContent.PageContentImages = null;
             for (int i = 0; i < 3; i++)
             {
                 if (ModelState.ContainsKey("pageContent.ContentBlocks["+ i + "].BlockBody"))
@@ -138,10 +56,12 @@ namespace DexCMS.Base.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != pageContent.PageContentID)
+            if (id != apiModel.PageContentID)
             {
                 return BadRequest();
             }
+            PageContent pageContent = await repository.RetrieveAsync(id);
+            PageContentApiModel.MapForServer(apiModel, pageContent);
 
             //Verify it is not a duplicate
             var matchingPageContent = await repository.RetrieveAsync(pageContent.UrlSegment, pageContent.ContentAreaID, pageContent.ContentCategoryID, pageContent.ContentSubCategoryID);
@@ -160,15 +80,16 @@ namespace DexCMS.Base.WebApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST api/PageContents
-        [ResponseType(typeof(PageContent))]
-        public async Task<IHttpActionResult> PostPageContent(PageContent pageContent)
+        [ResponseType(typeof(PageContentApiModel))]
+        public async Task<IHttpActionResult> PostPageContent(PageContentApiModel apiModel)
         {
 
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            PageContent pageContent = new PageContent();
+            PageContentApiModel.MapForServer(apiModel, pageContent);
 
             //Verify it is not a duplicate
             var matchingPageContent = await repository.RetrieveAsync(pageContent.UrlSegment, pageContent.ContentAreaID, pageContent.ContentCategoryID, pageContent.ContentSubCategoryID);
@@ -184,11 +105,10 @@ namespace DexCMS.Base.WebApi.Controllers
 
             await repository.AddAsync(pageContent);
 
-            return CreatedAtRoute("DefaultApi", new { id = pageContent.PageContentID }, pageContent);
+            return CreatedAtRoute("DefaultApi", new { id = pageContent.PageContentID }, PageContentApiModel.MapForClient(pageContent));
         }
 
-        // DELETE api/PageContents/5
-        [ResponseType(typeof(PageContent))]
+        [ResponseType(typeof(PageContentApiModel))]
         public async Task<IHttpActionResult> DeletePageContent(int id)
         {
 			PageContent pageContent = await repository.RetrieveAsync(id);
@@ -199,8 +119,7 @@ namespace DexCMS.Base.WebApi.Controllers
 
 			await repository.DeleteAsync(pageContent);
 
-            return Ok(pageContent);
+            return Ok(PageContentApiModel.MapForClient(pageContent));
         }
-
     }
 }

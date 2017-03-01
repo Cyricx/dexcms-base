@@ -1,8 +1,10 @@
 ﻿using DexCMS.Base.Models;
+using DexCMS.Core.Attributes;
+using DexCMS.Core.Globals;
 
 namespace DexCMS.Base.WebApi.ApiModels
 {
-    public class ContentAreaApiModel
+    public class ContentAreaApiModel:DexCMSViewModel<ContentAreaApiModel, ContentArea>
     {
         public int ContentAreaID { get; set; }
 
@@ -12,17 +14,8 @@ namespace DexCMS.Base.WebApi.ApiModels
 
         public bool IsActive { get; set; }
 
+        [OverrideMappingType(MappingType.ClientOnly)]
+        [NestedPropertyMapping("PageContents", "Count")]
         public int ContentCount { get; set; }
-
-        public ContentAreaApiModel() { }
-
-        public ContentAreaApiModel(ContentArea contentArea)
-        {
-            ContentAreaID = contentArea.ContentAreaID;
-            Name = contentArea.Name;
-            IsActive = contentArea.IsActive;
-            UrlSegment = contentArea.UrlSegment;
-            ContentCount = contentArea.PageContents.Count;
-        }
     }
 }

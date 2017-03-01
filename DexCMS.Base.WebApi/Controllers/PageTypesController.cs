@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -21,21 +19,13 @@ namespace DexCMS.Base.WebApi.Controllers
 			repository = repo;
 		}
 
-        // GET api/PageTypes
+        [ResponseType(typeof(List<PageTypeApiModel>))]
         public List<PageTypeApiModel> GetPageTypes()
         {
-			var items = repository.Items.Select(x => new PageTypeApiModel {
-				PageTypeID = x.PageTypeID,
-				Name = x.Name,
-				IsActive = x.IsActive,
-                ContentCount = x.PageContents.Count
-			}).ToList();
-
-			return items;
+            return PageTypeApiModel.MapForClient(repository.Items);
         }
 
-        // GET api/PageTypes/5
-        [ResponseType(typeof(PageType))]
+        [ResponseType(typeof(PageTypeApiModel))]
         public async Task<IHttpActionResult> GetPageType(int id)
         {
 			PageType pageType = await repository.RetrieveAsync(id);
@@ -44,50 +34,44 @@ namespace DexCMS.Base.WebApi.Controllers
                 return NotFound();
             }
 
-			PageTypeApiModel model = new PageTypeApiModel()
-			{
-				PageTypeID = pageType.PageTypeID,
-				Name = pageType.Name,
-				IsActive = pageType.IsActive
-			};
-
-            return Ok(model);
+            return Ok(PageTypeApiModel.MapForClient(pageType));
         }
 
-        // PUT api/PageTypes/5
-        public async Task<IHttpActionResult> PutPageType(int id, PageType pageType)
+        public async Task<IHttpActionResult> PutPageType(int id, PageTypeApiModel apiModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != pageType.PageTypeID)
+            if (id != apiModel.PageTypeID)
             {
                 return BadRequest();
             }
+            PageType pageType = await repository.RetrieveAsync(id);
+            PageTypeApiModel.MapForServer(apiModel, pageType);
 
-			await repository.UpdateAsync(pageType, pageType.PageTypeID);
+            await repository.UpdateAsync(pageType, pageType.PageTypeID);
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST api/PageTypes
-        [ResponseType(typeof(PageType))]
-        public async Task<IHttpActionResult> PostPageType(PageType pageType)
+        [ResponseType(typeof(PageTypeApiModel))]
+        public async Task<IHttpActionResult> PostPageType(PageTypeApiModel apiModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            PageType pageType = new PageType();
+            PageTypeApiModel.MapForServer(apiModel, pageType);
 
-			await repository.AddAsync(pageType);
+            await repository.AddAsync(pageType);
 
-            return CreatedAtRoute("DefaultApi", new { id = pageType.PageTypeID }, pageType);
+            return CreatedAtRoute("DefaultApi", new { id = pageType.PageTypeID }, PageTypeApiModel.MapForClient(pageType));
         }
 
-        // DELETE api/PageTypes/5
-        [ResponseType(typeof(PageType))]
+        [ResponseType(typeof(PageTypeApiModel))]
         public async Task<IHttpActionResult> DeletePageType(int id)
         {
 			PageType pageType = await repository.RetrieveAsync(id);
@@ -98,7 +82,7 @@ namespace DexCMS.Base.WebApi.Controllers
 
 			await repository.DeleteAsync(pageType);
 
-            return Ok(pageType);
+            return Ok(PageTypeApiModel.MapForClient(pageType));
         }
 
     }

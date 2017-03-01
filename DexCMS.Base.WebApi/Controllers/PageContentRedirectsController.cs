@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -23,76 +19,59 @@ namespace DexCMS.Base.WebApi.Controllers
 			repository = repo;
 		}
 
+        [ResponseType(typeof(List<PageContentRedirectApiModel>))]
         public List<PageContentRedirectApiModel> GetPageContentRedirects()
         {
-			var items = repository.Items.Select(x => new PageContentRedirectApiModel
-            {
-                PageContentRedirectID = x.PageContentRedirectID,
-                Url = x.Url,
-                PageContent = new PageContentRedirectPageContentInfoModel
-                {
-                    PageContentID = x.PageContent.PageContentID,
-                    Heading = x.PageContent.Heading
-                }
-			}).ToList();
-
-			return items;
+            return PageContentRedirectApiModel.MapForClient(repository.Items);
         }
 
-        [ResponseType(typeof(PageContentRedirect))]
+        [ResponseType(typeof(PageContentRedirectApiModel))]
         public async Task<IHttpActionResult> GetPageContentRedirect(int id)
         {
-            PageContentRedirect x = await repository.RetrieveAsync(id);
-            if (x == null)
+            PageContentRedirect pageContentRedirect = await repository.RetrieveAsync(id);
+            if (pageContentRedirect == null)
             {
                 return NotFound();
             }
 
-            PageContentRedirectApiModel model = new PageContentRedirectApiModel()
-			{
-                PageContentRedirectID = x.PageContentRedirectID,
-                Url = x.Url,
-                PageContent = new PageContentRedirectPageContentInfoModel
-                {
-                    PageContentID = x.PageContent.PageContentID,
-                    Heading = x.PageContent.Heading
-                }
-            };
-
-            return Ok(model);
+            return Ok(PageContentRedirectApiModel.MapForClient(pageContentRedirect));
         }
 
-        public async Task<IHttpActionResult> PutPageContentRedirect(int id, PageContentRedirect model)
+        public async Task<IHttpActionResult> PutPageContentRedirect(int id, PageContentRedirectApiModel apiModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != model.PageContentRedirectID)
+            if (id != apiModel.PageContentRedirectID)
             {
                 return BadRequest();
             }
+            PageContentRedirect pageContentRedirect = await repository.RetrieveAsync(id);
+            PageContentRedirectApiModel.MapForServer(apiModel, pageContentRedirect);
 
-			await repository.UpdateAsync(model, model.PageContentRedirectID);
+			await repository.UpdateAsync(pageContentRedirect, pageContentRedirect.PageContentRedirectID);
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [ResponseType(typeof(PageContentRedirect))]
-        public async Task<IHttpActionResult> PostContentBlock(PageContentRedirect model)
+        [ResponseType(typeof(PageContentRedirectApiModel))]
+        public async Task<IHttpActionResult> PostContentBlock(PageContentRedirectApiModel apiModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            PageContentRedirect model = new PageContentRedirect();
+            PageContentRedirectApiModel.MapForServer(apiModel, model);
 
-			await repository.AddAsync(model);
+            await repository.AddAsync(model);
 
-            return CreatedAtRoute("DefaultApi", new { id = model.PageContentRedirectID }, model);
+            return CreatedAtRoute("DefaultApi", new { id = model.PageContentRedirectID }, PageContentRedirectApiModel.MapForClient(model));
         }
 
-        [ResponseType(typeof(PageContentRedirect))]
+        [ResponseType(typeof(PageContentRedirectApiModel))]
         public async Task<IHttpActionResult> DeletePageContentRedirect(int id)
         {
             PageContentRedirect model = await repository.RetrieveAsync(id);
@@ -103,10 +82,7 @@ namespace DexCMS.Base.WebApi.Controllers
 
 			await repository.DeleteAsync(model);
 
-            return Ok(model);
+            return Ok(PageContentRedirectApiModel.MapForClient(model));
         }
-
     }
-
-
 }
