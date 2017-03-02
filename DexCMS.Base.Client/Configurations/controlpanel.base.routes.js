@@ -68,18 +68,6 @@
                 module: "base"
             },
             {
-                "name": "countries",
-                "module": "base"
-            },
-            {
-                "name": "states",
-                "module": "base"
-            },
-            {
-                "name": "images",
-                "module": "base"
-            },
-            {
                 "name": "pageContents",
                 "module": "base"
             },
@@ -96,18 +84,6 @@
                         "path": "/:id?fromadmin"
                     }
                 ]
-            },
-            {
-                "name": "settingDataTypes",
-                "module": "base"
-            },
-            {
-                "name": "settingGroups",
-                "module": "base"
-            },
-            {
-                "name": "settings",
-                "module": "base"
             },
         ]  
     };

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26206.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DexCMS.Base", "DexCMS.Base\DexCMS.Base.csproj", "{165220A4-E4E2-4DE0-98A3-83770E073EE5}"
 EndProject
@@ -9,6 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DexCMS.Base.Mvc", "DexCMS.B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D64C9359-4CD3-45FD-A5A4-09239D0CC444}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
 		gruntfile.js = gruntfile.js
 		package.json = package.json
 		Readme.md = Readme.md
