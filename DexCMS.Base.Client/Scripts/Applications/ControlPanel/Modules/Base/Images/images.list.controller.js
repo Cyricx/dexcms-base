@@ -45,7 +45,7 @@
                 functions: {
                     remove: function (id) {
                         if (confirm('Are you sure?')) {
-                            ContentCategories.deleteItem(id).then(function (response) {
+                            Images.deleteItem(id).then(function (response) {
                                 $window.location.reload();
                             });
                         }
